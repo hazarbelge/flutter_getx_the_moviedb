@@ -6,13 +6,13 @@ import '../../util/index.dart';
 class RatingRow extends StatefulWidget {
   const RatingRow({
     Key? key,
+    required this.id,
     required this.rating,
-    required this.movieId,
     required this.isMovie,
   }) : super(key: key);
 
+  final int id;
   final double rating;
-  final int movieId;
   final bool isMovie;
 
   @override
@@ -23,9 +23,6 @@ class _RatingRowState extends State<RatingRow> {
   bool isRated = false;
   double rate = 0.5;
 
-  late ThemeData theme;
-  late TextTheme textTheme;
-  late TextStyle ratingCaptionStyle;
   late Color color;
 
   List<Widget> getStars() {
@@ -33,7 +30,7 @@ class _RatingRowState extends State<RatingRow> {
     for (int i = 1; i <= 5; i++) {
       color = !isRated
           ? i * 2 <= widget.rating
-              ? theme.accentColor
+              ? Colors.blue
               : Colors.black12
           : i * 2 <= rate
               ? Colors.orange
@@ -57,10 +54,6 @@ class _RatingRowState extends State<RatingRow> {
 
   @override
   Widget build(BuildContext context) {
-    theme = Theme.of(context);
-    textTheme = theme.textTheme;
-    ratingCaptionStyle = textTheme.caption!.copyWith(color: Colors.black45);
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
@@ -68,17 +61,34 @@ class _RatingRowState extends State<RatingRow> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(
-              widget.rating.toString(),
-              style: textTheme.headline6!.copyWith(
-                fontWeight: FontWeight.w400,
-                color: theme.accentColor,
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                color: Colors.black38,
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+              child: Text(
+                widget.rating.toString(),
+                style: const TextStyle(
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
               ),
             ),
             const SizedBox(height: 4.0),
-            Text(
-              "details.widget.rating".tr,
-              style: ratingCaptionStyle,
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                color: Colors.black38,
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+              child: Text(
+                "details.widget.rating".tr,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
         ),
@@ -89,13 +99,39 @@ class _RatingRowState extends State<RatingRow> {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Row(
-                  children: getStars(),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: const BoxDecoration(
+                    color: Colors.black38,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                  child: Row(
+                    children: getStars(),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: const BoxDecoration(
+                    color: Colors.black38,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                  child: Text(
+                    "details.grade".tr,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
                 if (isRated)
                   SizedBox(
-                    height: 30,
-                    width: 50,
+                    height: 25,
+                    width: 60,
                     child: TextButton(
                       style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => darkAccentColor)),
                       onPressed: () {
@@ -103,7 +139,7 @@ class _RatingRowState extends State<RatingRow> {
                       },
                       child: Text(
                         "details.grade".tr,
-                        style: const TextStyle(color: Colors.white, fontSize: 12),
+                        style: const TextStyle(color: Colors.white, fontSize: 11),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -111,17 +147,6 @@ class _RatingRowState extends State<RatingRow> {
                 else
                   const SizedBox(),
               ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 4.0, left: 4.0),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "details.grade".tr,
-                    style: ratingCaptionStyle,
-                  ),
-                ],
-              ),
             ),
           ],
         ),

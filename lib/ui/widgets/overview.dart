@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Overview extends StatefulWidget {
   const Overview({
@@ -31,14 +32,13 @@ class _OverviewState extends State<Overview> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'context.translate("moviedb.details.widget.overview")',
+          widget.overview,
           style: textTheme.subtitle1!.copyWith(fontSize: 18.0),
         ),
         const SizedBox(height: 8.0),
@@ -62,13 +62,13 @@ class _OverviewState extends State<Overview> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Text(
-                  flag ? 'context.translate("moviedb.details.more")' : 'context.translate("moviedb.details.less")',
-                  style: textTheme.bodyText2!.copyWith(fontSize: 16.0, color: theme.accentColor),
+                  flag ? 'details.more'.tr : 'details.less'.tr,
+                  style: textTheme.bodyText2!.copyWith(fontSize: 16.0, color: Get.isDarkMode ? Colors.orange : Colors.blue),
                 ),
                 Icon(
                   Icons.keyboard_arrow_down,
                   size: 18.0,
-                  color: theme.accentColor,
+                  color: Get.isDarkMode ? Colors.orange : Colors.blue,
                 ),
               ],
             ),

@@ -26,12 +26,9 @@ class HeaderDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(bottom: 140.0),
-          child: BannerImage(imageUrl: imageBanner),
-        ),
+        BannerImage(imageUrl: imageBanner),
         Positioned(
-          bottom: 0.0,
+          bottom: 10.0,
           left: 16.0,
           right: 16.0,
           child: Row(
@@ -47,18 +44,25 @@ class HeaderDetail extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        color: Color.fromRGBO(58, 66, 86, 1.0),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        color: Colors.black38,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      ),
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 8.0),
                     RatingRow(
                       rating: rating,
-                      movieId: movieId,
+                      id: movieId,
                       isMovie: isMovie,
                     ),
                     const SizedBox(height: 12.0),

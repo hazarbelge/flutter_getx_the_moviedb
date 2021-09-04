@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/util/index.dart';
 import 'package:get/get.dart';
@@ -112,7 +113,7 @@ class CardListMovieDescSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isTablet = Get.context?.isTablet ?? (Get.width >= 600);
+    final bool isTablet = Get.context?.isTablet ?? ((Get.context?.width ?? Get.width) >= 600);
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.only(right: 15, top: 10, bottom: 10),
@@ -243,18 +244,17 @@ class CardListMovieDescSide extends StatelessWidget {
                       alignment: Alignment.bottomLeft,
                       child: Text(
                         overview,
-                        maxLines: 6,
+                        maxLines: 4,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Get.isDarkMode ? Colors.white : Colors.black,
                           fontWeight: FontWeight.w400,
-                          fontSize: isTablet ? 16 : 12,
+                          fontSize: 12,
                         ),
                         textAlign: TextAlign.start,
                       ),
                     ),
                   ),
-                  if (isTablet) const SizedBox(height: 10) else const SizedBox(height: 5),
                 ],
               ),
             );
