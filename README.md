@@ -1,4 +1,4 @@
-# flutter_getx_the_moviedb
+# The Movie DB App with Flutter GetX
 
 A new Flutter TheMovieDB Application with GetX State Management
 
