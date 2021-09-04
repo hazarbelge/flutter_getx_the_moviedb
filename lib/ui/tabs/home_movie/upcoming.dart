@@ -41,8 +41,8 @@ class UpcomingMoviesTab extends GetView<UpcomingMoviesController> {
                               overview: movieWrapper.results?[index].overview ?? "",
                               genre: movieWrapper.results?[index].genreIds != null ? movieWrapper.results![index].genreIds!.take(3).map(createGenreContainer).toList() : <Widget>[],
                               onTap: () {
-                                Get.rootDelegate.toNamed(
-                                  AppRoutes.DETAIL_MOVIE,
+                                Get.toNamed(
+                                  AppRoutes.DETAIL,
                                   arguments: <String, dynamic>{
                                     'movie': movieWrapper.results?[index],
                                     'isMovie': true,

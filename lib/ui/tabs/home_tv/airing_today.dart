@@ -41,11 +41,11 @@ class AiringTodayTvSeriesTab extends GetView<AiringTodayTvSeriesController> {
                               overview: tvSeriesWrapper.results?[index].overview ?? "",
                               genre: tvSeriesWrapper.results?[index].genreIds != null ? tvSeriesWrapper.results![index].genreIds!.take(3).map(createGenreContainer).toList() : <Widget>[],
                               onTap: () {
-                                Get.rootDelegate.toNamed(
-                                  AppRoutes.DETAIL_TV,
+                                Get.toNamed(
+                                  AppRoutes.DETAIL,
                                   arguments: <String, dynamic>{
                                     'tvSeries': tvSeriesWrapper.results?[index],
-                                    'isMovie': false,
+                                    'isMovie': true,
                                   },
                                 );
                               },
