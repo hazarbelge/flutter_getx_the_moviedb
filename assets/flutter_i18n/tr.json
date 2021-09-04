@@ -1,0 +1,53 @@
+{
+  "app": {
+    "title": "Flutter BLoC TheMovieDB"
+  },
+  "moviedb": {
+    "movies": {
+      "title": "Filmler",
+      "now_playing_movie": {
+        "title": "Gösterimdekiler",
+        "icon": "Gösterimdekiler"
+      },
+      "popular_movie": {
+        "title": "Popüler Filmler",
+        "icon": "Popüler"
+      },
+      "top_rated_movie": {
+        "title": "En Sevilen Filmler",
+        "icon": "En Sevilen"
+      },
+      "upcoming_movie": {
+        "title": "Yakında Filmler",
+        "icon": "Yakında"
+      }
+    },
+    "tv_series": {
+      "title": "Diziler",
+      "first_air": "İlk Yayınlanma:",
+      "airing_today_tv": {
+        "title": "Bugün Yayınlanacaklar",
+        "icon": "Bugün"
+      },
+      "on_the_air_tv": {
+        "title": "Şu An Yayınlananlar",
+        "icon": "Şu An"
+      },
+      "popular_tv": {
+        "title": "Popüler Diziler",
+        "icon": "Popüler"
+      },
+      "top_rated_tv": {
+        "title": "En Sevilen Diziler",
+        "icon": "En Sevilenler"
+      }
+    },
+    "details": {
+      "grade": "Şimdi Oyla",
+      "rating": "İncelemeler",
+      "overview": "Özet",
+      "more": "Daha Fazla",
+      "less": "Daha Az"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "app": {
+    "title": "Flutter BLoC TheMovieDB"
+  },
+  "moviedb": {
+    "movies": {
+      "title": "Movies",
+      "now_playing_movie": {
+        "title": "Now Playing",
+        "icon": "Now Playing"
+      },
+      "popular_movie": {
+        "title": "Popular Movies",
+        "icon": "Popular"
+      },
+      "top_rated_movie": {
+        "title": "Top Rated Movies",
+        "icon": "Top Rated"
+      },
+      "upcoming_movie": {
+        "title": "Upcoming Movies",
+        "icon": "Upcoming"
+      }
+    },
+    "tv_series": {
+      "title": "Tv Series",
+      "first_air": "First Air:",
+      "airing_today_tv": {
+        "title": "Airing Today",
+        "icon": "Airing Today"
+      },
+      "on_the_air_tv": {
+        "title": "On The Air Tv Series",
+        "icon": "On The Air"
+      },
+      "popular_tv": {
+        "title": "Popular Tv Series",
+        "icon": "Popular"
+      },
+      "top_rated_tv": {
+        "title": "Top Rated Tv Series",
+        "icon": "Top Rated"
+      }
+    },
+    "details": {
+      "grade": "Grade Now",
+      "rating": "Ratings",
+      "overview": "Overview",
+      "more": "More",
+      "less": "Less"
+    }
+  }
+}
