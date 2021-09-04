@@ -35,7 +35,7 @@ class MovieApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp.router(
+    return GetMaterialApp(
       key: movieAppKey,
       debugShowCheckedModeBanner: false,
       title: 'Flutter The Movie DB',
@@ -47,6 +47,7 @@ class MovieApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       defaultTransition: Transition.cupertino,
       getPages: AppPages.routes,
+      initialRoute: AppRoutes.START,
       enableLog: true,
       //logWriterCallback: (String text, {bool isError = false}) {}
       navigatorObservers: <NavigatorObserver>[

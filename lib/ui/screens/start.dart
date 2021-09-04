@@ -84,7 +84,7 @@ class HomeButtons extends GetView<StartScreenController> {
               child: TextButton(
                 style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => darkAccentColor)),
                 onPressed: () {
-                  Get.rootDelegate.toNamed(AppRoutes.HOME_MOVIE);
+                  Get.toNamed(AppRoutes.HOME_MOVIE);
                 },
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
@@ -106,7 +106,7 @@ class HomeButtons extends GetView<StartScreenController> {
               child: TextButton(
                 style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => darkAccentColor)),
                 onPressed: () {
-                  Get.rootDelegate.toNamed(AppRoutes.HOME_TV);
+                  Get.toNamed(AppRoutes.HOME_TV);
                 },
                 child: FittedBox(
                   fit: BoxFit.scaleDown,

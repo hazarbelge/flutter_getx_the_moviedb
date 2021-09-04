@@ -15,10 +15,7 @@ dependencies:
   device_preview: ^0.7.4
   dio: ^4.0.0
 
-  #firebase
-  firebase_messaging: ^10.0.6
-
-  #flutter
+  #Flutter
   flutter:
     sdk: flutter
   flutter_i18n: ^0.30.0
@@ -32,14 +29,12 @@ dependencies:
 
   google_fonts: ^2.1.0
   url_launcher: ^6.0.3
-  video_player: ^2.1.14
-
+  video_player: ^2.1.15
 
 dev_dependencies:
   flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
-
 
 flutter_icons:
   android: true

@@ -15,6 +15,7 @@ class DetailPageController extends SuperController<Map<String, dynamic>> {
     super.onInit();
 
     debugPrint("${Get.arguments}");
+    debugPrint("${Get.parameters}");
     change(Get.arguments, status: RxStatus.success());
 
     movie = state?['movie'];
