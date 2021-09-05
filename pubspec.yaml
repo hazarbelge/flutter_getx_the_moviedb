@@ -31,6 +31,11 @@ dependencies:
   url_launcher: ^6.0.3
   video_player: ^2.1.15
 
+  window_size:
+    git:
+      url: git://github.com/google/flutter-desktop-embedding.git
+      path: plugins/window_size
+
 dev_dependencies:
   flutter_lints: ^1.0.4
   flutter_test:

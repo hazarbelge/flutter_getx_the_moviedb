@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:window_size/window_size.dart';
 
 import '../../routes/index.dart';
 import '../../util/index.dart';
@@ -17,6 +18,11 @@ Future<void> initServices() async {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initServices();
+
+  if (GetPlatform.isDesktop) {
+    setWindowTitle('Flutter The Movie DB');
+    setWindowMinSize(const Size(300, 650));
+  }
 
   runApp(
     DevicePreview(
@@ -45,11 +51,13 @@ class MovieApp extends StatelessWidget {
       theme: Style.lightTheme,
       darkTheme: Style.darkTheme,
       themeMode: ThemeMode.system,
-      defaultTransition: Transition.cupertino,
+      defaultTransition: Transition.fadeIn,
       getPages: AppPages.routes,
       initialRoute: AppRoutes.START,
       enableLog: true,
-      //logWriterCallback: (String text, {bool isError = false}) {}
+      logWriterCallback: (String text, {bool isError = false}) {
+        debugPrint("GetXLog: $text");
+      },
       navigatorObservers: <NavigatorObserver>[
         GetObserver(),
       ],
