@@ -1,10 +1,11 @@
 export 'banner_image.dart';
-export 'card_list_movie.dart';
-export 'card_list_tv.dart';
 export 'custom_app_bar.dart';
 export 'genre_container.dart';
 export 'header_detail.dart';
 export 'overview.dart';
 export 'poster.dart';
+export 'product_card.dart';
+export 'product_card_small.dart';
+export 'product_list.dart';
 export 'rating_row.dart';
 export 'stateful_wrapper.dart';

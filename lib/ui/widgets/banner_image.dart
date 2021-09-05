@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class BannerImage extends StatelessWidget {
   const BannerImage({
@@ -11,11 +10,14 @@ class BannerImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
     return SizedBox(
-      width: Get.context?.width ?? Get.width,
+      width: double.infinity,
+      height: height/2,
       child: Image.network(
         imageUrl,
-        fit: BoxFit.fill,
+        width: double.infinity,
+        fit: BoxFit.cover,
       ),
     );
   }

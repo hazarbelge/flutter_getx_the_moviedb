@@ -15,19 +15,19 @@ class AppPages {
     GetPage<HomeMovieScreen>(
       name: AppRoutes.HOME_MOVIE,
       page: () => const HomeMovieScreen(),
-      transition: Transition.cupertino,
+      transition: Transition.fadeIn,
       binding: HomeMovieBinding(),
     ),
     GetPage<HomeTvScreen>(
       name: AppRoutes.HOME_TV,
       page: () => const HomeTvScreen(),
-      transition: Transition.cupertino,
+      transition: Transition.fadeIn,
       binding: HomeTvBinding(),
     ),
     GetPage<DetailPage>(
       name: AppRoutes.DETAIL,
       page: () => const DetailPage(),
-      transition: Transition.cupertino,
+      transition: Transition.fadeIn,
       binding: DetailPageBinding(),
     ),
   ];
