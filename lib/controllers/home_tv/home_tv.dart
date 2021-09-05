@@ -13,7 +13,7 @@ class HomeTvScreenController extends SuperController<dynamic> {
 
   @override
   void onInactive() {
-    debugPrint('onInative called');
+    debugPrint('onInactive called');
   }
 
   @override

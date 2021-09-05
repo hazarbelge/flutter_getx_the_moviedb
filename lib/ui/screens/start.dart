@@ -16,11 +16,12 @@ class StartScreen extends GetView<StartScreenController> {
     return Scaffold(
       backgroundColor: Get.isDarkMode ? Colors.black : Colors.white,
       body: SizedBox(
-        height: Get.context?.height ?? Get.height,
-        width: Get.context?.width ?? Get.width,
+        height: double.infinity,
+        width: double.infinity,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: const <Widget>[
             StartIcon(),
             HomeButtons(),

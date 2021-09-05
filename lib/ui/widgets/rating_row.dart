@@ -62,20 +62,23 @@ class _RatingRowState extends State<RatingRow> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
+              height: 40,
               padding: const EdgeInsets.all(10),
               decoration: const BoxDecoration(
                 color: Colors.black38,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
-              child: Text(
-                widget.rating.toString(),
-                style: const TextStyle(
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
+              child: Center(
+                child: Text(
+                  widget.rating.toString(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
-            const SizedBox(height: 4.0),
+            const SizedBox(height: 5),
             Container(
               padding: const EdgeInsets.all(10),
               decoration: const BoxDecoration(
@@ -111,6 +114,7 @@ class _RatingRowState extends State<RatingRow> {
                 ),
               ],
             ),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -128,6 +132,7 @@ class _RatingRowState extends State<RatingRow> {
                     ),
                   ),
                 ),
+                const SizedBox(width: 15),
                 if (isRated)
                   SizedBox(
                     height: 25,

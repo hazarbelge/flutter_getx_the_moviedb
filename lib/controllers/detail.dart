@@ -30,7 +30,7 @@ class DetailPageController extends SuperController<Map<String, dynamic>> {
 
   @override
   void onInactive() {
-    debugPrint('onInative called');
+    debugPrint('onInactive called');
   }
 
   @override
