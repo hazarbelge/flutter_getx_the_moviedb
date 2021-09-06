@@ -26,12 +26,13 @@ class AiringTodayTvSeriesTab extends GetView<AiringTodayTvSeriesController> {
                 controller.obx(
                   (TvSeriesWrapper? tvSeriesWrapper) {
                     if (tvSeriesWrapper != null) {
+                      CustomProgressIndicator.closeLoadingOverlay();
                       return ProductList(
                         productList: tvSeriesWrapper.results,
                         isMovie: false,
                       );
                     } else {
-                      return const CircularProgressIndicator();
+                      return const SizedBox();
                     }
                   },
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/models/session_data.dart';
+import 'package:flutter_getx_the_moviedb/ui/widgets/index.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/index.dart';
@@ -75,57 +76,59 @@ class HomeButtons extends GetView<StartScreenController> {
       child: SizedBox(
         height: 300,
         width: Get.context?.width ?? Get.width,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              height: 60,
-              width: 150,
-              child: TextButton(
-                style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => darkAccentColor)),
-                onPressed: () {
-                  Get.toNamed(AppRoutes.HOME_MOVIE);
-                },
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    'app.movies.title'.tr,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white,
+        child: controller.obx(
+          (SessionData? state) {
+            if (state?.guestSessionId != null) {
+              CustomProgressIndicator.closeLoadingOverlay();
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    height: 60,
+                    width: 150,
+                    child: TextButton(
+                      style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => darkAccentColor)),
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.HOME_MOVIE);
+                      },
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          'app.movies.title'.tr,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ),
-            const Spacer(),
-            SizedBox(
-              height: 60,
-              width: 150,
-              child: TextButton(
-                style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => darkAccentColor)),
-                onPressed: () {
-                  Get.toNamed(AppRoutes.HOME_TV);
-                },
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    'app.tv_series.title'.tr,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white,
+                  const Spacer(),
+                  SizedBox(
+                    height: 60,
+                    width: 150,
+                    child: TextButton(
+                      style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => darkAccentColor)),
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.HOME_TV);
+                      },
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          'app.tv_series.title'.tr,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ),
-            const Spacer(flex: 3),
-            controller.obx(
-              (SessionData? state) {
-                  return SizedBox(
+                  const Spacer(flex: 3),
+                  SizedBox(
                     height: 100,
                     width: Get.context?.width ?? Get.width,
                     child: Center(
@@ -138,10 +141,14 @@ class HomeButtons extends GetView<StartScreenController> {
                         ),
                       ),
                     ),
-                  );
-                }
-            ),
-          ],
+                  ),
+                ],
+              );
+            } else {
+              CustomProgressIndicator.openLoadingDialog();
+              return const SizedBox();
+            }
+          },
         ),
       ),
     );

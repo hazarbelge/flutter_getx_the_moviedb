@@ -47,7 +47,7 @@ class StartRepository implements IStartRepository {
     if (response.status.hasError) {
       return Future<SessionData>.error(response.statusText!);
     } else {
-      Url.sessionId = response.body!.guestSessionId;
+      Url.sessionId = response.body?.guestSessionId;
       return response.body;
     }
   }

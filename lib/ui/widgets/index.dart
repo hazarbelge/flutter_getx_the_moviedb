@@ -1,5 +1,6 @@
 export 'banner_image.dart';
 export 'custom_app_bar.dart';
+export 'custom_progress_indicator.dart';
 export 'genre_container.dart';
 export 'header_detail.dart';
 export 'overview.dart';

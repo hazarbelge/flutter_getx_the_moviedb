@@ -24,14 +24,15 @@ class TopRatedTvSeriesTab extends GetView<TopRatedTvSeriesController> {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 controller.obx(
-                  (TvSeriesWrapper? tvSeriesWrapper) {
+                      (TvSeriesWrapper? tvSeriesWrapper) {
                     if (tvSeriesWrapper != null) {
+                      CustomProgressIndicator.closeLoadingOverlay();
                       return ProductList(
                         productList: tvSeriesWrapper.results,
                         isMovie: false,
                       );
                     } else {
-                      return const CircularProgressIndicator();
+                      return const SizedBox();
                     }
                   },
                 ),

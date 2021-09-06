@@ -26,12 +26,14 @@ class NowPlayingMoviesTab extends GetView<NowPlayingMoviesController> {
                 controller.obx(
                   (MovieWrapper? movieWrapper) {
                     if (movieWrapper != null) {
+                      CustomProgressIndicator.closeLoadingOverlay();
                       return ProductList(
                         productList: movieWrapper.results,
                         isMovie: true,
                       );
                     } else {
-                      return const CircularProgressIndicator();
+                      CustomProgressIndicator.openLoadingDialog();
+                      return const SizedBox();
                     }
                   },
                 ),
