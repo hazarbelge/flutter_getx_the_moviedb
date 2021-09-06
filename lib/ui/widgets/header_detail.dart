@@ -57,6 +57,7 @@ class HeaderDetail extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Container(
+                            constraints: BoxConstraints(maxWidth: boxConstraints.maxWidth - (190*0.7) - 32),
                             padding: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
                               color: Colors.black38,

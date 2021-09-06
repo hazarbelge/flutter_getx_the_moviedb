@@ -136,7 +136,7 @@ class ProductList extends StatelessWidget {
               );
             },
           );
-        } else if (boxConstraints.maxWidth <= 400) {
+        } else if (boxConstraints.maxWidth <= 380) {
           const double _aspectRatio = 2;
           return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -183,7 +183,7 @@ class ProductList extends StatelessWidget {
             },
           );
         } else {
-          const double _aspectRatio = 2.25;
+          const double _aspectRatio = 2.1;
           return ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             padding: EdgeInsets.zero,

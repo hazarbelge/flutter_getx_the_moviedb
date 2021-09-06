@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/index.dart';
-import '../../util/index.dart';
 
 class RatingRow extends GetView<RatingRowController> {
   const RatingRow({
@@ -28,9 +27,32 @@ class RatingRow extends GetView<RatingRowController> {
               ? Colors.orange
               : Colors.black12;
       final GestureDetector star = GestureDetector(
-        onTap: () {
+        onTap: () async {
           controller.isRated.value = true;
           controller.rate.value = (i * 2).toDouble();
+          if (isMovie) {
+            final Response<dynamic> response = await controller.detailRepository.rateMovie(
+              id,
+              <String, dynamic>{
+                "value": controller.rate.value,
+              },
+            );
+            if (response.statusCode == 201) {
+              controller.isRatedApi.value = true;
+              Get.snackbar("Success", "You voted ${controller.rate.value} for this ${isMovie ? "movie" : "tv series"}");
+            }
+          } else {
+            final Response<dynamic> response = await controller.detailRepository.rateTvSeries(
+              id,
+              <String, dynamic>{
+                "value": controller.rate.value,
+              },
+            );
+            if (response.statusCode == 201) {
+              controller.isRatedApi.value = true;
+              Get.snackbar("Success", "You voted ${controller.rate.value} for this ${isMovie ? "movie" : "tv series"}");
+            }
+          }
         },
         child: Icon(
           Icons.star,
@@ -70,16 +92,19 @@ class RatingRow extends GetView<RatingRowController> {
             ),
             const SizedBox(height: 5),
             Container(
+              height: 38,
               padding: const EdgeInsets.all(10),
               decoration: const BoxDecoration(
                 color: Colors.black38,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
-              child: Text(
-                "details.widget.rating".tr,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
+              child: Center(
+                child: Text(
+                  "details.widget.rating".tr,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -111,7 +136,7 @@ class RatingRow extends GetView<RatingRowController> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  width: 85,
+                  height: 38,
                   padding: const EdgeInsets.all(10),
                   decoration: const BoxDecoration(
                     color: Colors.black38,
@@ -127,49 +152,6 @@ class RatingRow extends GetView<RatingRowController> {
                       maxLines: 1,
                     ),
                   ),
-                ),
-                Obx(
-                  () {
-                    if (controller.isRated.value) {
-                      return SizedBox(
-                        height: 25,
-                        width: 60,
-                        child: TextButton(
-                          style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => darkAccentColor)),
-                          onPressed: () async {
-                            if (isMovie) {
-                              final Response<dynamic> response = await controller.detailRepository.rateMovie(
-                                id,
-                                <String, dynamic>{
-                                  "value": controller.rate.value,
-                                },
-                              );
-                              if (response.statusCode == 201) {
-                                controller.isRatedApi.value = true;
-                              }
-                            } else {
-                              final Response<dynamic> response = await controller.detailRepository.rateTvSeries(
-                                id,
-                                <String, dynamic>{
-                                  "value": controller.rate.value,
-                                },
-                              );
-                              if (response.statusCode == 201) {
-                                controller.isRatedApi.value = true;
-                              }
-                            }
-                          },
-                          child: Text(
-                            controller.isRatedApi.value ? "Vote Again" : "details.grade".tr,
-                            style: const TextStyle(color: Colors.white, fontSize: 11),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      );
-                    } else {
-                      return const SizedBox();
-                    }
-                  },
                 ),
               ],
             ),
