@@ -13,7 +13,7 @@ class BannerImage extends StatelessWidget {
     final double height = MediaQuery.of(context).size.height;
     return SizedBox(
       width: double.infinity,
-      height: height/2,
+      height: height/1.6,
       child: Image.network(
         imageUrl,
         width: double.infinity,

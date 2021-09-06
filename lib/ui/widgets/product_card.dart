@@ -253,8 +253,7 @@ class CardListMovieDescSide extends StatelessWidget {
                             overview,
                             maxLines: boxConstraints.maxHeight ~/ 14,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: Get.isDarkMode ? Colors.white : Colors.black,
+                            style: const TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 12,
                             ),

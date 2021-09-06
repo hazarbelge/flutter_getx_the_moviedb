@@ -50,7 +50,7 @@ class MovieApp extends StatelessWidget {
       fallbackLocale: GetTranslations.fallbackLocale,
       theme: Style.lightTheme,
       darkTheme: Style.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       defaultTransition: Transition.fadeIn,
       getPages: AppPages.routes,
       initialRoute: AppRoutes.START,

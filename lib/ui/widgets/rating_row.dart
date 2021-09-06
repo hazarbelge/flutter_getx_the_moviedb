@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/index.dart';
 import '../../util/index.dart';
 
-class RatingRow extends StatefulWidget {
+class RatingRow extends GetView<RatingRowController> {
   const RatingRow({
     Key? key,
     required this.id,
@@ -15,32 +16,21 @@ class RatingRow extends StatefulWidget {
   final double rating;
   final bool isMovie;
 
-  @override
-  _RatingRowState createState() => _RatingRowState();
-}
-
-class _RatingRowState extends State<RatingRow> {
-  bool isRated = false;
-  double rate = 0.5;
-
-  late Color color;
-
   List<Widget> getStars() {
     final List<Widget> stars = <Widget>[];
+    Color color;
     for (int i = 1; i <= 5; i++) {
-      color = !isRated
-          ? i * 2 <= widget.rating
+      color = !controller.isRated.value
+          ? i * 2 <= rating
               ? Colors.blue
               : Colors.black12
-          : i * 2 <= rate
+          : i * 2 <= controller.rate.value
               ? Colors.orange
               : Colors.black12;
       final GestureDetector star = GestureDetector(
         onTap: () {
-          setState(() {
-            isRated = true;
-            rate = (i * 2).toDouble();
-          });
+          controller.isRated.value = true;
+          controller.rate.value = (i * 2).toDouble();
         },
         child: Icon(
           Icons.star,
@@ -70,7 +60,7 @@ class _RatingRowState extends State<RatingRow> {
               ),
               child: Center(
                 child: Text(
-                  widget.rating.toString(),
+                  rating.toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     color: Colors.white,
@@ -95,7 +85,7 @@ class _RatingRowState extends State<RatingRow> {
             ),
           ],
         ),
-        const SizedBox(width: 16.0),
+        const SizedBox(width: 10.0),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,49 +98,79 @@ class _RatingRowState extends State<RatingRow> {
                     color: Colors.black38,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
-                  child: Row(
-                    children: getStars(),
+                  child: Obx(
+                    () => Row(
+                      children: getStars(),
+                    ),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 5),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Container(
+                  width: 85,
                   padding: const EdgeInsets.all(10),
                   decoration: const BoxDecoration(
                     color: Colors.black38,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
-                  child: Text(
-                    "details.grade".tr,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
+                  child: Obx(
+                    () => Text(
+                      controller.isRatedApi.value ? "Vote: ${controller.rate.value}" : "details.grade".tr,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
+                      maxLines: 1,
                     ),
                   ),
                 ),
-                const SizedBox(width: 15),
-                if (isRated)
-                  SizedBox(
-                    height: 25,
-                    width: 60,
-                    child: TextButton(
-                      style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => darkAccentColor)),
-                      onPressed: () {
-                        //widget.isMovie ? MoviesService.rateMovie(widget.movieId, rate) : TvSeriesService.rateTv(widget.movieId, rate);
-                      },
-                      child: Text(
-                        "details.grade".tr,
-                        style: const TextStyle(color: Colors.white, fontSize: 11),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  )
-                else
-                  const SizedBox(),
+                Obx(
+                  () {
+                    if (controller.isRated.value) {
+                      return SizedBox(
+                        height: 25,
+                        width: 60,
+                        child: TextButton(
+                          style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => darkAccentColor)),
+                          onPressed: () async {
+                            if (isMovie) {
+                              final Response<dynamic> response = await controller.detailRepository.rateMovie(
+                                id,
+                                <String, dynamic>{
+                                  "value": controller.rate.value,
+                                },
+                              );
+                              if (response.statusCode == 201) {
+                                controller.isRatedApi.value = true;
+                              }
+                            } else {
+                              final Response<dynamic> response = await controller.detailRepository.rateTvSeries(
+                                id,
+                                <String, dynamic>{
+                                  "value": controller.rate.value,
+                                },
+                              );
+                              if (response.statusCode == 201) {
+                                controller.isRatedApi.value = true;
+                              }
+                            }
+                          },
+                          child: Text(
+                            controller.isRatedApi.value ? "Vote Again" : "details.grade".tr,
+                            style: const TextStyle(color: Colors.white, fontSize: 11),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
+                  },
+                ),
               ],
             ),
           ],
