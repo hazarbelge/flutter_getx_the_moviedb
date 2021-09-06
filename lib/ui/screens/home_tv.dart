@@ -156,7 +156,7 @@ class HomeTvDesktopWebScaffold extends GetView<HomeTvScreenController> {
   }
 }
 
-class HomeTvMobileScaffold extends GetView<HomeMovieScreenController> {
+class HomeTvMobileScaffold extends GetView<HomeTvScreenController> {
   const HomeTvMobileScaffold({Key? key}) : super(key: key);
 
   Color getMyColor(int bottomBarIndex, int itemIndex) {
