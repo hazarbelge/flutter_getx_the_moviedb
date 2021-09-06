@@ -24,7 +24,7 @@ Different Scaffolds for different platforms:
 
 **Mobile:** 
 
-![image](https://user-images.githubusercontent.com/56136163/132200844-92a15bd5-d20b-4c12-a7f1-332a5414d6c0.jpeg)
+![image](https://user-images.githubusercontent.com/56136163/132201523-448712db-cd28-4322-8864-9b2de38d9734.png)
 
 **Desktop:** 
 
