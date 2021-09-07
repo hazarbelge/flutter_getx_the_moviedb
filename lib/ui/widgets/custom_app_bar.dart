@@ -32,10 +32,10 @@ class CustomAppBar extends PreferredSize {
       actions: <Widget>[
         IconButton(
           onPressed: () {
-            Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
+            Get.changeTheme(Get.theme == Style.darkTheme ? Style.lightTheme : Style.darkTheme);
             WidgetsBinding.instance!.performReassemble();
           },
-          icon: Icon(Get.isDarkMode ? Icons.wb_incandescent : Icons.wb_incandescent_outlined),
+          icon: Icon(Get.theme == Style.darkTheme ? Icons.wb_incandescent : Icons.wb_incandescent_outlined),
         ),
         IconButton(
           onPressed: () {

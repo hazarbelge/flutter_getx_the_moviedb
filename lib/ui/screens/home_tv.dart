@@ -27,26 +27,6 @@ class HomeTvScreen extends GetView<HomeTvScreenController> {
 class HomeTvDesktopWebScaffold extends GetView<HomeTvScreenController> {
   const HomeTvDesktopWebScaffold({Key? key}) : super(key: key);
 
-  Color getMyColor(int bottomBarIndex, int itemIndex) {
-    Color color;
-    if (bottomBarIndex != itemIndex) {
-      if (Get.theme == Style.lightTheme) {
-        color = Colors.white;
-      } else {
-        color = Colors.black26;
-      }
-    } else if (Get.theme == Style.lightTheme) {
-      if (kIsWeb) {
-        color = Colors.white;
-      } else {
-        color = Colors.transparent;
-      }
-    } else {
-      color = Colors.white;
-    }
-    return color;
-  }
-
   List<Widget> navigation() {
     return <Widget>[
       InkWell(
