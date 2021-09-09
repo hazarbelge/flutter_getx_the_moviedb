@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/util/url_key_secret.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 
@@ -6,13 +7,13 @@ import '../../models/index.dart';
 import '../../util/index.dart';
 
 abstract class IHomeMovieProvider {
-  Future<Response<MovieWrapper>> getNowPlayingMovie(String path);
+  Future<Response<MovieWrapper>> getNowPlayingMovie({required String path, Map<String, dynamic>? query});
 
-  Future<Response<MovieWrapper>> getPopularMovie(String path);
+  Future<Response<MovieWrapper>> getPopularMovie({required String path, Map<String, dynamic>? query});
 
-  Future<Response<MovieWrapper>> getTopRatedMovie(String path);
+  Future<Response<MovieWrapper>> getTopRatedMovie({required String path, Map<String, dynamic>? query});
 
-  Future<Response<MovieWrapper>> getUpcomingMovie(String path);
+  Future<Response<MovieWrapper>> getUpcomingMovie({required String path, Map<String, dynamic>? query});
 }
 
 class HomeMovieProvider extends GetConnect implements IHomeMovieProvider {
@@ -24,32 +25,49 @@ class HomeMovieProvider extends GetConnect implements IHomeMovieProvider {
     httpClient.addRequestModifier((Request<dynamic> request) {
       request.headers['Content-Type'] = 'application/json';
       request.headers['Accept'] = 'application/json';
-      debugPrint("${request.url.path}/${request.url.host}");
+      debugPrint("${request.url.host}/${request.url.path}/${request.url.query}");
       return request;
     });
   }
 
   @override
-  Future<Response<MovieWrapper>> getNowPlayingMovie(String path) => get(path);
+  Future<Response<T>> get<T>(String url, {Map<String, String>? headers, String? contentType, Map<String, dynamic>? query, Decoder<T>? decoder}) {
+    Map<String, dynamic>? parsedQuery = query?.map((String key, dynamic value) => MapEntry<String, dynamic>(key, value.toString()));
+    if (parsedQuery == null) {
+      parsedQuery = <String, dynamic>{
+        "api_key": YOUR.API_KEY,
+      };
+    } else {
+      parsedQuery.addAll(
+        <String, dynamic>{
+          "api_key": YOUR.API_KEY,
+        },
+      );
+    }
+    return super.get(url, headers: headers, contentType: contentType, query: parsedQuery, decoder: decoder);
+  }
 
   @override
-  Future<Response<MovieWrapper>> getPopularMovie(String path) => get(path);
+  Future<Response<MovieWrapper>> getNowPlayingMovie({required String path, Map<String, dynamic>? query}) => get(path, query: query);
 
   @override
-  Future<Response<MovieWrapper>> getTopRatedMovie(String path) => get(path);
+  Future<Response<MovieWrapper>> getPopularMovie({required String path, Map<String, dynamic>? query}) => get(path, query: query);
 
   @override
-  Future<Response<MovieWrapper>> getUpcomingMovie(String path) => get(path);
+  Future<Response<MovieWrapper>> getTopRatedMovie({required String path, Map<String, dynamic>? query}) => get(path, query: query);
+
+  @override
+  Future<Response<MovieWrapper>> getUpcomingMovie({required String path, Map<String, dynamic>? query}) => get(path, query: query);
 }
 
 abstract class IHomeMovieRepository {
-  Future<MovieWrapper?> getNowPlayingMovie();
+  Future<MovieWrapper?> getNowPlayingMovie({Map<String, dynamic>? query});
 
-  Future<MovieWrapper?> getPopularMovie();
+  Future<MovieWrapper?> getPopularMovie({Map<String, dynamic>? query});
 
-  Future<MovieWrapper?> getTopRatedMovie();
+  Future<MovieWrapper?> getTopRatedMovie({Map<String, dynamic>? query});
 
-  Future<MovieWrapper?> getUpcomingMovie();
+  Future<MovieWrapper?> getUpcomingMovie({Map<String, dynamic>? query});
 }
 
 class HomeMovieRepository implements IHomeMovieRepository {
@@ -57,13 +75,31 @@ class HomeMovieRepository implements IHomeMovieRepository {
     required this.provider,
   });
 
-  final IHomeMovieProvider provider;
+  final HomeMovieProvider provider;
 
   @override
-  Future<MovieWrapper?> getNowPlayingMovie() async {
-    final Response<MovieWrapper> response = await provider.getNowPlayingMovie(Url.nowPlayingMovies);
+  Future<MovieWrapper?> getNowPlayingMovie({Map<String, dynamic>? query}) async {
+    try {
+      final Response<MovieWrapper> response = await provider.getNowPlayingMovie(path: Url.nowPlayingMovies, query: query);
+      debugPrint(response.bodyString.toString());
+      if (response.status.hasError) {
+        debugPrint("NowPlayingMovieError: ${response.statusText}");
+        return response.body; //Future<MovieWrapper>.error(response.statusText!);
+      } else {
+        return response.body;
+      }
+    } catch (e) {
+      debugPrint("NowPlayingMovieCatchError: $e");
+      return MovieWrapper(page: 0, totalResults: 0, totalPages: 0, results: <Movie>[]);
+    }
+  }
+
+  @override
+  Future<MovieWrapper?> getPopularMovie({Map<String, dynamic>? query}) async {
+    final Response<MovieWrapper> response = await provider.getPopularMovie(path: Url.popularMovies, query: query);
     debugPrint(response.bodyString.toString());
     if (response.status.hasError) {
+      debugPrint("PopularMovieError: ${response.statusText}");
       return Future<MovieWrapper>.error(response.statusText!);
     } else {
       return response.body;
@@ -71,10 +107,11 @@ class HomeMovieRepository implements IHomeMovieRepository {
   }
 
   @override
-  Future<MovieWrapper?> getPopularMovie() async {
-    final Response<MovieWrapper> response = await provider.getPopularMovie(Url.popularMovies);
+  Future<MovieWrapper?> getTopRatedMovie({Map<String, dynamic>? query}) async {
+    final Response<MovieWrapper> response = await provider.getTopRatedMovie(path: Url.topRatedMovies, query: query);
     debugPrint(response.bodyString.toString());
     if (response.status.hasError) {
+      debugPrint("TopRatedMovieError: ${response.statusText}");
       return Future<MovieWrapper>.error(response.statusText!);
     } else {
       return response.body;
@@ -82,21 +119,11 @@ class HomeMovieRepository implements IHomeMovieRepository {
   }
 
   @override
-  Future<MovieWrapper?> getTopRatedMovie() async {
-    final Response<MovieWrapper> response = await provider.getTopRatedMovie(Url.topRatedMovies);
+  Future<MovieWrapper?> getUpcomingMovie({Map<String, dynamic>? query}) async {
+    final Response<MovieWrapper> response = await provider.getUpcomingMovie(path: Url.upcomingMovies, query: query);
     debugPrint(response.bodyString.toString());
     if (response.status.hasError) {
-      return Future<MovieWrapper>.error(response.statusText!);
-    } else {
-      return response.body;
-    }
-  }
-
-  @override
-  Future<MovieWrapper?> getUpcomingMovie() async {
-    final Response<MovieWrapper> response = await provider.getUpcomingMovie(Url.upcomingMovies);
-    debugPrint(response.bodyString.toString());
-    if (response.status.hasError) {
+      debugPrint("UpComingMovieError: ${response.statusText}");
       return Future<MovieWrapper>.error(response.statusText!);
     } else {
       return response.body;

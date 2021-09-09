@@ -20,6 +20,7 @@ class PopularMoviesTab extends GetView<PopularMoviesController> {
         child: Center(
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
+            controller: controller.scrollController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[

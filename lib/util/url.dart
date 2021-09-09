@@ -17,10 +17,10 @@ class Url {
 
   //Movies URLs
   static const String latestMovie = '/movie/latest?api_key=$apiKey';
-  static const String nowPlayingMovies = '/movie/now_playing?api_key=$apiKey';
-  static const String popularMovies = '/movie/popular?api_key=$apiKey';
-  static const String topRatedMovies = '/movie/top_rated?api_key=$apiKey';
-  static const String upcomingMovies = '/movie/upcoming?api_key=$apiKey';
+  static const String nowPlayingMovies = '/movie/now_playing';
+  static const String popularMovies = '/movie/popular';
+  static const String topRatedMovies = '/movie/top_rated';
+  static const String upcomingMovies = '/movie/upcoming';
   static String rateMovie(int movieId) => '/movie/$movieId/rating?api_key=$apiKey&guest_session_id=$sessionId';
 
   //TVs URLs

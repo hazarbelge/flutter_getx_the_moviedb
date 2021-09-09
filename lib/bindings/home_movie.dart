@@ -6,8 +6,8 @@ import '../../providers/index.dart';
 class HomeMovieBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<IHomeMovieProvider>(() => HomeMovieProvider());
-    Get.lazyPut<IHomeMovieRepository>(() => HomeMovieRepository(provider: Get.find()));
+    Get.lazyPut<HomeMovieProvider>(() => HomeMovieProvider());
+    Get.lazyPut<HomeMovieRepository>(() => HomeMovieRepository(provider: Get.find()));
     Get.lazyPut(() => HomeMovieScreenController());
     Get.lazyPut(() => NowPlayingMoviesController(homeMovieRepository: Get.find()));
     Get.lazyPut(() => PopularMoviesController(homeMovieRepository: Get.find()));

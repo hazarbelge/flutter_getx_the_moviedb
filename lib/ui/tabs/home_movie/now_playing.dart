@@ -20,19 +20,18 @@ class NowPlayingMoviesTab extends GetView<NowPlayingMoviesController> {
         child: Center(
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
+            controller: controller.scrollController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 controller.obx(
                   (MovieWrapper? movieWrapper) {
                     if (movieWrapper != null) {
-                      CustomProgressIndicator.closeLoadingOverlay();
                       return ProductList(
                         productList: movieWrapper.results,
                         isMovie: true,
                       );
                     } else {
-                      CustomProgressIndicator.openLoadingDialog();
                       return const SizedBox();
                     }
                   },

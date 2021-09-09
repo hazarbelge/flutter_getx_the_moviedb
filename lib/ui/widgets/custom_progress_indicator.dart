@@ -7,7 +7,7 @@ class CustomProgressIndicator {
 
   static void closeLoadingOverlay() {
     if (CustomProgressIndicator.isShowing) {
-      Get.back();
+      Get.until((Route<dynamic> route) => !Get.isDialogOpen!);
     }
     CustomProgressIndicator.isShowing = false;
   }

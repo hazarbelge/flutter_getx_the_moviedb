@@ -57,7 +57,7 @@ class HomeTvRepository implements IHomeTvRepository {
     required this.provider,
   });
 
-  final IHomeTvProvider provider;
+  final HomeTvProvider provider;
 
   @override
   Future<TvSeriesWrapper?> getAiringTodayTvSeries() async {

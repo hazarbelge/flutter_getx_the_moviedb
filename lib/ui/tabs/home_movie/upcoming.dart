@@ -20,6 +20,7 @@ class UpcomingMoviesTab extends GetView<UpcomingMoviesController> {
         child: Center(
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
+            controller: controller.scrollController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[

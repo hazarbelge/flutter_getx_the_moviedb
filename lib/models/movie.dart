@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 class MovieWrapper {
-  const MovieWrapper({
-    this.page,
-    this.totalResults,
-    this.totalPages,
-    this.results,
+  MovieWrapper({
+    required this.page,
+    required this.totalResults,
+    required this.totalPages,
+    required this.results,
   });
 
   factory MovieWrapper.fromRawJson(String str) => MovieWrapper.fromJson(json.decode(str));
@@ -15,14 +15,14 @@ class MovieWrapper {
       page: json['page'],
       totalResults: json['total_results'],
       totalPages: json['total_pages'],
-      results: json["results"] == null ? null : List<Movie>.from(json["results"].map((dynamic x) => Movie.fromJson(x))),
+      results: List<Movie>.from(json["results"].map((dynamic x) => Movie.fromJson(x))),
     );
   }
 
-  final int? page;
-  final int? totalResults;
-  final int? totalPages;
-  final List<Movie>? results;
+  int page;
+  final int totalResults;
+  final int totalPages;
+  final List<Movie> results;
 
   String toRawJson() => json.encode(toJson());
 
@@ -30,7 +30,7 @@ class MovieWrapper {
         "page": page,
         "total_results": totalResults,
         "total_pages": totalPages,
-        "results": results != null ? List<Movie>.from(results!.map((Movie x) => x.toJson())) : null,
+        "results": List<Movie>.from(results.map((Movie x) => x.toJson())),
       };
 }
 
