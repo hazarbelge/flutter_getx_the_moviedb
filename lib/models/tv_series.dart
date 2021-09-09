@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 class TvSeriesWrapper {
-  const TvSeriesWrapper({
-    this.page,
-    this.totalResults,
-    this.totalPages,
-    this.results,
+  TvSeriesWrapper({
+    required this.page,
+    required this.totalResults,
+    required this.totalPages,
+    required this.results,
   });
 
   factory TvSeriesWrapper.fromRawJson(String str) => TvSeriesWrapper.fromJson(json.decode(str));
@@ -15,14 +15,14 @@ class TvSeriesWrapper {
       page: json['page'],
       totalResults: json['total_results'],
       totalPages: json['total_pages'],
-      results: json["results"] == null ? null : List<TvSeries>.from(json["results"].map((dynamic x) => TvSeries.fromJson(x))),
+      results: List<TvSeries>.from(json["results"].map((dynamic x) => TvSeries.fromJson(x))),
     );
   }
 
-  final int? page;
-  final int? totalResults;
-  final int? totalPages;
-  final List<TvSeries>? results;
+  int page;
+  final int totalResults;
+  final int totalPages;
+  final List<TvSeries> results;
 
   String toRawJson() => json.encode(toJson());
 
@@ -30,7 +30,7 @@ class TvSeriesWrapper {
         "page": page,
         "total_results": totalResults,
         "total_pages": totalPages,
-        "results": results != null ? List<TvSeries>.from(results!.map((TvSeries x) => x.toJson())) : null,
+        "results": List<TvSeries>.from(results.map((TvSeries x) => x.toJson())),
       };
 }
 

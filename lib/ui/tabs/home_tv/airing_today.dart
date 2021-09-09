@@ -19,6 +19,7 @@ class AiringTodayTvSeriesTab extends GetView<AiringTodayTvSeriesController> {
         width: double.infinity,
         child: Center(
           child: SingleChildScrollView(
+            controller: controller.scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -26,7 +27,6 @@ class AiringTodayTvSeriesTab extends GetView<AiringTodayTvSeriesController> {
                 controller.obx(
                   (TvSeriesWrapper? tvSeriesWrapper) {
                     if (tvSeriesWrapper != null) {
-                      CustomProgressIndicator.closeLoadingOverlay();
                       return ProductList(
                         productList: tvSeriesWrapper.results,
                         isMovie: false,

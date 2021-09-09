@@ -25,15 +25,13 @@ class PopularMoviesTab extends GetView<PopularMoviesController> {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 controller.obx(
-                      (MovieWrapper? movieWrapper) {
+                  (MovieWrapper? movieWrapper) {
                     if (movieWrapper != null) {
-                      CustomProgressIndicator.closeLoadingOverlay();
                       return ProductList(
                         productList: movieWrapper.results,
                         isMovie: true,
                       );
                     } else {
-                      CustomProgressIndicator.openLoadingDialog();
                       return const SizedBox();
                     }
                   },

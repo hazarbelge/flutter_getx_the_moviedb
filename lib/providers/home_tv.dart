@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/util/url_key_secret.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 
@@ -6,13 +7,13 @@ import '../../models/index.dart';
 import '../../util/index.dart';
 
 abstract class IHomeTvProvider {
-  Future<Response<TvSeriesWrapper>> getAiringTodayTvSeries(String path);
+  Future<Response<TvSeriesWrapper>> getAiringTodayTvSeries({required String path, Map<String, dynamic>? query});
 
-  Future<Response<TvSeriesWrapper>> getOnTheAirTvSeries(String path);
+  Future<Response<TvSeriesWrapper>> getOnTheAirTvSeries({required String path, Map<String, dynamic>? query});
 
-  Future<Response<TvSeriesWrapper>> getPopularTvSeries(String path);
+  Future<Response<TvSeriesWrapper>> getPopularTvSeries({required String path, Map<String, dynamic>? query});
 
-  Future<Response<TvSeriesWrapper>> getTopRatedTvSeries(String path);
+  Future<Response<TvSeriesWrapper>> getTopRatedTvSeries({required String path, Map<String, dynamic>? query});
 }
 
 class HomeTvProvider extends GetConnect implements IHomeTvProvider {
@@ -30,26 +31,43 @@ class HomeTvProvider extends GetConnect implements IHomeTvProvider {
   }
 
   @override
-  Future<Response<TvSeriesWrapper>> getAiringTodayTvSeries(String path) => get(path);
+  Future<Response<T>> get<T>(String url, {Map<String, String>? headers, String? contentType, Map<String, dynamic>? query, Decoder<T>? decoder}) {
+    Map<String, dynamic>? parsedQuery = query?.map((String key, dynamic value) => MapEntry<String, dynamic>(key, value.toString()));
+    if (parsedQuery == null) {
+      parsedQuery = <String, dynamic>{
+        "api_key": YOUR.API_KEY,
+      };
+    } else {
+      parsedQuery.addAll(
+        <String, dynamic>{
+          "api_key": YOUR.API_KEY,
+        },
+      );
+    }
+    return super.get(url, headers: headers, contentType: contentType, query: parsedQuery, decoder: decoder);
+  }
 
   @override
-  Future<Response<TvSeriesWrapper>> getOnTheAirTvSeries(String path) => get(path);
+  Future<Response<TvSeriesWrapper>> getAiringTodayTvSeries({required String path, Map<String, dynamic>? query}) => get(path);
 
   @override
-  Future<Response<TvSeriesWrapper>> getPopularTvSeries(String path) => get(path);
+  Future<Response<TvSeriesWrapper>> getOnTheAirTvSeries({required String path, Map<String, dynamic>? query}) => get(path);
 
   @override
-  Future<Response<TvSeriesWrapper>> getTopRatedTvSeries(String path) => get(path);
+  Future<Response<TvSeriesWrapper>> getPopularTvSeries({required String path, Map<String, dynamic>? query}) => get(path);
+
+  @override
+  Future<Response<TvSeriesWrapper>> getTopRatedTvSeries({required String path, Map<String, dynamic>? query}) => get(path);
 }
 
 abstract class IHomeTvRepository {
-  Future<TvSeriesWrapper?> getAiringTodayTvSeries();
+  Future<TvSeriesWrapper?> getAiringTodayTvSeries({Map<String, dynamic>? query});
 
-  Future<TvSeriesWrapper?> getOnTheAirTvSeries();
+  Future<TvSeriesWrapper?> getOnTheAirTvSeries({Map<String, dynamic>? query});
 
-  Future<TvSeriesWrapper?> getPopularTvSeries();
+  Future<TvSeriesWrapper?> getPopularTvSeries({Map<String, dynamic>? query});
 
-  Future<TvSeriesWrapper?> getTopRatedTvSeries();
+  Future<TvSeriesWrapper?> getTopRatedTvSeries({Map<String, dynamic>? query});
 }
 
 class HomeTvRepository implements IHomeTvRepository {
@@ -60,8 +78,8 @@ class HomeTvRepository implements IHomeTvRepository {
   final HomeTvProvider provider;
 
   @override
-  Future<TvSeriesWrapper?> getAiringTodayTvSeries() async {
-    final Response<TvSeriesWrapper> response = await provider.getAiringTodayTvSeries(Url.airingTodayTv);
+  Future<TvSeriesWrapper?> getAiringTodayTvSeries({Map<String, dynamic>? query}) async {
+    final Response<TvSeriesWrapper> response = await provider.getAiringTodayTvSeries(path: Url.airingTodayTv, query: query);
     debugPrint(response.bodyString.toString());
     if (response.status.hasError) {
       return Future<TvSeriesWrapper>.error(response.statusText!);
@@ -71,8 +89,8 @@ class HomeTvRepository implements IHomeTvRepository {
   }
 
   @override
-  Future<TvSeriesWrapper?> getOnTheAirTvSeries() async {
-    final Response<TvSeriesWrapper> response = await provider.getOnTheAirTvSeries(Url.onTheAirTv);
+  Future<TvSeriesWrapper?> getOnTheAirTvSeries({Map<String, dynamic>? query}) async {
+    final Response<TvSeriesWrapper> response = await provider.getOnTheAirTvSeries(path: Url.onTheAirTv, query: query);
     debugPrint(response.bodyString.toString());
     if (response.status.hasError) {
       return Future<TvSeriesWrapper>.error(response.statusText!);
@@ -82,8 +100,8 @@ class HomeTvRepository implements IHomeTvRepository {
   }
 
   @override
-  Future<TvSeriesWrapper?> getPopularTvSeries() async {
-    final Response<TvSeriesWrapper> response = await provider.getPopularTvSeries(Url.popularTv);
+  Future<TvSeriesWrapper?> getPopularTvSeries({Map<String, dynamic>? query}) async {
+    final Response<TvSeriesWrapper> response = await provider.getPopularTvSeries(path: Url.popularTv, query: query);
     debugPrint(response.bodyString.toString());
     if (response.status.hasError) {
       return Future<TvSeriesWrapper>.error(response.statusText!);
@@ -93,8 +111,8 @@ class HomeTvRepository implements IHomeTvRepository {
   }
 
   @override
-  Future<TvSeriesWrapper?> getTopRatedTvSeries() async {
-    final Response<TvSeriesWrapper> response = await provider.getTopRatedTvSeries(Url.topRatedTv);
+  Future<TvSeriesWrapper?> getTopRatedTvSeries({Map<String, dynamic>? query}) async {
+    final Response<TvSeriesWrapper> response = await provider.getTopRatedTvSeries(path: Url.topRatedTv, query: query);
     debugPrint(response.bodyString.toString());
     if (response.status.hasError) {
       return Future<TvSeriesWrapper>.error(response.statusText!);

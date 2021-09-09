@@ -14,33 +14,34 @@ class UpcomingMoviesController extends SuperController<MovieWrapper?> {
   final ScrollController scrollController = ScrollController();
   final RxBool isLoading = false.obs;
 
-  Future<void> pagination() async {
+  void pagination() {
     if (scrollController.position.extentAfter < 400 && state != null && state!.totalPages != state!.page && !isLoading.value) {
-      isLoading.value = true;
-      CustomProgressIndicator.openLoadingDialog();
-      final MovieWrapper? movieWrapper = await _getMovies();
-      state!.results.addAll(movieWrapper!.results);
-      state!.page = movieWrapper.page;
-      update();
-      CustomProgressIndicator.closeLoadingOverlay();
-      isLoading.value = false;
+      _getMovies();
     }
   }
 
-  Future<MovieWrapper?> _getMovies() async {
-    final Future<MovieWrapper?> future = homeMovieRepository.getTopRatedMovie(
+  Future<void> _getMovies() async {
+    isLoading.value = true;
+    CustomProgressIndicator.openLoadingDialog();
+
+    final MovieWrapper? movieWrapper = await homeMovieRepository.getUpcomingMovie(
       query: <String, dynamic>{
         "page": state!.page + 1,
         "language": Get.locale?.languageCode ?? 'en-US',
       },
     );
-    return future;
+    state!.results.addAll(movieWrapper!.results);
+    state!.page = movieWrapper.page;
+    update();
+
+    CustomProgressIndicator.closeLoadingOverlay();
+    isLoading.value = false;
   }
 
   @override
   void onInit() {
     super.onInit();
-    append(() => homeMovieRepository.getTopRatedMovie);
+    append(() => homeMovieRepository.getUpcomingMovie);
     scrollController.addListener(pagination);
   }
 

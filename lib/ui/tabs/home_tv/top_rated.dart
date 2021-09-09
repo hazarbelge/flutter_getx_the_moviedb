@@ -19,14 +19,14 @@ class TopRatedTvSeriesTab extends GetView<TopRatedTvSeriesController> {
         width: double.infinity,
         child: Center(
           child: SingleChildScrollView(
+            controller: controller.scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 controller.obx(
-                      (TvSeriesWrapper? tvSeriesWrapper) {
+                  (TvSeriesWrapper? tvSeriesWrapper) {
                     if (tvSeriesWrapper != null) {
-                      CustomProgressIndicator.closeLoadingOverlay();
                       return ProductList(
                         productList: tvSeriesWrapper.results,
                         isMovie: false,
