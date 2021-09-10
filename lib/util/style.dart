@@ -16,7 +16,7 @@ class Style {
     primaryColor: lightPrimaryColor,
     colorScheme: ColorScheme.fromSwatch(accentColor: lightAccentColor),
     pageTransitionsTheme: _pageTransitionsTheme,
-    textTheme: GoogleFonts.rubikTextTheme(ThemeData.light().textTheme),
+    textTheme: GoogleFonts.robotoMonoTextTheme(ThemeData.light().textTheme),
     popupMenuTheme: PopupMenuThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
@@ -34,7 +34,7 @@ class Style {
     dividerColor: darkDividerColor,
     dialogBackgroundColor: darkCardColor,
     pageTransitionsTheme: _pageTransitionsTheme,
-    textTheme: GoogleFonts.rubikTextTheme(ThemeData.dark().textTheme),
+    textTheme: GoogleFonts.robotoMonoTextTheme(ThemeData.dark().textTheme),
     popupMenuTheme: PopupMenuThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
@@ -52,7 +52,7 @@ class Style {
     dividerColor: darkDividerColor,
     dialogBackgroundColor: darkCardColor,
     pageTransitionsTheme: _pageTransitionsTheme,
-    textTheme: GoogleFonts.rubikTextTheme(ThemeData.dark().textTheme),
+    textTheme: GoogleFonts.robotoMonoTextTheme(ThemeData.dark().textTheme),
     popupMenuTheme: PopupMenuThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
