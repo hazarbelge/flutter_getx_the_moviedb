@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_the_moviedb/util/url_key_secret.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 
@@ -35,12 +34,12 @@ class HomeMovieProvider extends GetConnect implements IHomeMovieProvider {
     Map<String, dynamic>? parsedQuery = query?.map((String key, dynamic value) => MapEntry<String, dynamic>(key, value.toString()));
     if (parsedQuery == null) {
       parsedQuery = <String, dynamic>{
-        "api_key": YOUR.API_KEY,
+        "api_key": Url.apiKey,
       };
     } else {
       parsedQuery.addAll(
         <String, dynamic>{
-          "api_key": YOUR.API_KEY,
+          "api_key": Url.apiKey,
         },
       );
     }

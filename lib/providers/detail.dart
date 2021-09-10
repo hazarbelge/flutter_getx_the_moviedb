@@ -18,7 +18,7 @@ class DetailProvider extends GetConnect implements IDetailProvider {
     httpClient.addRequestModifier((Request<dynamic> request) {
       request.headers['Content-Type'] = 'application/json';
       request.headers['Accept'] = 'application/json';
-      debugPrint("${request.url.path}/${request.url.host}");
+      debugPrint("${request.url.host}/${request.url.path}");
       return request;
     });
   }
@@ -41,7 +41,7 @@ class DetailRepository implements IDetailRepository {
     required this.provider,
   });
 
-  final IDetailProvider provider;
+  final DetailProvider provider;
 
   @override
   Future<Response<dynamic>> rateMovie(int movieId, Map<String, dynamic> body) async {

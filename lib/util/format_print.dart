@@ -1,5 +1,5 @@
-import 'package:intl/intl.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 
 extension FormatPrinter on BuildContext {
   String printDuration(Duration duration) {

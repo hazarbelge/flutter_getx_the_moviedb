@@ -38,10 +38,20 @@ class PopularMoviesController extends SuperController<MovieWrapper?> {
     isLoading.value = false;
   }
 
+  Future<MovieWrapper?> _getInitialMovies() async {
+    final MovieWrapper? movieWrapper = await homeMovieRepository.getPopularMovie(
+      query: <String, dynamic>{
+        "page": 1,
+        "language": Get.locale?.languageCode ?? 'en-US',
+      },
+    );
+    return movieWrapper;
+  }
+
   @override
   void onInit() {
     super.onInit();
-    append(() => homeMovieRepository.getPopularMovie);
+    append(() => _getInitialMovies);
     scrollController.addListener(pagination);
   }
 

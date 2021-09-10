@@ -14,7 +14,7 @@ class Style {
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: lightPrimaryColor,
-    accentColor: lightAccentColor,
+    colorScheme: ColorScheme.fromSwatch(accentColor: lightAccentColor),
     pageTransitionsTheme: _pageTransitionsTheme,
     textTheme: GoogleFonts.rubikTextTheme(ThemeData.light().textTheme),
     popupMenuTheme: PopupMenuThemeData(
@@ -27,7 +27,7 @@ class Style {
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: darkPrimaryColor,
-    accentColor: darkAccentColor,
+    colorScheme: ColorScheme.fromSwatch(accentColor: darkAccentColor),
     canvasColor: darkCanvasColor,
     scaffoldBackgroundColor: darkBackgroundColor,
     cardColor: darkCardColor,
@@ -45,7 +45,7 @@ class Style {
   static final ThemeData blackTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: blackPrimaryColor,
-    accentColor: blackAccentColor,
+    colorScheme: ColorScheme.fromSwatch(accentColor: blackAccentColor),
     canvasColor: blackPrimaryColor,
     scaffoldBackgroundColor: blackPrimaryColor,
     cardColor: blackPrimaryColor,

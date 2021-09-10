@@ -7,7 +7,8 @@ class RatingRowController extends GetxController {
     required this.detailRepository,
   });
 
-  final IDetailRepository detailRepository;
+  final DetailRepository detailRepository;
+
   final RxBool isRated = false.obs;
   final RxBool isRatedApi = false.obs;
   final RxDouble rate = 0.0.obs;

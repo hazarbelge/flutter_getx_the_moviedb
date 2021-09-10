@@ -38,10 +38,20 @@ class PopularTvSeriesController extends SuperController<TvSeriesWrapper?> {
     isLoading.value = false;
   }
 
+  Future<TvSeriesWrapper?> _getInitialTvSeries() async {
+    final TvSeriesWrapper? tvSeriesWrapper = await homeTvRepository.getPopularTvSeries(
+      query: <String, dynamic>{
+        "page": 1,
+        "language": Get.locale?.languageCode ?? 'en-US',
+      },
+    );
+    return tvSeriesWrapper;
+  }
+
   @override
   void onInit() {
     super.onInit();
-    append(() => homeTvRepository.getPopularTvSeries);
+    append(() => _getInitialTvSeries);
     scrollController.addListener(pagination);
   }
 

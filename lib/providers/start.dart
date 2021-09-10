@@ -19,11 +19,6 @@ class StartProvider extends GetConnect implements IStartProvider {
       request.headers['Accept'] = 'application/json';
       return request;
     });
-
-    /*httpClient.addResponseModifier<SessionData>((Request<dynamic> request, Response<SessionData?> response) {
-      final SessionData? model = response.body;
-      debugPrint("SessionId: ${model?.guestSessionId}");
-    });*/
   }
 
   @override

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_the_moviedb/util/url_key_secret.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 
@@ -35,12 +34,12 @@ class HomeTvProvider extends GetConnect implements IHomeTvProvider {
     Map<String, dynamic>? parsedQuery = query?.map((String key, dynamic value) => MapEntry<String, dynamic>(key, value.toString()));
     if (parsedQuery == null) {
       parsedQuery = <String, dynamic>{
-        "api_key": YOUR.API_KEY,
+        "api_key": Url.apiKey,
       };
     } else {
       parsedQuery.addAll(
         <String, dynamic>{
-          "api_key": YOUR.API_KEY,
+          "api_key": Url.apiKey,
         },
       );
     }
@@ -48,16 +47,16 @@ class HomeTvProvider extends GetConnect implements IHomeTvProvider {
   }
 
   @override
-  Future<Response<TvSeriesWrapper>> getAiringTodayTvSeries({required String path, Map<String, dynamic>? query}) => get(path);
+  Future<Response<TvSeriesWrapper>> getAiringTodayTvSeries({required String path, Map<String, dynamic>? query}) => get(path, query: query);
 
   @override
-  Future<Response<TvSeriesWrapper>> getOnTheAirTvSeries({required String path, Map<String, dynamic>? query}) => get(path);
+  Future<Response<TvSeriesWrapper>> getOnTheAirTvSeries({required String path, Map<String, dynamic>? query}) => get(path, query: query);
 
   @override
-  Future<Response<TvSeriesWrapper>> getPopularTvSeries({required String path, Map<String, dynamic>? query}) => get(path);
+  Future<Response<TvSeriesWrapper>> getPopularTvSeries({required String path, Map<String, dynamic>? query}) => get(path, query: query);
 
   @override
-  Future<Response<TvSeriesWrapper>> getTopRatedTvSeries({required String path, Map<String, dynamic>? query}) => get(path);
+  Future<Response<TvSeriesWrapper>> getTopRatedTvSeries({required String path, Map<String, dynamic>? query}) => get(path, query: query);
 }
 
 abstract class IHomeTvRepository {

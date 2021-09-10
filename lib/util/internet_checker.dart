@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/routes/index.dart';
-import 'package:get/get.dart';
 import 'package:flutter_getx_the_moviedb/ui/widgets/index.dart';
+import 'package:get/get.dart';
 
 class InternetChecker extends StatelessWidget {
   const InternetChecker({

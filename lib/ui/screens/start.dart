@@ -47,7 +47,7 @@ class StartIcon extends GetView<StartScreenController> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.network(Url.appLogoUrl),
+          Image.asset(Url.appLogoPath),
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
