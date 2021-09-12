@@ -42,7 +42,7 @@ class StartIcon extends GetView<StartScreenController> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 300,
+      height: 250,
       width: 250,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -74,7 +74,7 @@ class HomeButtons extends GetView<StartScreenController> {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: 300,
+        height: 250,
         width: Get.context?.width ?? Get.width,
         child: controller.obx(
           (SessionData? state) {

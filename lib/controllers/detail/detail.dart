@@ -6,6 +6,8 @@ import '../../models/index.dart';
 class DetailPageController extends SuperController<Map<String, dynamic>> {
   DetailPageController();
 
+  final RxInt currentIndex = 0.obs;
+
   Movie? movie;
   TvSeries? tvSeries;
   bool? isMovie;

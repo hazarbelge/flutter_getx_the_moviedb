@@ -8,7 +8,9 @@ Widget createGenreContainer(int id) {
     padding: const EdgeInsets.all(8),
     child: Text(
       Genres.genres[id] ?? "",
-      style: const TextStyle(fontSize: 12),
+      style: const TextStyle(
+        fontSize: 12,
+      ),
     ),
     decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(20)),
   );

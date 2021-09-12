@@ -57,7 +57,7 @@ class HeaderDetail extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            constraints: BoxConstraints(maxWidth: boxConstraints.maxWidth - (190*0.7) - 32),
+                            constraints: BoxConstraints(maxWidth: boxConstraints.maxWidth - (190 * 0.7) - 32),
                             padding: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
                               color: Colors.black38,
@@ -156,7 +156,11 @@ class HeaderDetail extends StatelessWidget {
           top: 20,
           left: 5,
           child: IconButton(
-            icon: const Icon(Icons.arrow_back, size: 36),
+            icon: const Icon(
+              Icons.arrow_back,
+              size: 36,
+              color: Colors.white,
+            ),
             onPressed: () => Get.back(),
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/index.dart';
+import '../../../controllers/index.dart';
 
 class Overview extends GetView<OverviewController> {
   const Overview({

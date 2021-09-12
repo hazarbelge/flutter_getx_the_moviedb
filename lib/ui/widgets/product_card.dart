@@ -196,7 +196,7 @@ class CardListMovieDescSide extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             SizedBox(
-                              height: boxConstraints.maxHeight / 8,
+                              height: boxConstraints.maxHeight / 9,
                               child: Text(
                                 title,
                                 overflow: TextOverflow.ellipsis,
@@ -205,10 +205,16 @@ class CardListMovieDescSide extends StatelessWidget {
                               ),
                             ),
                             const Spacer(),
-                            Text(
-                              releaseDate,
-                              style: TextStyle(color: Colors.grey[800], fontWeight: FontWeight.w300, fontSize: 11),
-                              maxLines: 1,
+                            SizedBox(
+                              height: boxConstraints.maxHeight / 12,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  releaseDate,
+                                  style: TextStyle(color: Colors.grey[800], fontWeight: FontWeight.w300, fontSize: 11),
+                                  maxLines: 1,
+                                ),
+                              ),
                             )
                           ],
                         ),
@@ -255,7 +261,7 @@ class CardListMovieDescSide extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                               fontWeight: FontWeight.w400,
-                              fontSize: 12,
+                              fontSize: 11,
                             ),
                             textAlign: TextAlign.start,
                           ),

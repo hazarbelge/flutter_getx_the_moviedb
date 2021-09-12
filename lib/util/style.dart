@@ -12,9 +12,11 @@ class Style {
   );
 
   static final ThemeData lightTheme = ThemeData(
-    brightness: Brightness.light,
     primaryColor: lightPrimaryColor,
-    colorScheme: ColorScheme.fromSwatch(accentColor: lightAccentColor),
+    colorScheme: ColorScheme.fromSwatch(
+      accentColor: lightAccentColor,
+      brightness: Brightness.light,
+    ),
     pageTransitionsTheme: _pageTransitionsTheme,
     textTheme: GoogleFonts.robotoMonoTextTheme(ThemeData.light().textTheme),
     popupMenuTheme: PopupMenuThemeData(
@@ -25,9 +27,11 @@ class Style {
   );
 
   static final ThemeData darkTheme = ThemeData(
-    brightness: Brightness.dark,
     primaryColor: darkPrimaryColor,
-    colorScheme: ColorScheme.fromSwatch(accentColor: darkAccentColor),
+    colorScheme: ColorScheme.fromSwatch(
+      accentColor: darkAccentColor,
+      brightness: Brightness.dark,
+    ),
     canvasColor: darkCanvasColor,
     scaffoldBackgroundColor: darkBackgroundColor,
     cardColor: darkCardColor,
@@ -43,9 +47,11 @@ class Style {
   );
 
   static final ThemeData blackTheme = ThemeData(
-    brightness: Brightness.dark,
     primaryColor: blackPrimaryColor,
-    colorScheme: ColorScheme.fromSwatch(accentColor: blackAccentColor),
+    colorScheme: ColorScheme.fromSwatch(
+      accentColor: blackAccentColor,
+      brightness: Brightness.dark,
+    ),
     canvasColor: blackPrimaryColor,
     scaffoldBackgroundColor: blackPrimaryColor,
     cardColor: blackPrimaryColor,

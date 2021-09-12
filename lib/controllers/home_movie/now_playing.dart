@@ -27,7 +27,7 @@ class NowPlayingMoviesController extends SuperController<MovieWrapper?> {
     final MovieWrapper? movieWrapper = await homeMovieRepository.getNowPlayingMovie(
       query: <String, dynamic>{
         "page": state!.page + 1,
-        "language": Get.locale?.languageCode ?? 'en-US',
+        "language": Get.locale?.languageCode ?? 'tr-TR',
       },
     );
     state!.results.addAll(movieWrapper!.results);
@@ -42,7 +42,7 @@ class NowPlayingMoviesController extends SuperController<MovieWrapper?> {
     final MovieWrapper? movieWrapper = await homeMovieRepository.getNowPlayingMovie(
       query: <String, dynamic>{
         "page": 1,
-        "language": Get.locale?.languageCode ?? 'en-US',
+        "language": Get.locale?.languageCode ?? 'tr-TR',
       },
     );
     return movieWrapper;
