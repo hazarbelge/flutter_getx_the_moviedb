@@ -18,7 +18,7 @@ class Style {
       brightness: Brightness.light,
     ),
     pageTransitionsTheme: _pageTransitionsTheme,
-    textTheme: GoogleFonts.robotoMonoTextTheme(ThemeData.light().textTheme),
+    textTheme: GoogleFonts.montserratTextTheme(ThemeData.light().textTheme),
     popupMenuTheme: PopupMenuThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
@@ -38,7 +38,7 @@ class Style {
     dividerColor: darkDividerColor,
     dialogBackgroundColor: darkCardColor,
     pageTransitionsTheme: _pageTransitionsTheme,
-    textTheme: GoogleFonts.robotoMonoTextTheme(ThemeData.dark().textTheme),
+    textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
     popupMenuTheme: PopupMenuThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
@@ -58,7 +58,7 @@ class Style {
     dividerColor: darkDividerColor,
     dialogBackgroundColor: darkCardColor,
     pageTransitionsTheme: _pageTransitionsTheme,
-    textTheme: GoogleFonts.robotoMonoTextTheme(ThemeData.dark().textTheme),
+    textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
     popupMenuTheme: PopupMenuThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
