@@ -1,8 +1,7 @@
+import 'package:flutter_getx_the_moviedb/bindings/index.dart';
+import 'package:flutter_getx_the_moviedb/routes/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/screens/index.dart';
 import 'package:get/get.dart';
-
-import '../../bindings/index.dart';
-import '../../routes/index.dart';
-import '../../ui/screens/index.dart';
 
 class AppPages {
   static final List<GetPage<dynamic>> routes = <GetPage<dynamic>>[

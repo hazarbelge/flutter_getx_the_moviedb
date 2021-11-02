@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/controllers/index.dart';
 import 'package:get/get.dart';
-
-import '../../controllers/index.dart';
 
 class RatingRow extends GetView<RatingRowController> {
   const RatingRow({

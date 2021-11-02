@@ -1,13 +1,12 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/controllers/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/tabs/home_movie/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/widgets/index.dart';
+import 'package:flutter_getx_the_moviedb/util/index.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
-import '../../controllers/index.dart';
-import '../../ui/tabs/home_movie/index.dart';
-import '../../ui/widgets/index.dart';
-import '../../util/index.dart';
 
 class HomeMovieScreen extends GetView<HomeMovieScreenController> {
   const HomeMovieScreen({

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controllers/index.dart';
-import '../../../models/index.dart';
-import '../../../ui/widgets/index.dart';
+import '/controllers/index.dart';
+import '/models/index.dart';
+import '/ui/widgets/index.dart';
 
 class TopRatedMoviesTab extends GetView<TopRatedMoviesController> {
   const TopRatedMoviesTab({Key? key}) : super(key: key);

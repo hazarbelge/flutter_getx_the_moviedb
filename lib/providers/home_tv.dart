@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/models/index.dart';
+import 'package:flutter_getx_the_moviedb/util/index.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
-
-import '../../models/index.dart';
-import '../../util/index.dart';
 
 abstract class IHomeTvProvider {
   Future<Response<TvSeriesWrapper>> getAiringTodayTvSeries({required String path, Map<String, dynamic>? query});

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/models/index.dart';
+import 'package:flutter_getx_the_moviedb/providers/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/widgets/index.dart';
 import 'package:get/get.dart';
-
-import '../../models/index.dart';
-import '../../providers/index.dart';
-import '../../ui/widgets/index.dart';
 
 class NowPlayingMoviesController extends SuperController<MovieWrapper?> {
   NowPlayingMoviesController({

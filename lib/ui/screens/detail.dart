@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/controllers/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/tabs/detail/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/widgets/index.dart';
 import 'package:get/get.dart';
-
-import '../../controllers/index.dart';
-import '../../ui/tabs/detail/index.dart';
-import '../widgets/index.dart';
 
 class DetailPage extends GetView<DetailPageController> {
   const DetailPage({
@@ -20,7 +19,7 @@ class DetailPage extends GetView<DetailPageController> {
         child: SingleChildScrollView(
           child: controller.isMovie == null
               ? const SizedBox()
-              : controller.isMovie!
+              : (controller.isMovie ?? false)
                   ? Column(
                       children: <Widget>[
                         HeaderDetail(
@@ -28,7 +27,7 @@ class DetailPage extends GetView<DetailPageController> {
                           imageBanner: 'https://image.tmdb.org/t/p/original${controller.movie!.backdropPath ?? ""}',
                           imagePoster: 'https://image.tmdb.org/t/p/w185${controller.movie!.posterPath ?? ""}',
                           rating: double.parse(controller.movie!.voteAverage ?? "0"),
-                          genre: controller.movie!.genreIds?.take(3).map(createGenreContainer).toList() ?? <Widget>[],
+                          genre: controller.movie?.genreIds?.take(3).map(createGenreContainer).toList() ?? <Widget>[],
                           id: controller.movie!.id,
                           isMovie: true,
                         ),
@@ -43,7 +42,7 @@ class DetailPage extends GetView<DetailPageController> {
                           imageBanner: 'https://image.tmdb.org/t/p/original${controller.tvSeries!.backdropPath ?? ""}',
                           imagePoster: 'https://image.tmdb.org/t/p/w185${controller.tvSeries!.posterPath ?? ""}',
                           rating: double.parse(controller.tvSeries!.voteAverage ?? "0"),
-                          genre: controller.tvSeries!.genreIds?.take(3).map(createGenreContainer).toList() ?? <Widget>[],
+                          genre: controller.tvSeries?.genreIds?.take(3).map(createGenreContainer).toList() ?? <Widget>[],
                           id: controller.tvSeries!.id,
                           isMovie: false,
                         ),
@@ -86,7 +85,7 @@ class DetailTabNavigation extends GetView<DetailPageController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(
-                width: ((size.width - (_detailTabs.length-1 * 15)) / _detailTabs.length) - 44,
+                width: ((size.width - (_detailTabs.length - 1 * 15)) / _detailTabs.length) - 44,
                 height: 50,
                 child: GestureDetector(
                   onTap: () {

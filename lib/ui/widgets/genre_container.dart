@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../models/index.dart';
+import 'package:flutter_getx_the_moviedb/models/index.dart';
 
 Widget createGenreContainer(int id) {
   return Container(

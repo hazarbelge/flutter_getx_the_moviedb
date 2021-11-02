@@ -1,8 +1,7 @@
+import 'package:flutter_getx_the_moviedb/models/index.dart';
+import 'package:flutter_getx_the_moviedb/util/index.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
-
-import '../../models/index.dart';
-import '../../util/index.dart';
 
 abstract class IStartProvider {
   Future<Response<SessionData>> getSessionId(String path);

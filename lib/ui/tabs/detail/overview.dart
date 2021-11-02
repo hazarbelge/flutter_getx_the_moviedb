@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controllers/index.dart';
+import '/controllers/index.dart';
 
 class Overview extends GetView<OverviewController> {
   const Overview({
@@ -33,7 +33,7 @@ class Overview extends GetView<OverviewController> {
             () => Text(
               controller.flag.value ? "${controller.visibleText.value}..." : controller.visibleText.value + controller.invisibleText.value,
               style: textTheme.bodyText2!.copyWith(
-                color: Get.isDarkMode ? Colors.white: Colors.black45,
+                color: Get.isDarkMode ? Colors.white : Colors.black45,
                 fontSize: 16.0,
               ),
             ),

@@ -1,12 +1,11 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/routes/index.dart';
+import 'package:flutter_getx_the_moviedb/util/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
-import '../../routes/index.dart';
-import '../../util/index.dart';
 
 Future<void> initServices() async {
   debugPrint('Starting GetX Services...');

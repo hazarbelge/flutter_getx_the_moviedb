@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/models/index.dart';
 import 'package:get/get.dart';
-
-import '../../models/index.dart';
 
 class DetailPageController extends SuperController<Map<String, dynamic>> {
   DetailPageController();

@@ -1,7 +1,6 @@
+import 'package:flutter_getx_the_moviedb/controllers/index.dart';
+import 'package:flutter_getx_the_moviedb/providers/index.dart';
 import 'package:get/get.dart';
-
-import '../../controllers/index.dart';
-import '../../providers/index.dart';
 
 class StartBinding implements Bindings {
   @override

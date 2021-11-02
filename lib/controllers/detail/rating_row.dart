@@ -1,6 +1,5 @@
+import 'package:flutter_getx_the_moviedb/providers/index.dart';
 import 'package:get/get.dart';
-
-import '../../providers/index.dart';
 
 class RatingRowController extends GetxController {
   RatingRowController({

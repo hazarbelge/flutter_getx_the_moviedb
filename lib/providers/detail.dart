@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/util/index.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
-
-import '../../util/index.dart';
 
 abstract class IDetailProvider {
   Future<Response<dynamic>> rateMovie(String path, Map<String, dynamic> body);

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/models/index.dart';
+import 'package:flutter_getx_the_moviedb/providers/index.dart';
 import 'package:get/get.dart';
-
-import '../../models/index.dart';
-import '../../providers/index.dart';
 
 class StartScreenController extends SuperController<SessionData?> {
   StartScreenController({

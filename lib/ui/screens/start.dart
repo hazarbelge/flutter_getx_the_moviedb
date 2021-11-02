@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_the_moviedb/models/session_data.dart';
+import 'package:flutter_getx_the_moviedb/controllers/index.dart';
+import 'package:flutter_getx_the_moviedb/models/index.dart';
+import 'package:flutter_getx_the_moviedb/routes/index.dart';
 import 'package:flutter_getx_the_moviedb/ui/widgets/index.dart';
+import 'package:flutter_getx_the_moviedb/util/index.dart';
 import 'package:get/get.dart';
-
-import '../../controllers/index.dart';
-import '../../routes/index.dart';
-import '../../util/index.dart';
 
 class StartScreen extends GetView<StartScreenController> {
   const StartScreen({
