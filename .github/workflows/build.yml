@@ -18,8 +18,12 @@ jobs:
     steps:
       - name: Export Release Timestamp
         run: echo "APP_VERSION=v$(date +'%Y.%m.%d.%H.%M.%S')" >> $GITHUB_ENV
+
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Java repository
+        uses: actions/setup-java@v2
 
       - name: Cache Flutter dependencies
         uses: actions/cache@v2
@@ -33,23 +37,26 @@ jobs:
           flutter-version: ${{ env.flutter_version }}
           channel: stable
 
-      - name: Install Pub Dependencies
+      - name: Install dependencies
         run: flutter pub get
 
-      - name: Build Android App
-        run: flutter build appbundle --release
+      #- name: Build Android App
+        #run: flutter build appbundle --release
 
-      - name: Build iOS App
-        run: flutter build ios --release --no-codesign
+      #- name: Build iOS App
+        #run: flutter build ios --release --no-codesign
 
-      - name: Build Web App
-        run: flutter build web --release
+      #- name: Build Web App
+        #run: flutter build web --release
 
-      - name: Build Windows App
-        run: flutter build windows --release
+      #- run: flutter config --enable-windows-desktop
+      #- name: Build Windows App
+        #run: flutter build windows --release
 
-      - name: Build Linux App
-        run: flutter build linux --release
+      #- run: flutter config --enable-linux-desktop
+      #- name: Build Linux App
+        #run: flutter build linux --release
 
-      - name: Build MacOS App
-        run: flutter build macos --release
+      #- run: flutter config --enable-macos-desktop
+      #- name: Build MacOS App
+        #run: flutter build macos --release

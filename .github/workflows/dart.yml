@@ -17,7 +17,7 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
 
       - name: Hello world
         run: dart bin/hello_world.dart
