@@ -88,18 +88,18 @@ class TvSeries {
   String toRawJson() => json.encode(toJson());
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    "poster_path": posterPath,
-    "popularity": popularity,
-    "id": id,
-    "backdrop_path": backdropPath,
-    "vote_average": voteAverage,
-    "overview": overview,
-    "first_air_date": firstAirDate,
-    "origin_country": originCountry != null ? List<dynamic>.from(originCountry!.map((String x) => x)) : null,
-    "genre_ids": genreIds != null ? List<dynamic>.from(genreIds!.map((int x) => x)) : null,
-    "original_language": originalLanguage,
-    "vote_count": voteCount,
-    "name": name,
-    "original_name": originalName,
-  };
+        "poster_path": posterPath,
+        "popularity": popularity,
+        "id": id,
+        "backdrop_path": backdropPath,
+        "vote_average": voteAverage,
+        "overview": overview,
+        "first_air_date": firstAirDate,
+        "origin_country": originCountry != null ? List<dynamic>.from(originCountry!.map((String x) => x)) : null,
+        "genre_ids": genreIds != null ? List<dynamic>.from(genreIds!.map((int x) => x)) : null,
+        "original_language": originalLanguage,
+        "vote_count": voteCount,
+        "name": name,
+        "original_name": originalName,
+      };
 }

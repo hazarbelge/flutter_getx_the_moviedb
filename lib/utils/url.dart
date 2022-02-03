@@ -1,6 +1,8 @@
+import 'url_key_secret.dart';
+
 class Url {
   //API key
-  static const String apiKey = "YOUR.API_KEY";
+  static const String apiKey = YOUR.API_KEY;
 
   //Base URLs
   static const String movieDbBaseUrl = 'https://api.themoviedb.org/3';
@@ -20,6 +22,7 @@ class Url {
   static const String popularMovies = '/movie/popular';
   static const String topRatedMovies = '/movie/top_rated';
   static const String upcomingMovies = '/movie/upcoming';
+
   static String rateMovie(int movieId) => '/movie/$movieId/rating?api_key=$apiKey&guest_session_id=$sessionId';
 
   //TVs URLs
@@ -28,6 +31,7 @@ class Url {
   static const String onTheAirTv = '/tv/on_the_air?api_key=$apiKey';
   static const String popularTv = '/tv/popular?api_key=$apiKey';
   static const String topRatedTv = '/tv/top_rated?api_key=$apiKey';
+
   static String rateTV(int tvId) => '/tv/$tvId/rating?api_key=$apiKey&guest_session_id=$sessionId';
 
   //About Me&App

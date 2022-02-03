@@ -8,18 +8,18 @@ class RegexValidators {
   );
 
   static final RegExp urlRegExp = RegExp(
-      r'^(.*?)((?:https?:\/\/|www\.)[^\s/$.?#].[^\s]*)',
+    r'^(.*?)((?:https?:\/\/|www\.)[^\s/$.?#].[^\s]*)',
   );
 
   static bool isValidEmail(String email) {
     return emailRegExp.hasMatch(email);
   }
 
-  static bool isValidPassword(String password){
+  static bool isValidPassword(String password) {
     return passwordRegExp.hasMatch(password);
   }
 
-  static bool isValidUrl(String text){
+  static bool isValidUrl(String text) {
     return urlRegExp.hasMatch(text);
   }
 }
