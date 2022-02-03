@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/routes/index.dart';
-import 'package:flutter_getx_the_moviedb/util/index.dart';
+import 'package:flutter_getx_the_moviedb/theme/index.dart';
+import 'package:flutter_getx_the_moviedb/utils/index.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -20,7 +21,7 @@ class MovieApp extends StatelessWidget {
       builder: (BuildContext context, Widget? widget) {
         return ResponsiveWrapper.builder(
           BouncingScrollWrapper.builder(context, widget!),
-          maxWidth: 1200,
+          maxWidth: 2460,
           minWidth: 450,
           defaultScale: true,
           breakpoints: const <ResponsiveBreakpoint>[

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
 import 'package:flutter_getx_the_moviedb/routes/index.dart';
 import 'package:flutter_getx_the_moviedb/ui/widgets/index.dart';
-import 'package:flutter_getx_the_moviedb/util/index.dart';
+import 'package:flutter_getx_the_moviedb/utils/index.dart';
 import 'package:get/get.dart';
 
 class ProductList extends StatelessWidget {

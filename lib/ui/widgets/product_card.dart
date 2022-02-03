@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_the_moviedb/util/index.dart';
+import 'package:flutter_getx_the_moviedb/utils/index.dart';
 import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {

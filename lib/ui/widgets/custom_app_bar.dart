@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_the_moviedb/util/index.dart';
+import 'package:flutter_getx_the_moviedb/theme/index.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +18,6 @@ class CustomAppBar extends PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: height,
-      backgroundColor: darkAccentColor,
       title: SizedBox(
         height: height,
         width: 50,

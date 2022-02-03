@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/theme/index.dart';
+import 'package:flutter_getx_the_moviedb/utils/index.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
-
-import '/util/index.dart';
 
 class VideoPage extends StatefulWidget {
   const VideoPage({
@@ -116,7 +116,7 @@ class _VideoPageState extends State<VideoPage> {
                                               });
                                             },
                                           ),
-                                          const SizedBox(width: 5),
+                                          SizedBoxes.w5,
                                           InkWell(
                                             highlightColor: Colors.transparent,
                                             splashColor: Colors.transparent,
@@ -132,7 +132,7 @@ class _VideoPageState extends State<VideoPage> {
                                               }
                                             },
                                           ),
-                                          const SizedBox(width: 5),
+                                          SizedBoxes.w5,
                                           InkWell(
                                             highlightColor: Colors.transparent,
                                             splashColor: Colors.transparent,
@@ -148,7 +148,7 @@ class _VideoPageState extends State<VideoPage> {
                                               });
                                             },
                                           ),
-                                          const SizedBox(width: 10),
+                                          SizedBoxes.w10,
                                           ValueListenableBuilder<VideoPlayerValue>(
                                             valueListenable: _controller!,
                                             builder: (BuildContext context, VideoPlayerValue value, Widget? widgetValue) {
