@@ -1,6 +1,6 @@
 # The Movie DB App with Flutter GetX
 
-Flutter TheMovieDB Application example with GetX State Management
+Flutter TheMovieDB Application example with GetX State, Route & Dependency Managements
 
 Register and get Api Key from [The Movie DB Website](https://www.themoviedb.org)
 

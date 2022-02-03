@@ -1,5 +1,5 @@
 name: flutter_getx_the_moviedb
-description: Flutter TheMovieDB Application with GetX State Management
+description: Flutter TheMovieDB Application with GetX State, Route & Dependency Managements
 
 publish_to: 'none'
 
@@ -44,6 +44,8 @@ flutter_icons:
 
 flutter:
   assets:
+    - assets/
+    - assets/flutter_i18n/
     - assets/icons/
 
   uses-material-design: true
