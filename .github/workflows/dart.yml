@@ -21,8 +21,14 @@ jobs:
         with:
           sdk: ${{ matrix.sdk }}
 
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          channel: stable
+
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
 
       - name: Analyze project source
         run: dart analyze
