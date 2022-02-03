@@ -22,9 +22,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Java repository
-        uses: actions/setup-java@v2
-
       - name: Cache Flutter dependencies
         uses: actions/cache@v2
         with:
