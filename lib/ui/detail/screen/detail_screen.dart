@@ -3,6 +3,7 @@ import 'package:flutter_getx_the_moviedb/theme/index.dart';
 import 'package:flutter_getx_the_moviedb/ui/detail/index.dart';
 import 'package:flutter_getx_the_moviedb/ui/widgets/index.dart';
 import 'package:get/get.dart';
+import 'package:nil/nil.dart';
 
 class DetailScreen extends GetView<DetailPageController> {
   const DetailScreen({
@@ -12,13 +13,12 @@ class DetailScreen extends GetView<DetailPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Get.isDarkMode ? Colors.black : Colors.white,
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
         child: SingleChildScrollView(
           child: controller.isMovie == null
-              ? const SizedBox()
+              ? nil
               : (controller.isMovie ?? false)
                   ? Column(
                       children: <Widget>[

@@ -11,10 +11,12 @@ class PopularMoviesTab extends GetView<PopularMoviesController> {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+
     return RefreshIndicator(
-      onRefresh: () => refreshPage(),
+      onRefresh: refreshPage,
       child: SizedBox(
-        height: double.infinity,
+        height: height,
         width: double.infinity,
         child: Center(
           child: SingleChildScrollView(

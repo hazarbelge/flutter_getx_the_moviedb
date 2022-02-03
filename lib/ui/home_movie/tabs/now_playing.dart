@@ -4,7 +4,6 @@ import 'package:flutter_getx_the_moviedb/ui/home_movie/index.dart';
 import 'package:flutter_getx_the_moviedb/ui/widgets/index.dart';
 import 'package:get/get.dart';
 
-
 class NowPlayingMoviesTab extends GetView<NowPlayingMoviesController> {
   const NowPlayingMoviesTab({Key? key}) : super(key: key);
 
@@ -12,10 +11,12 @@ class NowPlayingMoviesTab extends GetView<NowPlayingMoviesController> {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+
     return RefreshIndicator(
-      onRefresh: () => refreshPage(),
+      onRefresh: refreshPage,
       child: SizedBox(
-        height: double.infinity,
+        height: height,
         width: double.infinity,
         child: Center(
           child: SingleChildScrollView(

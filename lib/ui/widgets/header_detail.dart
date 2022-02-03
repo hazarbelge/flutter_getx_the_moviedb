@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/theme/index.dart';
 import 'package:get/get.dart';
 
 import 'index.dart';
@@ -48,7 +49,7 @@ class HeaderDetail extends StatelessWidget {
                       posterUrl: imagePoster,
                       height: 190,
                     ),
-                    const SizedBox(width: 16.0),
+                    SizedBoxes.w16,
                     SizedBox(
                       height: 190,
                       child: Column(
@@ -73,13 +74,13 @@ class HeaderDetail extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          const SizedBox(height: 8.0),
+                          SizedBoxes.h8,
                           RatingRow(
                             rating: rating,
                             id: id,
                             isMovie: isMovie,
                           ),
-                          const SizedBox(height: 12.0),
+                          SizedBoxes.h12,
                           SizedBox(
                             width: boxConstraints.maxWidth - (190 * 0.7) - 32,
                             child: Padding(
@@ -111,7 +112,7 @@ class HeaderDetail extends StatelessWidget {
                       posterUrl: imagePoster,
                       height: height / 4,
                     ),
-                    const SizedBox(height: 10.0),
+                    SizedBoxes.h10,
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: const BoxDecoration(
@@ -129,13 +130,13 @@ class HeaderDetail extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    const SizedBox(height: 8.0),
+                    SizedBoxes.h8,
                     RatingRow(
                       rating: rating,
                       id: id,
                       isMovie: isMovie,
                     ),
-                    const SizedBox(height: 12.0),
+                    SizedBoxes.h12,
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: SingleChildScrollView(
