@@ -1,4 +1,3 @@
-import 'package:flutter_getx_the_moviedb/ui/detail/controller/index.dart';
 import 'package:flutter_getx_the_moviedb/ui/detail/index.dart';
 import 'package:get/get.dart';
 

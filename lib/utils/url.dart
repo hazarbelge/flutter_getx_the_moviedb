@@ -1,8 +1,6 @@
-import 'url_key_secret.dart';
-
 class Url {
   //API key
-  static const String apiKey = YOUR.API_KEY;
+  static const String apiKey = "YOUR.API_KEY";
 
   //Base URLs
   static const String movieDbBaseUrl = 'https://api.themoviedb.org/3';
