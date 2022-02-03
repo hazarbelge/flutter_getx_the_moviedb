@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -29,6 +29,26 @@ class ConnectivityUtil {
               debugPrint("GetUntilMethodOnMobileConnectionError: $e");
             }
             debugPrint("ConnectivityResult: Internet Connection With Mobile.");
+            break;
+          case ConnectivityResult.ethernet:
+            try {
+              if (Get.context != null) {
+                Get.until((Route<dynamic> route) => !(Get.isDialogOpen ?? false));
+              }
+            } catch (e) {
+              debugPrint("GetUntilMethodOnEthernetConnectionError: $e");
+            }
+            debugPrint("ConnectivityResult: Internet Connection With Ethernet.");
+            break;
+          case ConnectivityResult.bluetooth:
+            try {
+              if (Get.context != null) {
+                Get.until((Route<dynamic> route) => !(Get.isDialogOpen ?? false));
+              }
+            } catch (e) {
+              debugPrint("GetUntilMethodOnBluetoothConnectionError: $e");
+            }
+            debugPrint("ConnectivityResult: Internet Connection With Bluetooth.");
             break;
           case ConnectivityResult.none:
             debugPrint("ConnectivityResult: No Internet Connection.");

@@ -9,7 +9,7 @@ environment:
   sdk: ">=2.15.1 <3.0.0"
 
 dependencies:
-  connectivity: ^3.0.6
+  connectivity_plus: ^2.2.0
   convex_bottom_bar: ^3.0.0
   cupertino_icons: ^1.0.4
 

@@ -1,0 +1,55 @@
+name: Getx TheMovieDB Build
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  flutter_version: "2.8.x"
+
+jobs:
+  build:
+    name: Build Apps
+    runs-on: macos-latest
+    steps:
+      - name: Export Release Timestamp
+        run: echo "APP_VERSION=v$(date +'%Y.%m.%d.%H.%M.%S')" >> $GITHUB_ENV
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v2
+        with:
+          path: /opt/hostedtoolcache/flutter
+          key: ${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          channel: stable
+
+      - name: Install Pub Dependencies
+        run: flutter pub get
+
+      - name: Build Android App
+        run: flutter build appbundle --release
+
+      - name: Build iOS App
+        run: flutter build ios --release --no-codesign
+
+      - name: Build Web App
+        run: flutter build web --release
+
+      - name: Build Windows App
+        run: flutter build windows --release
+
+      - name: Build Linux App
+        run: flutter build linux --release
+
+      - name: Build MacOS App
+        run: flutter build macos --release
