@@ -10,10 +10,12 @@ Future<void> initServices() async {
   ConnectivityUtil.configureConnectivityStream();
 
   debugPrint('Starting GetX Services...');
-  await Future.wait(<Future<dynamic>>[
-    GetStorage.init(),
-    Get.putAsync(() => GlobalVariablesService().init()),
-  ]);
+  await Future.wait(
+    <Future<dynamic>>[
+      GetStorage.init(),
+      Get.putAsync(() => GlobalVariablesService().init()),
+    ],
+  );
   debugPrint('All GetX Services Started...');
 }
 
