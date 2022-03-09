@@ -5,6 +5,7 @@ import 'package:flutter_getx_the_moviedb/app.dart';
 import 'package:flutter_getx_the_moviedb/utils/index.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 Future<void> initServices() async {
   ConnectivityUtil.configureConnectivityStream();
@@ -27,6 +28,7 @@ Future<void> main() async {
   runZonedGuarded<Future<void>>(
     () async {
       await initServices();
+      setPathUrlStrategy();
       runApp(
         const MovieApp(),
       );
