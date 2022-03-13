@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
+import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import 'package:flutter_getx_the_moviedb/routes/index.dart';
-import 'package:flutter_getx_the_moviedb/theme/index.dart';
-import 'package:flutter_getx_the_moviedb/utils/index.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 

@@ -45,5 +45,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-lib/utils/url_key_secret.dart
+lib/network/url_key_secret.dart
 web/index.html

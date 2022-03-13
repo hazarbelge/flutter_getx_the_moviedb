@@ -1,8 +1,8 @@
+import 'package:flutter_getx_the_moviedb/features/detail/index.dart';
+import 'package:flutter_getx_the_moviedb/features/home_movie/index.dart';
+import 'package:flutter_getx_the_moviedb/features/home_tv/index.dart';
+import 'package:flutter_getx_the_moviedb/features/start/index.dart';
 import 'package:flutter_getx_the_moviedb/routes/index.dart';
-import 'package:flutter_getx_the_moviedb/ui/detail/index.dart';
-import 'package:flutter_getx_the_moviedb/ui/home_movie/index.dart';
-import 'package:flutter_getx_the_moviedb/ui/home_tv/index.dart';
-import 'package:flutter_getx_the_moviedb/ui/start/index.dart';
 import 'package:get/get.dart';
 
 class AppPages {
