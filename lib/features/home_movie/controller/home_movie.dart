@@ -18,7 +18,7 @@ class HomeMovieScreenController extends SuperController<dynamic> {
 
   void changeBrightness() {
     Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
-    WidgetsBinding.instance!.performReassemble();
+    WidgetsBinding.instance.performReassemble();
   }
 
   void changeLocale() {
