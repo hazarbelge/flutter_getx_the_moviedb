@@ -1,5 +1,8 @@
 name: Dart
 
+env:
+  flutter_version: "3.0.x"
+
 on:
   workflow_dispatch:
 
