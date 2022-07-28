@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/core/base/index.dart';
 import 'package:flutter_getx_the_moviedb/features/home_tv/index.dart';
-import 'package:flutter_getx_the_moviedb/features/widgets/index.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/widgets/custom_widgets/index.dart';
 import 'package:get/get.dart';
 
-class AiringTodayTvSeriesController extends SuperController<TvSeriesWrapper?> {
+class AiringTodayTvSeriesController extends BaseRepositoryController<HomeTvRepository, HomeTvProvider, TvSeriesWrapper?> {
   AiringTodayTvSeriesController({
     required this.homeTvRepository,
-  });
+  }) : super(repository: homeTvRepository);
 
   final HomeTvRepository homeTvRepository;
   final ScrollController scrollController = ScrollController();
   final RxBool isLoading = false.obs;
 
   void pagination() {
-    if (scrollController.position.extentAfter < 400 && state != null && state!.totalPages != state!.page && !isLoading.value) {
+    if (scrollController.position.extentAfter < 500 && state != null && state!.totalPages != 0 && state!.totalPages != state!.page && !isLoading.value) {
       _getTvSeries();
     }
   }
@@ -23,68 +24,45 @@ class AiringTodayTvSeriesController extends SuperController<TvSeriesWrapper?> {
     isLoading.value = true;
     CustomProgressIndicator.openLoadingDialog();
 
-    final TvSeriesWrapper? tvSeriesWrapper = await homeTvRepository.getAiringTodayTvSeries(
+    final TvSeriesWrapper? tvSeriesWrapper = await repository.getAiringTodayTvSeries(
       query: <String, dynamic>{
-        "page": state!.page + 1,
-        "language": Get.locale?.languageCode ?? 'en-US',
+        "page": state!.page! + 1,
       },
     );
-    state!.results.addAll(tvSeriesWrapper!.results);
+    state!.results!.addAll(tvSeriesWrapper!.results!);
     state!.page = tvSeriesWrapper.page;
     update();
 
-    CustomProgressIndicator.closeLoadingOverlay();
+    await CustomProgressIndicator.closeLoadingOverlay();
     isLoading.value = false;
   }
 
-  Future<TvSeriesWrapper?> _getInitialTvSeries() async {
-    final TvSeriesWrapper? tvSeriesWrapper = await homeTvRepository.getAiringTodayTvSeries(
+  Future<TvSeriesWrapper?> getInitialTvSeries() async {
+    CustomProgressIndicator.openLoadingDialog();
+    final TvSeriesWrapper? tvSeriesWrapper = await repository.getAiringTodayTvSeries(
       query: <String, dynamic>{
         "page": 1,
-        "language": Get.locale?.languageCode ?? 'en-US',
       },
     );
+    await CustomProgressIndicator.closeLoadingOverlay();
     return tvSeriesWrapper;
   }
 
   @override
   void onInit() {
     super.onInit();
-    debugPrint('$runtimeType onInit called');
-    append(() => _getInitialTvSeries);
     scrollController.addListener(pagination);
   }
 
   @override
   void onReady() {
     super.onReady();
-    debugPrint('$runtimeType onReady called');
+    append(() => getInitialTvSeries);
   }
 
   @override
   void onClose() {
     super.onClose();
-    debugPrint('$runtimeType onClose called');
     scrollController.removeListener(pagination);
-  }
-
-  @override
-  void onDetached() {
-    debugPrint('$runtimeType onDetached called');
-  }
-
-  @override
-  void onInactive() {
-    debugPrint('$runtimeType onInactive called');
-  }
-
-  @override
-  void onPaused() {
-    debugPrint('$runtimeType onPaused called');
-  }
-
-  @override
-  void onResumed() {
-    debugPrint('$runtimeType onResumed called');
   }
 }

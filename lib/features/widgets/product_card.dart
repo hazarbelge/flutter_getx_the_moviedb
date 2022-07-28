@@ -222,36 +222,9 @@ class CardListMovieDescSide extends StatelessWidget {
                       )
                     ],
                   ),
-                  const Spacer(flex: 2),
+                  const Spacer(),
                   Expanded(
-                    flex: 1,
-                    child: Stack(
-                      clipBehavior: Clip.none,
-                      fit: StackFit.loose,
-                      children: <Widget>[
-                        Positioned(
-                          right: -15,
-                          child: Container(
-                            clipBehavior: Clip.hardEdge,
-                            width: boxConstraints.maxWidth + 15,
-                            decoration: const BoxDecoration(),
-                            child: SingleChildScrollView(
-                              clipBehavior: Clip.none,
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: <Widget>[
-                                  ...genre,
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Spacer(flex: 2),
-                  Expanded(
-                    flex: 3,
+                    flex: 8,
                     child: LayoutBuilder(
                       builder: (BuildContext context, BoxConstraints boxConstraints) {
                         return Align(

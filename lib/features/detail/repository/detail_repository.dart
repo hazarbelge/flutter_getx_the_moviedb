@@ -1,27 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/core/base/index.dart';
 import 'package:flutter_getx_the_moviedb/network/index.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/request/request.dart';
 
 abstract class IDetailProvider {
   Future<Response<dynamic>> rateMovie(String path, Map<String, dynamic> body);
-
   Future<Response<dynamic>> rateTvSeries(String path, Map<String, dynamic> body);
 }
 
-class DetailProvider extends GetConnect implements IDetailProvider {
-  @override
-  void onInit() {
-    httpClient.baseUrl = Url.movieDbBaseUrl;
-
-    httpClient.addRequestModifier((Request<dynamic> request) {
-      request.headers['Content-Type'] = 'application/json';
-      request.headers['Accept'] = 'application/json';
-      debugPrint("${request.url.host}/${request.url.path}");
-      return request;
-    });
-  }
-
+class DetailProvider extends BaseProvider implements IDetailProvider {
   @override
   Future<Response<dynamic>> rateMovie(String path, Map<String, dynamic> body) => post(path, body);
 
@@ -31,16 +18,11 @@ class DetailProvider extends GetConnect implements IDetailProvider {
 
 abstract class IDetailRepository {
   Future<dynamic> rateMovie(int movieId, Map<String, dynamic> body);
-
   Future<dynamic> rateTvSeries(int tvSeriesId, Map<String, dynamic> body);
 }
 
-class DetailRepository implements IDetailRepository {
-  DetailRepository({
-    required this.provider,
-  });
-
-  final DetailProvider provider;
+class DetailRepository extends BaseRepository<DetailProvider> implements IDetailRepository {
+  DetailRepository() : super(provider: DetailProvider());
 
   @override
   Future<Response<dynamic>> rateMovie(int movieId, Map<String, dynamic> body) async {

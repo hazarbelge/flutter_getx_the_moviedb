@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
 
-Widget createGenreContainer(int id) {
+Widget createGenreContainer(Genre genre) {
   return Container(
     margin: const EdgeInsets.only(right: 10),
     padding: const EdgeInsets.all(8),
+    decoration: BoxDecoration(
+      color: Colors.black,
+      border: Border.all(color: Colors.grey),
+      borderRadius: BorderRadius.circular(20),
+    ),
     child: Text(
-      Genres.genres[id] ?? "",
+      genre.name ?? "",
       style: const TextStyle(
+        color: Colors.white,
         fontSize: 12,
       ),
     ),
-    decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(20)),
   );
 }

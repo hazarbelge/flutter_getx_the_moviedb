@@ -1,39 +1,29 @@
+import 'package:flutter_getx_the_moviedb/core/base/index.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
 import 'package:flutter_getx_the_moviedb/network/index.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/request/request.dart';
 
-abstract class IStartProvider {
+abstract class ISplashProvider {
   Future<Response<SessionData>> getSessionId(String path);
 }
 
-class StartProvider extends GetConnect implements IStartProvider {
+class SplashProvider extends BaseProvider implements ISplashProvider {
   @override
-  void onInit() {
+  InternalFinalCallback<void> get onStart {
     httpClient.defaultDecoder = (dynamic val) => SessionData.fromJson(val as Map<String, dynamic>);
-    httpClient.baseUrl = Url.movieDbBaseUrl;
-
-    httpClient.addRequestModifier((Request<dynamic> request) {
-      request.headers['Content-Type'] = 'application/json';
-      request.headers['Accept'] = 'application/json';
-      return request;
-    });
+    return super.onStart;
   }
 
   @override
   Future<Response<SessionData>> getSessionId(String path) => get(path);
 }
 
-abstract class IStartRepository {
+abstract class ISplashRepository {
   Future<SessionData?> getSessionId();
 }
 
-class StartRepository implements IStartRepository {
-  StartRepository({
-    required this.provider,
-  });
-
-  final IStartProvider provider;
+class SplashRepository extends BaseRepository<SplashProvider> implements ISplashRepository {
+  SplashRepository() : super(provider: SplashProvider());
 
   @override
   Future<SessionData?> getSessionId() async {
@@ -41,7 +31,7 @@ class StartRepository implements IStartRepository {
     if (response.status.hasError) {
       return Future<SessionData>.error(response.statusText!);
     } else {
-      Url.sessionId = response.body?.guestSessionId;
+      Url.guestSessionId = response.body?.guestSessionId;
       return response.body;
     }
   }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
 import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import 'package:flutter_getx_the_moviedb/features/home_movie/index.dart';
-import 'package:flutter_getx_the_moviedb/features/widgets/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/widgets/custom_widgets/index.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 

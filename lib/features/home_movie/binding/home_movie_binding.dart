@@ -5,7 +5,7 @@ class HomeMovieBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<HomeMovieProvider>(() => HomeMovieProvider());
-    Get.lazyPut<HomeMovieRepository>(() => HomeMovieRepository(provider: Get.find()));
+    Get.lazyPut<HomeMovieRepository>(() => HomeMovieRepository());
     Get.lazyPut(() => HomeMovieScreenController());
     Get.lazyPut(() => NowPlayingMoviesController(homeMovieRepository: Get.find()));
     Get.lazyPut(() => PopularMoviesController(homeMovieRepository: Get.find()));

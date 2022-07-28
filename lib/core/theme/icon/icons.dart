@@ -6,7 +6,7 @@ class ThemeIcons {
     this.color,
     this.height = 24.0,
     this.width = 24.0,
-    this.name = 'assets/svg_icons/logo.svg',
+    this.name = 'assets/icons/app_icon.svg',
   });
 
   final Color? color;
@@ -16,7 +16,7 @@ class ThemeIcons {
 
   SvgPicture get theMovieDBLogo {
     return SvgPicture.asset(
-      'assets/svg_icons/logo.svg',
+      'assets/icons/app_icon.svg',
       height: height,
       width: width,
       color: color,

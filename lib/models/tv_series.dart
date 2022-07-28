@@ -1,6 +1,9 @@
 import 'dart:convert';
 
-class TvSeriesWrapper {
+import 'package:equatable/equatable.dart';
+import 'package:flutter_getx_the_moviedb/models/index.dart';
+
+class TvSeriesWrapper extends Equatable {
   TvSeriesWrapper({
     required this.page,
     required this.totalResults,
@@ -19,10 +22,10 @@ class TvSeriesWrapper {
     );
   }
 
-  int page;
-  final int totalResults;
-  final int totalPages;
-  final List<TvSeries> results;
+  int? page;
+  final int? totalResults;
+  final int? totalPages;
+  final List<TvSeries>? results;
 
   String toRawJson() => json.encode(toJson());
 
@@ -30,13 +33,21 @@ class TvSeriesWrapper {
         "page": page,
         "total_results": totalResults,
         "total_pages": totalPages,
-        "results": List<TvSeries>.from(results.map((TvSeries x) => x.toJson())),
+        "results": results != null ? List<TvSeries>.from(results!.map((TvSeries x) => x.toJson())) : null,
       };
+
+  @override
+  List<Object?> get props => <Object?>[
+        page,
+        totalResults,
+        totalPages,
+        results,
+      ];
 }
 
-class TvSeries {
-  TvSeries({
-    required this.id,
+class TvSeries extends Equatable {
+  const TvSeries({
+    this.id,
     this.posterPath,
     this.popularity,
     this.backdropPath,
@@ -44,7 +55,7 @@ class TvSeries {
     this.overview,
     this.firstAirDate,
     this.originCountry,
-    this.genreIds,
+    this.genres,
     this.originalLanguage,
     this.voteCount,
     this.name,
@@ -63,7 +74,7 @@ class TvSeries {
       overview: json["overview"],
       firstAirDate: json["first_air_date"],
       originCountry: List<String>.from(json["origin_country"].map((dynamic x) => x)),
-      genreIds: json['genre_ids'].cast<int>(),
+      genres: json["genres"] == null ? null : List<Genre>.from(json["genres"].map((dynamic x) => Genre.fromJson(x))),
       originalLanguage: json["original_language"],
       voteCount: json["vote_count"],
       name: json["name"],
@@ -71,7 +82,7 @@ class TvSeries {
     );
   }
 
-  final int id;
+  final int? id;
   final String? posterPath;
   final double? popularity;
   final String? backdropPath;
@@ -79,7 +90,7 @@ class TvSeries {
   final String? overview;
   final String? firstAirDate;
   final List<String>? originCountry;
-  final List<int>? genreIds;
+  final List<Genre>? genres;
   final String? originalLanguage;
   final int? voteCount;
   final String? name;
@@ -96,10 +107,27 @@ class TvSeries {
         "overview": overview,
         "first_air_date": firstAirDate,
         "origin_country": originCountry != null ? List<dynamic>.from(originCountry!.map((String x) => x)) : null,
-        "genre_ids": genreIds != null ? List<dynamic>.from(genreIds!.map((int x) => x)) : null,
+        "genres": genres != null ? List<dynamic>.from(genres!.map((Genre x) => x.toJson())) : null,
         "original_language": originalLanguage,
         "vote_count": voteCount,
         "name": name,
         "original_name": originalName,
       };
+
+  @override
+  List<Object?> get props => <Object?>[
+        id,
+        posterPath,
+        popularity,
+        backdropPath,
+        voteAverage,
+        overview,
+        firstAirDate,
+        originCountry,
+        genres,
+        originalLanguage,
+        voteCount,
+        name,
+        originalName,
+      ];
 }

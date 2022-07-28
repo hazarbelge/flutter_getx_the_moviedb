@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/features/home_tv/index.dart';
 import 'package:flutter_getx_the_moviedb/features/widgets/index.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/widgets/custom_widgets/index.dart';
 import 'package:get/get.dart';
 
 class PopularTvSeriesTab extends GetView<PopularTvSeriesController> {
@@ -13,8 +14,8 @@ class PopularTvSeriesTab extends GetView<PopularTvSeriesController> {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
 
-    return RefreshIndicator(
-      onRefresh: refreshPage,
+    return CustomRefreshIndicator(
+      onRefresh: controller.getInitialTvSeries,
       child: SizedBox(
         height: height,
         width: double.infinity,

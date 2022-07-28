@@ -1,23 +1,28 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:flutter_svg/flutter_svg.dart";
+import "package:get/get.dart";
 
 class CustomProgressIndicator {
   static bool isShowing = false;
 
-  static void closeLoadingOverlay() {
+  static Future<void> closeLoadingOverlay() async {
     if (CustomProgressIndicator.isShowing) {
-      Get.until((Route<dynamic> route) => !Get.isDialogOpen!);
+      Navigator.of(Get.overlayContext ?? Get.context!).pop();
+      CustomProgressIndicator.isShowing = false;
+      await Future<dynamic>.delayed(const Duration(microseconds: 200));
     }
-    CustomProgressIndicator.isShowing = false;
   }
 
-  static void openLoadingDialog() {
-    CustomProgressIndicator.isShowing = true;
-    Get.dialog(
-      const LoadingOverlay(),
-      barrierDismissible: false,
-    );
+  static Future<void> openLoadingDialog() async {
+    if (!CustomProgressIndicator.isShowing && !Get.isSnackbarOpen) {
+      CustomProgressIndicator.isShowing = true;
+      showDialog(
+        context: Get.overlayContext ?? Get.context!,
+        barrierDismissible: false,
+        useSafeArea: false,
+        builder: (_) => const LoadingOverlay(),
+      );
+    }
   }
 }
 
@@ -34,7 +39,7 @@ class _LoadingOverlayState extends State<LoadingOverlay> with SingleTickerProvid
   @override
   void initState() {
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 150000),
+      duration: const Duration(milliseconds: 200000),
       lowerBound: 10,
       upperBound: 20,
       vsync: this,

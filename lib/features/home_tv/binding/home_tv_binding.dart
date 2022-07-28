@@ -5,7 +5,7 @@ class HomeTvBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<HomeTvProvider>(() => HomeTvProvider());
-    Get.lazyPut<HomeTvRepository>(() => HomeTvRepository(provider: Get.find()));
+    Get.lazyPut<HomeTvRepository>(() => HomeTvRepository());
     Get.lazyPut(() => HomeTvScreenController());
     Get.lazyPut(() => AiringTodayTvSeriesController(homeTvRepository: Get.find()));
     Get.lazyPut(() => OnTheAirTvSeriesController(homeTvRepository: Get.find()));

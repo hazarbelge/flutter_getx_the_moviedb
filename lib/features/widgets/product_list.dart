@@ -29,7 +29,7 @@ class ProductList extends StatelessWidget {
         vote: movieList?[index].voteAverage ?? "",
         releaseDate: movieList?[index].releaseDate ?? "",
         overview: movieList?[index].overview ?? "",
-        genre: movieList?[index].genreIds != null ? movieList![index].genreIds!.take(3).map(createGenreContainer).toList() : <Widget>[],
+        genre: movieList?[index].genres != null ? movieList![index].genres!.map(createGenreContainer).toList() : <Widget>[],
         aspectRatio: aspectRatio,
         onTap: () {
           Get.toNamed(
@@ -48,7 +48,7 @@ class ProductList extends StatelessWidget {
         vote: tvSeriesList?[index].voteAverage ?? "",
         releaseDate: tvSeriesList?[index].firstAirDate ?? "",
         overview: tvSeriesList?[index].overview ?? "",
-        genre: tvSeriesList?[index].genreIds != null ? tvSeriesList![index].genreIds!.take(3).map(createGenreContainer).toList() : <Widget>[],
+        genre: tvSeriesList?[index].genres != null ? tvSeriesList![index].genres!.map(createGenreContainer).toList() : <Widget>[],
         aspectRatio: aspectRatio,
         onTap: () {
           Get.toNamed(

@@ -1,60 +1,60 @@
 import 'dart:convert';
 
-class MovieWrapper {
+import 'package:equatable/equatable.dart';
+import 'package:flutter_getx_the_moviedb/models/index.dart';
+
+class MovieWrapper extends Equatable {
   MovieWrapper({
-    required this.page,
-    required this.totalResults,
-    required this.totalPages,
-    required this.results,
+    this.page,
+    this.totalResults,
+    this.totalPages,
+    this.results,
   });
 
   factory MovieWrapper.fromRawJson(String str) => MovieWrapper.fromJson(json.decode(str));
 
-  factory MovieWrapper.fromJson(Map<String, dynamic> json) {
+  factory MovieWrapper.fromJson(Map<String?, dynamic> json) {
     return MovieWrapper(
       page: json['page'],
       totalResults: json['total_results'],
       totalPages: json['total_pages'],
-      results: List<Movie>.from(json["results"].map((dynamic x) => Movie.fromJson(x))),
+      results: json["results"] == null ? null : List<Movie>.from(json["results"].map((dynamic x) => Movie.fromJson(x))),
     );
   }
 
-  int page;
-  final int totalResults;
-  final int totalPages;
-  final List<Movie> results;
+  int? page;
+  final int? totalResults;
+  final int? totalPages;
+  final List<Movie>? results;
 
-  String toRawJson() => json.encode(toJson());
-
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        "page": page,
-        "total_results": totalResults,
-        "total_pages": totalPages,
-        "results": List<Movie>.from(results.map((Movie x) => x.toJson())),
-      };
+  @override
+  List<Object?> get props => <Object?>[
+        page,
+        totalResults,
+        totalPages,
+        results,
+      ];
 }
 
-class Movie {
+class Movie extends Equatable {
   const Movie({
-    required this.id,
     this.popularity,
     this.voteCount,
     this.video,
     this.posterPath,
+    this.id,
     this.adult,
     this.backdropPath,
     this.originalLanguage,
     this.originalTitle,
-    this.genreIds,
+    this.genres,
     this.title,
     this.voteAverage,
     this.overview,
     this.releaseDate,
   });
 
-  factory Movie.fromRawJson(String str) => Movie.fromJson(json.decode(str));
-
-  factory Movie.fromJson(Map<String, dynamic> json) {
+  factory Movie.fromJson(Map<String?, dynamic> json) {
     return Movie(
       popularity: json['popularity'] == null ? 0.0 : json['popularity'].toDouble(),
       voteCount: json['vote_count'],
@@ -65,7 +65,7 @@ class Movie {
       backdropPath: json['backdrop_path'],
       originalLanguage: json['original_language'],
       originalTitle: json['original_title'],
-      genreIds: json['genre_ids'].cast<int>(),
+      genres: json["genres"] == null ? null : List<Genre>.from(json["genres"].map((dynamic x) => Genre.fromJson(x))),
       title: json['title'],
       voteAverage: json['vote_average'].toString(),
       overview: json['overview'],
@@ -77,12 +77,12 @@ class Movie {
   final int? voteCount;
   final bool? video;
   final String? posterPath;
-  final int id;
+  final int? id;
   final bool? adult;
   final String? backdropPath;
   final String? originalLanguage;
   final String? originalTitle;
-  final List<int>? genreIds;
+  final List<Genre>? genres;
   final String? title;
   final String? voteAverage;
   final String? overview;
@@ -95,7 +95,7 @@ class Movie {
         "adult": adult,
         "overview": overview,
         "release_date": releaseDate,
-        "genre_ids": genreIds != null ? List<dynamic>.from(genreIds!.map((int x) => x)) : null,
+        "genres": genres != null ? List<dynamic>.from(genres!.map((Genre x) => x.toJson())) : null,
         "id": id,
         "original_title": originalTitle,
         "original_language": originalLanguage,
@@ -106,4 +106,22 @@ class Movie {
         "video": video,
         "vote_average": voteAverage,
       };
+
+  @override
+  List<Object?> get props => <Object?>[
+        popularity,
+        voteCount,
+        video,
+        posterPath,
+        id,
+        adult,
+        backdropPath,
+        originalLanguage,
+        originalTitle,
+        genres,
+        title,
+        voteAverage,
+        overview,
+        releaseDate,
+      ];
 }

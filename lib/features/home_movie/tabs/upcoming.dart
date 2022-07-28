@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/features/home_movie/index.dart';
 import 'package:flutter_getx_the_moviedb/features/widgets/index.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/widgets/custom_widgets/index.dart';
 import 'package:get/get.dart';
 
 class UpcomingMoviesTab extends GetView<UpcomingMoviesController> {
   const UpcomingMoviesTab({Key? key}) : super(key: key);
 
-  Future<void> refreshPage() async {}
-
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
 
-    return RefreshIndicator(
-      onRefresh: refreshPage,
+    return CustomRefreshIndicator(
+      onRefresh: controller.getInitialMovies,
       child: SizedBox(
         height: height,
         width: double.infinity,

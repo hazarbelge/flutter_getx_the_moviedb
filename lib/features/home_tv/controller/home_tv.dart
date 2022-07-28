@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/core/base/index.dart';
 import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
+import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import 'package:flutter_getx_the_moviedb/features/home_tv/index.dart';
 import 'package:get/get.dart';
 
-class HomeTvScreenController extends SuperController<dynamic> {
+class HomeTvScreenController extends BaseController<dynamic> {
   HomeTvScreenController();
 
   final RxInt currentIndex = 0.obs;
@@ -23,6 +25,7 @@ class HomeTvScreenController extends SuperController<dynamic> {
 
   void changeLocale() {
     Get.updateLocale(Get.locale! == const Locale("tr", "TR") ? const Locale("en", "US") : const Locale("tr", "TR"));
+    LanguageHelper.languageSave();
   }
 
   void openEndDrawer(GlobalKey<ScaffoldState> _scaffoldKey) {
@@ -47,43 +50,5 @@ class HomeTvScreenController extends SuperController<dynamic> {
       color = Colors.white;
     }
     return color;
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    debugPrint('$runtimeType onInit called');
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-    debugPrint('$runtimeType onReady called');
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    debugPrint('$runtimeType onClose called');
-  }
-
-  @override
-  void onDetached() {
-    debugPrint('$runtimeType onDetached called');
-  }
-
-  @override
-  void onInactive() {
-    debugPrint('$runtimeType onInactive called');
-  }
-
-  @override
-  void onPaused() {
-    debugPrint('$runtimeType onPaused called');
-  }
-
-  @override
-  void onResumed() {
-    debugPrint('$runtimeType onResumed called');
   }
 }

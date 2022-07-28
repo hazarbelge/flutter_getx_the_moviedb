@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
-import 'package:flutter_getx_the_moviedb/features/start/index.dart';
-import 'package:flutter_getx_the_moviedb/features/widgets/index.dart';
+import 'package:flutter_getx_the_moviedb/features/splash/index.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
 import 'package:flutter_getx_the_moviedb/network/index.dart';
 import 'package:flutter_getx_the_moviedb/routes/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/widgets/custom_widgets/index.dart';
 import 'package:get/get.dart';
 
-class StartScreen extends GetView<StartScreenController> {
-  const StartScreen({
+class SplashScreen extends GetView<SplashScreenController> {
+  const SplashScreen({
     Key? key,
   }) : super(key: key);
 
@@ -25,7 +25,7 @@ class StartScreen extends GetView<StartScreenController> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const <Widget>[
-            StartIcon(),
+            SplashIcon(),
             HomeButtons(),
           ],
         ),
@@ -34,8 +34,8 @@ class StartScreen extends GetView<StartScreenController> {
   }
 }
 
-class StartIcon extends GetView<StartScreenController> {
-  const StartIcon({
+class SplashIcon extends GetView<SplashScreenController> {
+  const SplashIcon({
     Key? key,
   }) : super(key: key);
 
@@ -62,7 +62,7 @@ class StartIcon extends GetView<StartScreenController> {
   }
 }
 
-class HomeButtons extends GetView<StartScreenController> {
+class HomeButtons extends GetView<SplashScreenController> {
   const HomeButtons({
     Key? key,
   }) : super(key: key);
