@@ -37,7 +37,7 @@ class PopularMoviesController extends BaseRepositoryController<HomeMovieReposito
     isLoading.value = false;
   }
 
-  Future<MovieWrapper?> getInitialMovies() async {
+  Future<MovieWrapper?> _getInitialMovies() async {
     CustomProgressIndicator.openLoadingDialog();
     final MovieWrapper? movieWrapper = await repository.getPopularMovie(
       query: <String, dynamic>{
@@ -46,6 +46,10 @@ class PopularMoviesController extends BaseRepositoryController<HomeMovieReposito
     );
     await CustomProgressIndicator.closeLoadingOverlay();
     return movieWrapper;
+  }
+
+  Future<void> appendInitialMovies() async {
+    append(() => _getInitialMovies);
   }
 
   @override
@@ -57,7 +61,7 @@ class PopularMoviesController extends BaseRepositoryController<HomeMovieReposito
   @override
   void onReady() {
     super.onReady();
-    append(() => getInitialMovies);
+    appendInitialMovies();
   }
 
   @override

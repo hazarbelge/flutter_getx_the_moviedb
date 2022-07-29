@@ -8,14 +8,12 @@ import 'package:get/get.dart';
 class AiringTodayTvSeriesTab extends GetView<AiringTodayTvSeriesController> {
   const AiringTodayTvSeriesTab({Key? key}) : super(key: key);
 
-  Future<void> refreshPage() async {}
-
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
 
     return CustomRefreshIndicator(
-      onRefresh: controller.getInitialTvSeries,
+      onRefresh: controller.appendInitialTvSeries,
       child: SizedBox(
         height: height,
         width: double.infinity,
@@ -37,6 +35,9 @@ class AiringTodayTvSeriesTab extends GetView<AiringTodayTvSeriesController> {
                       return const SizedBox();
                     }
                   },
+                  onError: (String? msg) => const SizedBox(),
+                  onEmpty: const SizedBox(),
+                  onLoading: const SizedBox(),
                 ),
               ],
             ),

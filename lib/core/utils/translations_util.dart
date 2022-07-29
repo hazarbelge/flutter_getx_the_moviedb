@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class TranslationsUtil extends Translations {
   static Locale? locale = LanguageHelper.getLocale();
-  static const Locale fallbackLocale = Locale('tr', 'TR');
+  static const Locale fallbackLocale = Locale('en', 'US');
 
   @override
   Map<String, Map<String, String>> get keys => const <String, Map<String, String>>{

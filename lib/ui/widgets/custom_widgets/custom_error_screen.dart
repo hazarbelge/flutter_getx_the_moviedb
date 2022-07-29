@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +20,7 @@ class CustomErrorScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPicture.asset("assets/icons/app_icon.svg"),
+            SvgPicture.asset(GlobalVariables.images.appIconPath),
             const SizedBox(height: 50),
             Text(
               kDebugMode ? errorDetails.summary.toString() : "app.something.went.wrong".tr,

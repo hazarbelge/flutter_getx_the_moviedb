@@ -45,20 +45,14 @@ class HomeMovieDesktopWebScaffold extends GetView<HomeMovieScreenController> {
           centerTitle: true,
           automaticallyImplyLeading: true,
           leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: const Icon(Icons.arrow_back_outlined),
+            onPressed: Get.back,
+            icon: const Icon(Icons.arrow_back_ios_new_outlined),
           ),
           actions: <Widget>[
-            IconButton(
+            /*IconButton(
               onPressed: controller.changeBrightness,
               icon: Icon(Get.isDarkMode ? Icons.wb_incandescent : Icons.wb_incandescent_outlined),
-            ),
-            IconButton(
-              onPressed: controller.changeLocale,
-              icon: Text(Get.locale != null ? Get.locale!.languageCode.toUpperCase() : "TR"),
-            ),
+            ),*/
             if (width < 500)
               IconButton(
                 onPressed: () => controller.openEndDrawer(_scaffoldKey),

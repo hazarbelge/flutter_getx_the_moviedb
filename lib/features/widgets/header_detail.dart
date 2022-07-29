@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
-import 'package:get/get.dart';
 
 import 'index.dart';
 
@@ -49,7 +47,7 @@ class HeaderDetail extends StatelessWidget {
                       posterUrl: imagePoster,
                       height: 190,
                     ),
-                    SizedBoxes.w16,
+                    const SizedBox(width: 16),
                     SizedBox(
                       height: 190,
                       child: Column(
@@ -74,13 +72,13 @@ class HeaderDetail extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          SizedBoxes.h8,
+                          const SizedBox(height: 8),
                           RatingRow(
                             rating: rating,
                             id: id,
                             isMovie: isMovie,
                           ),
-                          SizedBoxes.h12,
+                          const SizedBox(height: 12),
                           SizedBox(
                             width: boxConstraints.maxWidth - (190 * 0.7) - 32,
                             child: Padding(
@@ -112,7 +110,7 @@ class HeaderDetail extends StatelessWidget {
                       posterUrl: imagePoster,
                       height: height / 4,
                     ),
-                    SizedBoxes.h10,
+                    const SizedBox(height: 10),
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: const BoxDecoration(
@@ -130,13 +128,13 @@ class HeaderDetail extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    SizedBoxes.h8,
+                    const SizedBox(height: 8),
                     RatingRow(
                       rating: rating,
                       id: id,
                       isMovie: isMovie,
                     ),
-                    SizedBoxes.h12,
+                    const SizedBox(height: 12),
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: SingleChildScrollView(
@@ -151,18 +149,6 @@ class HeaderDetail extends StatelessWidget {
               );
             }
           },
-        ),
-        Positioned(
-          top: 20,
-          left: 5,
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 36,
-              color: Colors.white,
-            ),
-            onPressed: () => Get.back(),
-          ),
         ),
       ],
     );

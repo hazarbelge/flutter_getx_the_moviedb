@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
+import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 class CustomAppBar extends PreferredSize {
   const CustomAppBar({
@@ -23,24 +22,18 @@ class CustomAppBar extends PreferredSize {
         width: 50,
         child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: SvgPicture.asset("assets/icons/app_icon.svg"),
+          child: SvgPicture.asset(GlobalVariables.images.appIconPath),
         ),
       ),
       centerTitle: true,
-      actions: <Widget>[
-        IconButton(
+      actions: const <Widget>[
+        /*IconButton(
           onPressed: () {
             Get.changeTheme(Get.theme == Style.darkTheme ? Style.lightTheme : Style.darkTheme);
             WidgetsBinding.instance.performReassemble();
           },
           icon: Icon(Get.theme == Style.darkTheme ? Icons.wb_incandescent : Icons.wb_incandescent_outlined),
-        ),
-        IconButton(
-          onPressed: () {
-            Get.updateLocale(Get.locale! == const Locale("tr", "TR") ? const Locale("en", "US") : const Locale("tr", "TR"));
-          },
-          icon: Text(Get.locale != null ? Get.locale!.languageCode.toUpperCase() : "TR"),
-        ),
+        ),*/
       ],
     );
   }

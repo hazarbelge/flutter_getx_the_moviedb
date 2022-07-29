@@ -13,7 +13,7 @@ class NowPlayingMoviesTab extends GetView<NowPlayingMoviesController> {
     final double height = MediaQuery.of(context).size.height;
 
     return CustomRefreshIndicator(
-      onRefresh: controller.getInitialMovies,
+      onRefresh: controller.appendInitialMovies,
       child: SizedBox(
         height: height,
         width: double.infinity,
@@ -35,6 +35,9 @@ class NowPlayingMoviesTab extends GetView<NowPlayingMoviesController> {
                       return const SizedBox();
                     }
                   },
+                  onError: (String? msg) => const SizedBox(),
+                  onEmpty: const SizedBox(),
+                  onLoading: const SizedBox(),
                 ),
               ],
             ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
+import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import 'package:flutter_getx_the_moviedb/features/splash/index.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
 import 'package:flutter_getx_the_moviedb/network/index.dart';
 import 'package:flutter_getx_the_moviedb/routes/index.dart';
+import 'package:flutter_getx_the_moviedb/ui/widgets/base_widgets/index.dart';
 import 'package:flutter_getx_the_moviedb/ui/widgets/custom_widgets/index.dart';
 import 'package:get/get.dart';
 
@@ -73,7 +75,7 @@ class HomeButtons extends GetView<SplashScreenController> {
 
     return Center(
       child: SizedBox(
-        height: 250,
+        height: 300,
         width: width,
         child: controller.obx(
           (SessionData? state) {
@@ -86,41 +88,46 @@ class HomeButtons extends GetView<SplashScreenController> {
                   SizedBox(
                     height: 60,
                     width: 150,
-                    child: TextButton(
-                      style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => Get.theme.primaryColor)),
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.HOME_MOVIE);
-                      },
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          'app.movies.title'.tr,
-                          style: TextStyles.primary24CW,
-                        ),
-                      ),
+                    child: BaseButton(
+                      backgroundColor: ThemeColors.primaryColor,
+                      borderRadius: 6,
+                      onPressed: () => Get.toNamed(AppRoutes.HOME_MOVIE),
+                      text: 'app.movies.title'.tr,
+                      textColor: Colors.white,
+                      fontSize: 24,
                     ),
                   ),
-                  const Spacer(),
+                  const Spacer(flex: 2),
                   SizedBox(
                     height: 60,
                     width: 150,
-                    child: TextButton(
-                      style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => Get.theme.primaryColor)),
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.HOME_TV);
+                    child: BaseButton(
+                      backgroundColor: ThemeColors.primaryColor,
+                      borderRadius: 6,
+                      onPressed: () => Get.toNamed(AppRoutes.HOME_TV),
+                      text: 'app.tv_series.title'.tr,
+                      textColor: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                  const Spacer(flex: 2),
+                  SizedBox(
+                    height: 60,
+                    width: 150,
+                    child: BaseDropdownMenu<String>(
+                      value: LanguageHelper.getLanguageCode() == "tr" ? "Türkçe" : "English",
+                      itemList: const <String>["Türkçe", "English"],
+                      onChanged: (String? val) {
+                        if (val != null) {
+                          Get.updateLocale(Locale(val == "Türkçe" ? "tr" : "en", val == "Türkçe" ? "TR" : "US"));
+                          LanguageHelper.languageSave();
+                        }
                       },
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          'app.tv_series.title'.tr,
-                          style: TextStyles.primary24CW,
-                        ),
-                      ),
                     ),
                   ),
                   const Spacer(flex: 3),
                   SizedBox(
-                    height: 100,
+                    height: 60,
                     width: Get.context?.width ?? Get.width,
                     child: Center(
                       child: Text(

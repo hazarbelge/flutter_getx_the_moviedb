@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
 import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
@@ -116,7 +115,7 @@ class _VideoPageState extends State<VideoPage> {
                                               });
                                             },
                                           ),
-                                          SizedBoxes.w5,
+                                          const SizedBox(width: 5),
                                           InkWell(
                                             highlightColor: Colors.transparent,
                                             splashColor: Colors.transparent,
@@ -132,7 +131,7 @@ class _VideoPageState extends State<VideoPage> {
                                               }
                                             },
                                           ),
-                                          SizedBoxes.w5,
+                                          const SizedBox(width: 5),
                                           InkWell(
                                             highlightColor: Colors.transparent,
                                             splashColor: Colors.transparent,
@@ -148,7 +147,7 @@ class _VideoPageState extends State<VideoPage> {
                                               });
                                             },
                                           ),
-                                          SizedBoxes.w10,
+                                          const SizedBox(width: 10),
                                           ValueListenableBuilder<VideoPlayerValue>(
                                             valueListenable: _controller!,
                                             builder: (BuildContext context, VideoPlayerValue value, Widget? widgetValue) {

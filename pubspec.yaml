@@ -19,6 +19,7 @@ dependencies:
   convex_bottom_bar: ^3.0.0
   cupertino_icons: ^1.0.5
   dio: ^4.0.6
+  dropdown_search: ^5.0.2
   equatable: ^2.0.3
 
   #flutter

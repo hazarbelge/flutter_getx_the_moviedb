@@ -37,7 +37,7 @@ class TopRatedTvSeriesController extends BaseRepositoryController<HomeTvReposito
     isLoading.value = false;
   }
 
-  Future<TvSeriesWrapper?> getInitialTvSeries() async {
+  Future<TvSeriesWrapper?> _getInitialTvSeries() async {
     CustomProgressIndicator.openLoadingDialog();
     final TvSeriesWrapper? tvSeriesWrapper = await repository.getTopRatedTvSeries(
       query: <String, dynamic>{
@@ -46,6 +46,10 @@ class TopRatedTvSeriesController extends BaseRepositoryController<HomeTvReposito
     );
     await CustomProgressIndicator.closeLoadingOverlay();
     return tvSeriesWrapper;
+  }
+
+  Future<void> appendInitialTvSeries() async {
+    append(() => _getInitialTvSeries);
   }
 
   @override
@@ -57,7 +61,7 @@ class TopRatedTvSeriesController extends BaseRepositoryController<HomeTvReposito
   @override
   void onReady() {
     super.onReady();
-    append(() => getInitialTvSeries);
+    appendInitialTvSeries();
   }
 
   @override

@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/core/base/index.dart';
 import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
-import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import 'package:flutter_getx_the_moviedb/features/home_movie/index.dart';
 import 'package:get/get.dart';
 
@@ -21,11 +20,6 @@ class HomeMovieScreenController extends BaseController<dynamic> {
   void changeBrightness() {
     Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
     WidgetsBinding.instance.performReassemble();
-  }
-
-  void changeLocale() {
-    Get.updateLocale(Get.locale! == const Locale("tr", "TR") ? const Locale("en", "US") : const Locale("tr", "TR"));
-    LanguageHelper.languageSave();
   }
 
   void openEndDrawer(GlobalKey<ScaffoldState> _scaffoldKey) {

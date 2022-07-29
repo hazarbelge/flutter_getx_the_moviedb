@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import "package:flutter_svg/flutter_svg.dart";
 import "package:get/get.dart";
 
@@ -74,13 +75,13 @@ class _LoadingOverlayState extends State<LoadingOverlay> with SingleTickerProvid
                         return SizedBox(
                           height: 90,
                           width: 90,
-                          child: SvgPicture.asset("assets/icons/app_icon.svg"),
+                          child: SvgPicture.asset(GlobalVariables.images.appIconPath),
                         );
                       } else {
                         return SizedBox(
                           height: 50,
                           width: 50,
-                          child: SvgPicture.asset("assets/icons/app_icon.svg"),
+                          child: SvgPicture.asset(GlobalVariables.images.appIconPath),
                         );
                       }
                     },

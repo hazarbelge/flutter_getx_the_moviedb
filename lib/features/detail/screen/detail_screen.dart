@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
 import 'package:flutter_getx_the_moviedb/features/detail/index.dart';
 import 'package:flutter_getx_the_moviedb/features/widgets/index.dart';
 import 'package:get/get.dart';
@@ -13,44 +12,61 @@ class DetailScreen extends GetView<DetailPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: controller.isMovie == null
-              ? nil
-              : (controller.isMovie ?? false)
-                  ? Column(
-                      children: <Widget>[
-                        HeaderDetail(
-                          title: controller.movie!.title ?? "",
-                          imageBanner: 'https://image.tmdb.org/t/p/original${controller.movie!.backdropPath ?? ""}',
-                          imagePoster: 'https://image.tmdb.org/t/p/w185${controller.movie!.posterPath ?? ""}',
-                          rating: double.parse(controller.movie!.voteAverage ?? "0"),
-                          genre: controller.movie?.genres?.map(createGenreContainer).toList() ?? <Widget>[],
-                          id: controller.movie!.id!,
-                          isMovie: true,
+      body: Stack(
+        children: <Widget>[
+          SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: SingleChildScrollView(
+              physics: const ClampingScrollPhysics(),
+              child: controller.isMovie == null
+                  ? nil
+                  : (controller.isMovie ?? false)
+                      ? Column(
+                          children: <Widget>[
+                            HeaderDetail(
+                              title: controller.movie!.title ?? "",
+                              imageBanner: 'https://image.tmdb.org/t/p/original${controller.movie!.backdropPath ?? ""}',
+                              imagePoster: 'https://image.tmdb.org/t/p/w185${controller.movie!.posterPath ?? ""}',
+                              rating: double.parse(controller.movie!.voteAverage ?? "0"),
+                              genre: controller.movie?.genres?.map(createGenreContainer).toList() ?? <Widget>[],
+                              id: controller.movie!.id!,
+                              isMovie: true,
+                            ),
+                            const DetailTabNavigation(),
+                            const SizedBox(height: 50),
+                          ],
+                        )
+                      : Column(
+                          children: <Widget>[
+                            HeaderDetail(
+                              title: controller.tvSeries!.name ?? "",
+                              imageBanner: 'https://image.tmdb.org/t/p/original${controller.tvSeries!.backdropPath ?? ""}',
+                              imagePoster: 'https://image.tmdb.org/t/p/w185${controller.tvSeries!.posterPath ?? ""}',
+                              rating: double.parse(controller.tvSeries!.voteAverage ?? "0"),
+                              genre: controller.tvSeries?.genres?.map(createGenreContainer).toList() ?? <Widget>[],
+                              id: controller.tvSeries!.id!,
+                              isMovie: false,
+                            ),
+                            const DetailTabNavigation(),
+                            const SizedBox(height: 50),
+                          ],
                         ),
-                        const DetailTabNavigation(),
-                        SizedBoxes.h50,
-                      ],
-                    )
-                  : Column(
-                      children: <Widget>[
-                        HeaderDetail(
-                          title: controller.tvSeries!.name ?? "",
-                          imageBanner: 'https://image.tmdb.org/t/p/original${controller.tvSeries!.backdropPath ?? ""}',
-                          imagePoster: 'https://image.tmdb.org/t/p/w185${controller.tvSeries!.posterPath ?? ""}',
-                          rating: double.parse(controller.tvSeries!.voteAverage ?? "0"),
-                          genre: controller.tvSeries?.genres?.map(createGenreContainer).toList() ?? <Widget>[],
-                          id: controller.tvSeries!.id!,
-                          isMovie: false,
-                        ),
-                        const DetailTabNavigation(),
-                        SizedBoxes.h50,
-                      ],
-                    ),
-        ),
+            ),
+          ),
+          Positioned(
+            top: 50,
+            left: 15,
+            child: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios_new_outlined,
+                size: 36,
+                color: Colors.white,
+              ),
+              onPressed: Get.back,
+            ),
+          ),
+        ],
       ),
     );
   }
