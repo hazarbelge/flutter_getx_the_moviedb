@@ -15,6 +15,7 @@ environment:
 
 dependencies:
   another_flushbar: ^1.10.29
+  cached_network_image: ^3.2.1
   connectivity_plus: ^2.3.6
   convex_bottom_bar: ^3.0.0
   cupertino_icons: ^1.0.5

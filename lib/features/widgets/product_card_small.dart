@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,13 +24,33 @@ class ProductCardSmall extends StatelessWidget {
       child: SizedBox(
         child: Row(
           children: <Widget>[
-            Image.network(
-              image,
-              fit: BoxFit.cover,
-              height: ((Get.context?.width ?? Get.width) / aspectRatio) - 20,
-              errorBuilder: (BuildContext context, Object object, StackTrace? stackTrace) {
-                return const SizedBox();
-              },
+            CachedNetworkImage(
+              imageUrl: image,
+              filterQuality: FilterQuality.high,
+              imageBuilder: (BuildContext context, ImageProvider<Object> imageProvider) => Container(
+                height: ((Get.context?.width ?? Get.width) / aspectRatio) - 20,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              placeholder: (BuildContext context, String url) => const Center(
+                child: SizedBox(
+                  height: 25,
+                  width: 25,
+                  child: CircularProgressIndicator.adaptive(),
+                ),
+              ),
+              errorWidget: (BuildContext context, String url, dynamic error) => Center(
+                heightFactor: 4,
+                child: SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: Image.asset("assets/launcher/app_logo.png"),
+                ),
+              ),
             ),
             const SizedBox(width: 25),
             Expanded(

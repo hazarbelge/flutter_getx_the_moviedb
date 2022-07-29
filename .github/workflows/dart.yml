@@ -1,8 +1,5 @@
 name: Dart
 
-env:
-  flutter_version: "3.0.x"
-
 on:
   workflow_dispatch:
 
@@ -10,6 +7,9 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+
+env:
+  flutter_version: "3.0.5"
 
 jobs:
   test:

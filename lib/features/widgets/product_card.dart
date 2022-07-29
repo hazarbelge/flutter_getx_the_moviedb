@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import 'package:get/get.dart';
@@ -44,6 +45,7 @@ class ProductCard extends StatelessWidget {
               children: <Widget>[
                 CardListMovieImageSide(
                   image: image,
+                  cardWidth: cardWidth,
                   cardHeight: cardHeight,
                 ),
                 const SizedBox(width: 25),
@@ -70,10 +72,12 @@ class CardListMovieImageSide extends StatelessWidget {
     Key? key,
     required this.image,
     required this.cardHeight,
+    required this.cardWidth,
   }) : super(key: key);
 
   final String image;
   final double cardHeight;
+  final double cardWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -82,13 +86,41 @@ class CardListMovieImageSide extends StatelessWidget {
       padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
       child: Align(
         alignment: Alignment.centerLeft,
-        child: Image.network(
-          image,
-          fit: BoxFit.fill,
-          height: cardHeight - 20,
-          errorBuilder: (BuildContext context, Object object, StackTrace? stackTrace) {
-            return const SizedBox();
-          },
+        child: CachedNetworkImage(
+          imageUrl: image,
+          filterQuality: FilterQuality.high,
+          imageBuilder: (BuildContext context, ImageProvider<Object> imageProvider) => Container(
+            height: cardHeight - 20,
+            width: cardWidth / 4,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: imageProvider,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          placeholder: (BuildContext context, String url) => SizedBox(
+            height: cardHeight - 20,
+            width: cardWidth / 4,
+            child: const Center(
+              child: SizedBox(
+                height: 25,
+                width: 25,
+                child: CircularProgressIndicator.adaptive(),
+              ),
+            ),
+          ),
+          errorWidget: (BuildContext context, String url, dynamic error) => SizedBox(
+            height: cardHeight - 20,
+            width: cardWidth / 4,
+            child: Center(
+              child: SizedBox(
+                height: 40,
+                width: 40,
+                child: Image.asset("assets/launcher/app_logo.png"),
+              ),
+            ),
+          ),
         ),
       ),
     );
