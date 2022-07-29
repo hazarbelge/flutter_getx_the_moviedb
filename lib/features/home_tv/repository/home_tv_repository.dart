@@ -6,8 +6,11 @@ import 'package:get/get.dart';
 
 abstract class IHomeTvProvider {
   Future<Response<TvSeriesWrapper>> getAiringTodayTvSeries({required String path, Map<String, dynamic>? query});
+
   Future<Response<TvSeriesWrapper>> getOnTheAirTvSeries({required String path, Map<String, dynamic>? query});
+
   Future<Response<TvSeriesWrapper>> getPopularTvSeries({required String path, Map<String, dynamic>? query});
+
   Future<Response<TvSeriesWrapper>> getTopRatedTvSeries({required String path, Map<String, dynamic>? query});
 }
 
@@ -20,18 +23,24 @@ class HomeTvProvider extends BaseProvider implements IHomeTvProvider {
 
   @override
   Future<Response<TvSeriesWrapper>> getAiringTodayTvSeries({required String path, Map<String, dynamic>? query}) => get(path, query: query);
+
   @override
   Future<Response<TvSeriesWrapper>> getOnTheAirTvSeries({required String path, Map<String, dynamic>? query}) => get(path, query: query);
+
   @override
   Future<Response<TvSeriesWrapper>> getPopularTvSeries({required String path, Map<String, dynamic>? query}) => get(path, query: query);
+
   @override
   Future<Response<TvSeriesWrapper>> getTopRatedTvSeries({required String path, Map<String, dynamic>? query}) => get(path, query: query);
 }
 
 abstract class IHomeTvRepository {
   Future<TvSeriesWrapper?> getAiringTodayTvSeries({Map<String, dynamic>? query});
+
   Future<TvSeriesWrapper?> getOnTheAirTvSeries({Map<String, dynamic>? query});
+
   Future<TvSeriesWrapper?> getPopularTvSeries({Map<String, dynamic>? query});
+
   Future<TvSeriesWrapper?> getTopRatedTvSeries({Map<String, dynamic>? query});
 }
 

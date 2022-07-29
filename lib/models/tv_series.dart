@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
 
 class TvSeriesWrapper extends Equatable {
-  TvSeriesWrapper({
+  const TvSeriesWrapper({
     required this.page,
     required this.totalResults,
     required this.totalPages,
@@ -22,7 +22,7 @@ class TvSeriesWrapper extends Equatable {
     );
   }
 
-  int? page;
+  final int? page;
   final int? totalResults;
   final int? totalPages;
   final List<TvSeries>? results;

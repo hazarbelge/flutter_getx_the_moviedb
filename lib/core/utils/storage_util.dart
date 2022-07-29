@@ -6,6 +6,7 @@ class StorageUtil {
   final GetStorage _storage;
 
   static StorageUtil? _instance;
+
   static Future<void> init() async {
     await GetStorage.init();
 

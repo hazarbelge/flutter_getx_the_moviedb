@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
-import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -27,12 +26,9 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double cardWidth = Get.context?.width ?? Get.width;
-    final double cardHeight = cardWidth / aspectRatio;
     return AspectRatio(
       aspectRatio: aspectRatio,
       child: Container(
-        width: cardWidth,
         padding: const EdgeInsets.all(10.0),
         child: Card(
           elevation: 5,
@@ -43,20 +39,22 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                CardListMovieImageSide(
-                  image: image,
-                  cardWidth: cardWidth,
-                  cardHeight: cardHeight,
+                Expanded(
+                  flex: 3,
+                  child: CardListMovieImageSide(
+                    image: image,
+                  ),
                 ),
-                const SizedBox(width: 25),
-                CardListMovieDescSide(
-                  cardWidth: cardWidth,
-                  cardHeight: cardHeight,
-                  vote: vote,
-                  title: title,
-                  releaseDate: releaseDate,
-                  genre: genre,
-                  overview: overview,
+                const SizedBox(width: 15),
+                Expanded(
+                  flex: 6,
+                  child: CardListMovieDescSide(
+                    vote: vote,
+                    title: title,
+                    releaseDate: releaseDate,
+                    genre: genre,
+                    overview: overview,
+                  ),
                 ),
               ],
             ),
@@ -71,18 +69,13 @@ class CardListMovieImageSide extends StatelessWidget {
   const CardListMovieImageSide({
     Key? key,
     required this.image,
-    required this.cardHeight,
-    required this.cardWidth,
   }) : super(key: key);
 
   final String image;
-  final double cardHeight;
-  final double cardWidth;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: cardHeight,
       padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
       child: Align(
         alignment: Alignment.centerLeft,
@@ -90,8 +83,6 @@ class CardListMovieImageSide extends StatelessWidget {
           imageUrl: image,
           filterQuality: FilterQuality.high,
           imageBuilder: (BuildContext context, ImageProvider<Object> imageProvider) => Container(
-            height: cardHeight - 20,
-            width: cardWidth / 4,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: imageProvider,
@@ -99,10 +90,8 @@ class CardListMovieImageSide extends StatelessWidget {
               ),
             ),
           ),
-          placeholder: (BuildContext context, String url) => SizedBox(
-            height: cardHeight - 20,
-            width: cardWidth / 4,
-            child: const Center(
+          placeholder: (BuildContext context, String url) => const SizedBox(
+            child: Center(
               child: SizedBox(
                 height: 25,
                 width: 25,
@@ -111,8 +100,6 @@ class CardListMovieImageSide extends StatelessWidget {
             ),
           ),
           errorWidget: (BuildContext context, String url, dynamic error) => SizedBox(
-            height: cardHeight - 20,
-            width: cardWidth / 4,
             child: Center(
               child: SizedBox(
                 height: 40,
@@ -130,8 +117,6 @@ class CardListMovieImageSide extends StatelessWidget {
 class CardListMovieDescSide extends StatelessWidget {
   const CardListMovieDescSide({
     Key? key,
-    required this.cardWidth,
-    required this.cardHeight,
     required this.vote,
     required this.title,
     required this.releaseDate,
@@ -139,8 +124,6 @@ class CardListMovieDescSide extends StatelessWidget {
     required this.overview,
   }) : super(key: key);
 
-  final double cardWidth;
-  final double cardHeight;
   final String vote;
   final String title;
   final String releaseDate;
@@ -149,90 +132,76 @@ class CardListMovieDescSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(right: 15, top: 10, bottom: 10),
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints boxConstraints) {
-            return Container(
-              width: boxConstraints.maxWidth,
-              height: boxConstraints.maxHeight,
-              clipBehavior: Clip.none,
-              decoration: const BoxDecoration(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  const Spacer(),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.only(right: 15, top: 10, bottom: 10),
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints boxConstraints) {
+          return Container(
+            width: boxConstraints.maxWidth,
+            height: boxConstraints.maxHeight,
+            clipBehavior: Clip.none,
+            decoration: const BoxDecoration(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const Spacer(),
+                Expanded(
+                  flex: 4,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
-                        width: boxConstraints.maxHeight / 4.5,
-                        height: boxConstraints.maxHeight / 4.5,
+                      Expanded(
                         child: Stack(
                           children: <Widget>[
                             Center(
-                              child: Container(
-                                width: cardHeight / 4.5,
-                                height: cardHeight / 4.5,
-                                decoration: BoxDecoration(
-                                  color: Colors.blueGrey,
-                                  borderRadius: BorderRadius.circular(90),
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: SizedBox(
-                                width: cardHeight / 5,
-                                height: cardHeight / 5,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 3.0,
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    GetRatingColor.getColor(double.parse(vote)),
+                              child: Transform.scale(
+                                scale: 1.2,
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
                                   ),
-                                  backgroundColor: Colors.grey,
-                                  value: double.parse(vote) / 10.0,
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: SizedBox(
-                                width: cardHeight / 6,
-                                height: cardHeight / 6,
-                                child: Center(
-                                  child: Text(
-                                    '${(double.parse(vote) * 10.0).floor()}%',
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 11,
-                                      color: Colors.white,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 3.0,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      GetRatingColor.getColor(double.parse(vote)),
                                     ),
+                                    backgroundColor: Colors.grey,
+                                    value: double.parse(vote) / 10.0,
                                   ),
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: Text(
+                                '${(double.parse(vote) * 10.0).floor()}%',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 11,
+                                  color: Colors.white,
                                 ),
                               ),
                             )
                           ],
                         ),
                       ),
-                      const SizedBox(width: 10),
-                      SizedBox(
-                        height: boxConstraints.maxHeight / 4.5,
-                        width: boxConstraints.maxWidth - boxConstraints.maxWidth / 4.5 - 10,
+                      const SizedBox(width: 15),
+                      Expanded(
+                        flex: 6,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            SizedBox(
-                              height: boxConstraints.maxHeight / 9,
+                            Expanded(
                               child: Text(
                                 title,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 16,
+                                  fontSize: 15,
                                 ),
                                 maxLines: 1,
                               ),
@@ -244,7 +213,11 @@ class CardListMovieDescSide extends StatelessWidget {
                                 fit: BoxFit.scaleDown,
                                 child: Text(
                                   releaseDate,
-                                  style: TextStyle(color: Colors.grey[800], fontWeight: FontWeight.w300, fontSize: 11),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 11,
+                                  ),
                                   maxLines: 1,
                                 ),
                               ),
@@ -254,33 +227,33 @@ class CardListMovieDescSide extends StatelessWidget {
                       )
                     ],
                   ),
-                  const Spacer(),
-                  Expanded(
-                    flex: 8,
-                    child: LayoutBuilder(
-                      builder: (BuildContext context, BoxConstraints boxConstraints) {
-                        return Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Text(
-                            overview,
-                            maxLines: boxConstraints.maxHeight ~/ 14,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 11,
-                            ),
-                            textAlign: TextAlign.start,
+                ),
+                const Spacer(),
+                Expanded(
+                  flex: 8,
+                  child: LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints boxConstraints) {
+                      return Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          overview,
+                          maxLines: boxConstraints.maxHeight ~/ 14,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 11,
                           ),
-                        );
-                      },
-                    ),
+                          textAlign: TextAlign.start,
+                        ),
+                      );
+                    },
                   ),
-                  const Spacer(),
-                ],
-              ),
-            );
-          },
-        ),
+                ),
+                const Spacer(),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

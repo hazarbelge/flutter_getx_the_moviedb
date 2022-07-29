@@ -13,6 +13,7 @@ class OnTheAirTvSeriesController extends BaseRepositoryController<HomeTvReposito
   final HomeTvRepository homeTvRepository;
   final ScrollController scrollController = ScrollController();
   final RxBool isLoading = false.obs;
+  final RxInt page = 1.obs;
 
   void pagination() {
     if (scrollController.position.extentAfter < 500 && state != null && state!.totalPages != 0 && state!.totalPages != state!.page && !isLoading.value) {
@@ -26,11 +27,11 @@ class OnTheAirTvSeriesController extends BaseRepositoryController<HomeTvReposito
 
     final TvSeriesWrapper? tvSeriesWrapper = await repository.getOnTheAirTvSeries(
       query: <String, dynamic>{
-        "page": state!.page! + 1,
+        "page": page.value + 1,
       },
     );
     state!.results!.addAll(tvSeriesWrapper!.results!);
-    state!.page = tvSeriesWrapper.page;
+    page.value = tvSeriesWrapper.page!;
     update();
 
     await CustomProgressIndicator.closeLoadingOverlay();
@@ -44,6 +45,7 @@ class OnTheAirTvSeriesController extends BaseRepositoryController<HomeTvReposito
         "page": 1,
       },
     );
+    page.value = tvSeriesWrapper!.page!;
     await CustomProgressIndicator.closeLoadingOverlay();
     return tvSeriesWrapper;
   }

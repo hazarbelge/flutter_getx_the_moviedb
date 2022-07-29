@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
 
 class MovieWrapper extends Equatable {
-  MovieWrapper({
+  const MovieWrapper({
     this.page,
     this.totalResults,
     this.totalPages,
@@ -22,7 +22,7 @@ class MovieWrapper extends Equatable {
     );
   }
 
-  int? page;
+  final int? page;
   final int? totalResults;
   final int? totalPages;
   final List<Movie>? results;

@@ -12,6 +12,8 @@ class _App {
 
 class _Images {
   String get appIconPath => "assets/icons/app_icon.svg";
+
   String get appIconPngPath => "assets/icons/app_icon.png";
+
   String get appLogoPath => "assets/icons/app_logo.png";
 }

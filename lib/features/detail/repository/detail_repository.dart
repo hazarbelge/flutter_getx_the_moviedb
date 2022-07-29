@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 abstract class IDetailProvider {
   Future<Response<dynamic>> rateMovie(String path, Map<String, dynamic> body);
+
   Future<Response<dynamic>> rateTvSeries(String path, Map<String, dynamic> body);
 }
 
@@ -18,6 +19,7 @@ class DetailProvider extends BaseProvider implements IDetailProvider {
 
 abstract class IDetailRepository {
   Future<dynamic> rateMovie(int movieId, Map<String, dynamic> body);
+
   Future<dynamic> rateTvSeries(int tvSeriesId, Map<String, dynamic> body);
 }
 

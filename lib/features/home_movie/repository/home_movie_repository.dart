@@ -6,8 +6,11 @@ import 'package:get/get.dart';
 
 abstract class IHomeMovieProvider {
   Future<Response<MovieWrapper>> getNowPlayingMovie({required String path, Map<String, dynamic>? query});
+
   Future<Response<MovieWrapper>> getPopularMovie({required String path, Map<String, dynamic>? query});
+
   Future<Response<MovieWrapper>> getTopRatedMovie({required String path, Map<String, dynamic>? query});
+
   Future<Response<MovieWrapper>> getUpcomingMovie({required String path, Map<String, dynamic>? query});
 }
 
@@ -20,18 +23,24 @@ class HomeMovieProvider extends BaseProvider implements IHomeMovieProvider {
 
   @override
   Future<Response<MovieWrapper>> getNowPlayingMovie({required String path, Map<String, dynamic>? query}) => get(path, query: query);
+
   @override
   Future<Response<MovieWrapper>> getPopularMovie({required String path, Map<String, dynamic>? query}) => get(path, query: query);
+
   @override
   Future<Response<MovieWrapper>> getTopRatedMovie({required String path, Map<String, dynamic>? query}) => get(path, query: query);
+
   @override
   Future<Response<MovieWrapper>> getUpcomingMovie({required String path, Map<String, dynamic>? query}) => get(path, query: query);
 }
 
 abstract class IHomeMovieRepository {
   Future<MovieWrapper?> getNowPlayingMovie({Map<String, dynamic>? query});
+
   Future<MovieWrapper?> getPopularMovie({Map<String, dynamic>? query});
+
   Future<MovieWrapper?> getTopRatedMovie({Map<String, dynamic>? query});
+
   Future<MovieWrapper?> getUpcomingMovie({Map<String, dynamic>? query});
 }
 

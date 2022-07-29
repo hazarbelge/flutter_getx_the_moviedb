@@ -75,7 +75,7 @@ class ProductList extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
+              crossAxisCount: 5,
               crossAxisSpacing: 0,
               childAspectRatio: _aspectRatio,
             ),
@@ -97,6 +97,28 @@ class ProductList extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              crossAxisSpacing: 0,
+              childAspectRatio: _aspectRatio,
+            ),
+            itemCount: (isMovie ? _movieList : _tvSeriesList)?.length ?? 0,
+            cacheExtent: (Get.context?.width ?? Get.width) / _aspectRatio,
+            itemBuilder: (BuildContext context, int index) {
+              return getProductCard(
+                isMovie: isMovie,
+                movieList: _movieList,
+                tvSeriesList: _tvSeriesList,
+                index: index,
+                aspectRatio: _aspectRatio,
+              );
+            },
+          );
+        } else if (boxConstraints.maxWidth >= 1000) {
+          const double _aspectRatio = 1.75;
+          return GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               crossAxisSpacing: 0,
               childAspectRatio: _aspectRatio,
@@ -113,7 +135,7 @@ class ProductList extends StatelessWidget {
               );
             },
           );
-        } else if (boxConstraints.maxWidth >= 650) {
+        } else if (boxConstraints.maxWidth >= 600) {
           const double _aspectRatio = 1.75;
           return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -135,7 +157,7 @@ class ProductList extends StatelessWidget {
               );
             },
           );
-        } else if (boxConstraints.maxWidth <= 380) {
+        } else if (boxConstraints.maxWidth <= 280) {
           const double _aspectRatio = 2;
           return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),

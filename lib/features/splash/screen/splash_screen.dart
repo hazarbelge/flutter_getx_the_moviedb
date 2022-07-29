@@ -3,7 +3,6 @@ import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
 import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 import 'package:flutter_getx_the_moviedb/features/splash/index.dart';
 import 'package:flutter_getx_the_moviedb/models/index.dart';
-import 'package:flutter_getx_the_moviedb/network/index.dart';
 import 'package:flutter_getx_the_moviedb/routes/index.dart';
 import 'package:flutter_getx_the_moviedb/ui/widgets/base_widgets/index.dart';
 import 'package:flutter_getx_the_moviedb/ui/widgets/custom_widgets/index.dart';
@@ -50,7 +49,7 @@ class SplashIcon extends GetView<SplashScreenController> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Image.asset(Url.appLogoPath),
+          Image.asset(GlobalVariables.images.appLogoPath),
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(

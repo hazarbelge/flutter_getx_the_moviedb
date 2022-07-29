@@ -112,50 +112,52 @@ class NavigationRow extends GetView<HomeMovieScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        InkWell(
-          child: Text(
-            'movies.now_playing.icon'.tr,
-            style: TextStyle(
-              fontSize: 16,
-              color: controller.currentIndex.value != 0 ? Colors.white : Colors.orange,
+    return Obx(
+      () => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          InkWell(
+            child: Text(
+              'movies.now_playing.icon'.tr,
+              style: TextStyle(
+                fontSize: 16,
+                color: controller.currentIndex.value != 0 ? Colors.white : Colors.orange,
+              ),
             ),
+            onTap: () => controller.currentIndex.value != 0 ? controller.currentIndex.value = 0 : null,
           ),
-          onTap: () => controller.currentIndex.value != 0 ? controller.currentIndex.value = 0 : null,
-        ),
-        InkWell(
-          child: Text(
-            'movies.popular.icon'.tr,
-            style: TextStyle(
-              fontSize: 16,
-              color: controller.currentIndex.value != 1 ? Colors.white : Colors.orange,
+          InkWell(
+            child: Text(
+              'movies.popular.icon'.tr,
+              style: TextStyle(
+                fontSize: 16,
+                color: controller.currentIndex.value != 1 ? Colors.white : Colors.orange,
+              ),
             ),
+            onTap: () => controller.currentIndex.value != 1 ? controller.currentIndex.value = 1 : null,
           ),
-          onTap: () => controller.currentIndex.value != 1 ? controller.currentIndex.value = 1 : null,
-        ),
-        InkWell(
-          child: Text(
-            'movies.top_rated.icon'.tr,
-            style: TextStyle(
-              fontSize: 16,
-              color: controller.currentIndex.value != 2 ? Colors.white : Colors.orange,
+          InkWell(
+            child: Text(
+              'movies.top_rated.icon'.tr,
+              style: TextStyle(
+                fontSize: 16,
+                color: controller.currentIndex.value != 2 ? Colors.white : Colors.orange,
+              ),
             ),
+            onTap: () => controller.currentIndex.value != 2 ? controller.currentIndex.value = 2 : null,
           ),
-          onTap: () => controller.currentIndex.value != 2 ? controller.currentIndex.value = 2 : null,
-        ),
-        InkWell(
-          child: Text(
-            'movies.upcoming.icon'.tr,
-            style: TextStyle(
-              fontSize: 16,
-              color: controller.currentIndex.value != 3 ? Colors.white : Colors.orange,
+          InkWell(
+            child: Text(
+              'movies.upcoming.icon'.tr,
+              style: TextStyle(
+                fontSize: 16,
+                color: controller.currentIndex.value != 3 ? Colors.white : Colors.orange,
+              ),
             ),
+            onTap: () => controller.currentIndex.value != 3 ? controller.currentIndex.value = 3 : null,
           ),
-          onTap: () => controller.currentIndex.value != 3 ? controller.currentIndex.value = 3 : null,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -165,50 +167,52 @@ class NavigationColumn extends GetView<HomeMovieScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        InkWell(
-          child: Text(
-            'movies.now_playing.icon'.tr,
-            style: TextStyle(
-              fontSize: 16,
-              color: controller.currentIndex.value != 0 ? Colors.white : Colors.orange,
+    return Obx(
+      () => Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          InkWell(
+            child: Text(
+              'movies.now_playing.icon'.tr,
+              style: TextStyle(
+                fontSize: 16,
+                color: controller.currentIndex.value != 0 ? Colors.white : Colors.orange,
+              ),
             ),
+            onTap: () => controller.currentIndex.value != 0 ? controller.currentIndex.value = 0 : null,
           ),
-          onTap: () => controller.currentIndex.value != 0 ? controller.currentIndex.value = 0 : null,
-        ),
-        InkWell(
-          child: Text(
-            'movies.popular.icon'.tr,
-            style: TextStyle(
-              fontSize: 16,
-              color: controller.currentIndex.value != 1 ? Colors.white : Colors.orange,
+          InkWell(
+            child: Text(
+              'movies.popular.icon'.tr,
+              style: TextStyle(
+                fontSize: 16,
+                color: controller.currentIndex.value != 1 ? Colors.white : Colors.orange,
+              ),
             ),
+            onTap: () => controller.currentIndex.value != 1 ? controller.currentIndex.value = 1 : null,
           ),
-          onTap: () => controller.currentIndex.value != 1 ? controller.currentIndex.value = 1 : null,
-        ),
-        InkWell(
-          child: Text(
-            'movies.top_rated.icon'.tr,
-            style: TextStyle(
-              fontSize: 16,
-              color: controller.currentIndex.value != 2 ? Colors.white : Colors.orange,
+          InkWell(
+            child: Text(
+              'movies.top_rated.icon'.tr,
+              style: TextStyle(
+                fontSize: 16,
+                color: controller.currentIndex.value != 2 ? Colors.white : Colors.orange,
+              ),
             ),
+            onTap: () => controller.currentIndex.value != 2 ? controller.currentIndex.value = 2 : null,
           ),
-          onTap: () => controller.currentIndex.value != 2 ? controller.currentIndex.value = 2 : null,
-        ),
-        InkWell(
-          child: Text(
-            'movies.upcoming.icon'.tr,
-            style: TextStyle(
-              fontSize: 16,
-              color: controller.currentIndex.value != 3 ? Colors.white : Colors.orange,
+          InkWell(
+            child: Text(
+              'movies.upcoming.icon'.tr,
+              style: TextStyle(
+                fontSize: 16,
+                color: controller.currentIndex.value != 3 ? Colors.white : Colors.orange,
+              ),
             ),
+            onTap: () => controller.currentIndex.value != 3 ? controller.currentIndex.value = 3 : null,
           ),
-          onTap: () => controller.currentIndex.value != 3 ? controller.currentIndex.value = 3 : null,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

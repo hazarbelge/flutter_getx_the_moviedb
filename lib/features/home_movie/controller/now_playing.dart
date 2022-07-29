@@ -13,6 +13,7 @@ class NowPlayingMoviesController extends BaseRepositoryController<HomeMovieRepos
   final HomeMovieRepository homeMovieRepository;
   final ScrollController scrollController = ScrollController();
   final RxBool isLoading = false.obs;
+  final RxInt page = 1.obs;
 
   void pagination() {
     if (scrollController.position.extentAfter < 500 && state != null && state!.totalPages != 0 && state!.totalPages != state!.page && !isLoading.value) {
@@ -26,11 +27,11 @@ class NowPlayingMoviesController extends BaseRepositoryController<HomeMovieRepos
 
     final MovieWrapper? movieWrapper = await repository.getNowPlayingMovie(
       query: <String, dynamic>{
-        "page": state!.page! + 1,
+        "page": page.value + 1,
       },
     );
     state!.results!.addAll(movieWrapper!.results!);
-    state!.page = movieWrapper.page;
+    page.value = movieWrapper.page!;
     update();
 
     await CustomProgressIndicator.closeLoadingOverlay();
@@ -44,6 +45,7 @@ class NowPlayingMoviesController extends BaseRepositoryController<HomeMovieRepos
         "page": 1,
       },
     );
+    page.value = movieWrapper!.page!;
     await CustomProgressIndicator.closeLoadingOverlay();
     return movieWrapper;
   }

@@ -2,11 +2,11 @@
 
 Flutter TheMovieDB Application example with GetX State, Route & Dependency Managements
 
-Register and get Api Key from [The Movie DB Website](https://www.themoviedb.org)
+Register and get an "API KEY" from [The Movie DB Website](https://www.themoviedb.org)
 
 After that in url.dart, change `'YOUR.API_KEY'`  with your key.
 
-Available in all your devices.
+Available for all platforms and devices.
 
 **Mobile:** 
 

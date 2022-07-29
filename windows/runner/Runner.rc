@@ -90,10 +90,10 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.hazarbelge.getxmoviedb" "\0"
-            VALUE "FileDescription", "A new Flutter TheMovieDB Application with GetX State Management" "\0"
+            VALUE "FileDescription", "flutter_getx_the_moviedb" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "flutter_getx_the_moviedb" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2021 com.hazarbelge.getxmoviedb. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 com.hazarbelge.getxmoviedb. All rights reserved." "\0"
             VALUE "OriginalFilename", "flutter_getx_the_moviedb.exe" "\0"
             VALUE "ProductName", "flutter_getx_the_moviedb" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
