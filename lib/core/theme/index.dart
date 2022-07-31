@@ -1,4 +1,3 @@
-export 'color/colors.dart';
-export 'constants/index.dart';
-export 'icon/icons.dart';
-export 'theme.dart';
+export 'colors.dart';
+export 'icons.dart';
+export 'style.dart';

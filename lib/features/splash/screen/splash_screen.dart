@@ -54,7 +54,10 @@ class SplashIcon extends GetView<SplashScreenController> {
             fit: BoxFit.scaleDown,
             child: Text(
               'app.title'.tr,
-              style: TextStyles.primary24W600,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
@@ -131,7 +134,10 @@ class HomeButtons extends GetView<SplashScreenController> {
                     child: Center(
                       child: Text(
                         state?.guestSessionId ?? "",
-                        style: TextStyles.primary8W300,
+                        style: const TextStyle(
+                          fontSize: 8,
+                          fontWeight: FontWeight.w300,
+                        ),
                       ),
                     ),
                   ),
