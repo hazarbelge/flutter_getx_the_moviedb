@@ -10,24 +10,24 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  flutter: "3.0.5"
-  sdk: ">=2.17.6 <3.0.0"
+  flutter: "3.3.5"
+  sdk: ">=2.18.2 <3.0.0"
 
 dependencies:
-  another_flushbar: ^1.10.29
-  cached_network_image: ^3.2.1
-  connectivity_plus: ^2.3.6
-  convex_bottom_bar: ^3.0.0
+  another_flushbar: ^1.12.29
+  cached_network_image: ^3.2.2
+  connectivity_plus: ^3.0.2
+  convex_bottom_bar: ^3.1.0+1
   cupertino_icons: ^1.0.5
   dio: ^4.0.6
-  dropdown_search: ^5.0.2
-  equatable: ^2.0.3
+  dropdown_search: ^5.0.3
+  equatable: ^2.0.5
 
   #flutter
   flutter:
     sdk: flutter
   flutter_i18n: ^0.32.4
-  flutter_svg: ^1.1.1+1
+  flutter_svg: ^1.1.6
 
   #getx
   get: ^4.6.5
@@ -36,14 +36,14 @@ dependencies:
   google_fonts: ^3.0.1
   nil: ^1.1.1
   responsive_framework: ^0.2.0
-  url_launcher: ^6.1.5
+  url_launcher: ^6.1.6
   url_strategy: ^0.2.0
-  video_player: ^2.4.5
+  video_player: ^2.4.7
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.9.3
+  flutter_launcher_icons: ^0.10.0
   flutter_lints: ^2.0.1
-  flutter_native_splash: ^2.2.6
+  flutter_native_splash: ^2.2.13
   flutter_test:
     sdk: flutter
 

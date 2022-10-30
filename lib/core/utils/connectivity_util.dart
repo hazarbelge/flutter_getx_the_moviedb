@@ -53,6 +53,17 @@ class ConnectivityUtil {
             }
             debugPrint("ConnectivityResult: Internet Connection With Bluetooth.");
             break;
+          case ConnectivityResult.vpn:
+            if (noConnection) {
+              try {
+                Navigator.pop(Get.overlayContext!);
+                noConnection = false;
+              } catch (e) {
+                debugPrint("GetUntilMethodOnVpnConnectionError: $e");
+              }
+            }
+            debugPrint("ConnectivityResult: Internet Connection With VPN.");
+            break;
           case ConnectivityResult.none:
             debugPrint("ConnectivityResult: No Internet Connection.");
             try {

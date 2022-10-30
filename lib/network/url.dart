@@ -37,5 +37,5 @@ class Url {
   //About Me&App
   static const String authorProfile = 'https://www.linkedin.com/in/hazarbelge/';
   static const String emailUrl = 'mailto:hazarbelge@gmail.com?subject=About Flutter The Movie DB with GetX!';
-  static const String appSource = 'https://github.com/hazarbelge/Flutter-Bloc-TheMovieDB';
+  static const String appSource = 'https://github.com/hazarbelge/flutter_getx_the_moviedb';
 }

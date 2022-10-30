@@ -53,8 +53,10 @@ class BaseDropdownMenu<T> extends StatelessWidget {
                   constraints: BoxConstraints(
                     maxHeight: itemList.length <= 3 ? itemList.length * 60 : 200,
                   ),
-                  textStyle: const TextStyle(
-                    color: Colors.white,
+                  searchFieldProps: const TextFieldProps(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                   menuProps: MenuProps(
                     backgroundColor: Colors.grey.shade800,
