@@ -9,7 +9,7 @@ on:
     branches: [ master ]
 
 env:
-  flutter_version: "3.0.5"
+  flutter_version: "3.3.5"
 
 jobs:
   test:
