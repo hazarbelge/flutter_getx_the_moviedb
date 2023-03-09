@@ -31,7 +31,7 @@ class Overview extends GetView<OverviewController> {
           Obx(
             () => Text(
               controller.flag.value ? "${controller.visibleText.value}..." : controller.visibleText.value + controller.invisibleText.value,
-              style: textTheme.bodyText2!.copyWith(
+              style: textTheme.bodyMedium!.copyWith(
                 color: Get.isDarkMode ? Colors.white : Colors.black45,
                 fontSize: 16.0,
               ),
@@ -47,7 +47,7 @@ class Overview extends GetView<OverviewController> {
               children: <Widget>[
                 Text(
                   controller.flag.value ? 'details.more'.tr : 'details.less'.tr,
-                  style: textTheme.bodyText2!.copyWith(fontSize: 16.0, color: Get.isDarkMode ? Colors.orange : Colors.blue),
+                  style: textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: Get.isDarkMode ? Colors.orange : Colors.blue),
                 ),
                 Icon(
                   Icons.keyboard_arrow_down,

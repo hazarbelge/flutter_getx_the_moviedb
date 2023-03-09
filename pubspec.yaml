@@ -2,48 +2,48 @@ name: flutter_getx_the_moviedb
 description: Flutter TheMovieDB Application with GetX State, Route & Dependency Managements
 
 module:
-  androidPackage: com.islerdestek.mobile
-  iosBundleIdentifier: com.islerdestek.mobile
+  androidPackage: com.hazarbelge.getx_moviedb
+  iosBundleIdentifier: com.hazarbelge.getx_moviedb
 
 publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  flutter: "3.3.5"
-  sdk: ">=2.18.2 <3.0.0"
+  flutter: "3.7.7"
+  sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
   another_flushbar: ^1.12.29
-  cached_network_image: ^3.2.2
-  connectivity_plus: ^3.0.2
-  convex_bottom_bar: ^3.1.0+1
+  cached_network_image: ^3.2.3
+  connectivity_plus: ^3.0.3
+  convex_bottom_bar: ^3.2.0
   cupertino_icons: ^1.0.5
-  dio: ^4.0.6
-  dropdown_search: ^5.0.3
+  dio: ^5.0.1
+  dropdown_search: ^5.0.6
   equatable: ^2.0.5
 
   #flutter
   flutter:
     sdk: flutter
   flutter_i18n: ^0.32.4
-  flutter_svg: ^1.1.6
+  flutter_svg: ^2.0.2
 
   #getx
   get: ^4.6.5
-  get_storage: ^2.0.3
+  get_storage: ^2.1.1
 
-  google_fonts: ^3.0.1
+  google_fonts: ^4.0.3
   nil: ^1.1.1
   responsive_framework: ^0.2.0
-  url_launcher: ^6.1.6
+  url_launcher: ^6.1.10
   url_strategy: ^0.2.0
-  video_player: ^2.4.7
+  video_player: ^2.5.3
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.10.0
+  flutter_launcher_icons: ^0.12.0
   flutter_lints: ^2.0.1
-  flutter_native_splash: ^2.2.13
+  flutter_native_splash: ^2.2.19
   flutter_test:
     sdk: flutter
 

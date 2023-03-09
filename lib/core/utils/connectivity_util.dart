@@ -64,6 +64,17 @@ class ConnectivityUtil {
             }
             debugPrint("ConnectivityResult: Internet Connection With VPN.");
             break;
+          case ConnectivityResult.other:
+            if (noConnection) {
+              try {
+                Navigator.pop(Get.overlayContext!);
+                noConnection = false;
+              } catch (e) {
+                debugPrint("GetUntilMethodOnOtherConnectionError: $e");
+              }
+            }
+            debugPrint("ConnectivityResult: Internet Connection With Other.");
+            break;
           case ConnectivityResult.none:
             debugPrint("ConnectivityResult: No Internet Connection.");
             try {

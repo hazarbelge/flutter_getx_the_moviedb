@@ -19,8 +19,10 @@ class ThemeIcons {
       'assets/icons/app_icon.svg',
       height: height,
       width: width,
-      color: color,
-      colorBlendMode: BlendMode.srcATop,
+      colorFilter: ColorFilter.mode(
+        color ?? Colors.black,
+        BlendMode.srcATop,
+      ),
       semanticsLabel: '',
     );
   }

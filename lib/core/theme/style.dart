@@ -13,7 +13,6 @@ class Style {
 
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    backgroundColor: ThemeColors.backgroundColor,
     scaffoldBackgroundColor: ThemeColors.scaffoldBackgroundColor,
     primaryColor: ThemeColors.primaryColor,
     appBarTheme: const AppBarTheme(
@@ -43,11 +42,6 @@ class Style {
       unselectedLabelStyle: TextStyle(fontSize: 11.5, overflow: TextOverflow.ellipsis),
       type: BottomNavigationBarType.fixed,
     ),
-    colorScheme: ColorScheme.fromSwatch(
-      brightness: Brightness.light,
-      accentColor: ThemeColors.secondaryColor,
-      errorColor: ThemeColors.errorColor,
-    ),
     pageTransitionsTheme: _pageTransitionsTheme,
     textTheme: GoogleFonts.rubikTextTheme(
       ThemeData.light().textTheme.copyWith(),
@@ -62,12 +56,16 @@ class Style {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
+    ), colorScheme: ColorScheme.fromSwatch(
+      brightness: Brightness.light,
+      accentColor: ThemeColors.secondaryColor,
+      errorColor: ThemeColors.errorColor,
+      backgroundColor: ThemeColors.backgroundColor
     ),
   );
 
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    backgroundColor: ThemeColors.backgroundColorDark,
     scaffoldBackgroundColor: ThemeColors.scaffoldBackgroundColorDark,
     primaryColor: ThemeColors.primaryColorDark,
     appBarTheme: const AppBarTheme(
@@ -91,6 +89,7 @@ class Style {
       brightness: Brightness.dark,
       accentColor: ThemeColors.secondaryColorDark,
       errorColor: ThemeColors.errorColor,
+      backgroundColor: ThemeColors.backgroundColorDark,
     ),
     pageTransitionsTheme: _pageTransitionsTheme,
     textTheme: GoogleFonts.rubikTextTheme(
@@ -111,7 +110,6 @@ class Style {
 
   static final ThemeData blackTheme = ThemeData(
     brightness: Brightness.dark,
-    backgroundColor: ThemeColors.backgroundColorDark,
     scaffoldBackgroundColor: ThemeColors.scaffoldBackgroundColorDark,
     primaryColor: ThemeColors.primaryColorDark,
     appBarTheme: const AppBarTheme(
@@ -135,6 +133,7 @@ class Style {
       brightness: Brightness.dark,
       accentColor: ThemeColors.secondaryColorDark,
       errorColor: ThemeColors.errorColor,
+      backgroundColor: ThemeColors.backgroundColorDark,
     ),
     pageTransitionsTheme: _pageTransitionsTheme,
     textTheme: GoogleFonts.rubikTextTheme(

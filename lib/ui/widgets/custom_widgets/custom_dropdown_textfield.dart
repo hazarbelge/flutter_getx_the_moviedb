@@ -340,7 +340,7 @@ class _DropDownTextFieldState extends State<DropDownTextField> with TickerProvid
         }
       }
 
-      _listTileTextStyle = (widget.listTextStyle ?? Theme.of(context).textTheme.subtitle1)!;
+      _listTileTextStyle = (widget.listTextStyle ?? Theme.of(context).textTheme.titleMedium)!;
       _listTileHeight = _textWidgetSize("dummy Text", _listTileTextStyle).height + _listPadding.top + _listPadding.bottom;
       _maxListItem = widget.dropDownItemCount;
 
@@ -470,7 +470,7 @@ class _DropDownTextFieldState extends State<DropDownTextField> with TickerProvid
   Future<void> _showOverlay() async {
     _controller.forward();
     _isExpanded = true;
-    final OverlayState? overlay = Overlay.of(context);
+    final OverlayState overlay = Overlay.of(context);
     final RenderBox renderBox = context.findRenderObject()! as RenderBox;
     final Size size = renderBox.size;
     _offset = renderBox.localToGlobal(Offset.zero);
@@ -527,11 +527,11 @@ class _DropDownTextFieldState extends State<DropDownTextField> with TickerProvid
                 builder: buildOverlay,
               ))),
     );
-    overlay?.insert(_isScrollPadding ? _entry2! : _entry!);
+    overlay.insert(_isScrollPadding ? _entry2! : _entry!);
   }
 
   void _openOutSideClickOverlay(BuildContext context) {
-    final OverlayState? overlay2 = Overlay.of(context);
+    final OverlayState overlay2 = Overlay.of(context);
     _barrierOverlay = OverlayEntry(builder: (BuildContext context) {
       final Size size = MediaQuery.of(context).size;
       return GestureDetector(
@@ -545,7 +545,7 @@ class _DropDownTextFieldState extends State<DropDownTextField> with TickerProvid
         ),
       );
     });
-    overlay2?.insert(_barrierOverlay!);
+    overlay2.insert(_barrierOverlay!);
   }
 
   void hideOverlay() {

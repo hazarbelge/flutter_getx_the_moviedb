@@ -1,5 +1,3 @@
-//import 'url_key_secret.dart';
-
 class Url {
   //API key
   static const String apiKey = "YOUR.API_KEY";
