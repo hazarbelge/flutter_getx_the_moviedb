@@ -28,7 +28,7 @@ class CustomProgressIndicator {
 }
 
 class LoadingOverlay extends StatefulWidget {
-  const LoadingOverlay({Key? key}) : super(key: key);
+  const LoadingOverlay({super.key});
 
   @override
   _LoadingOverlayState createState() => _LoadingOverlayState();
@@ -57,8 +57,8 @@ class _LoadingOverlayState extends State<LoadingOverlay> with SingleTickerProvid
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: Center(
         child: SizedBox(
           height: Get.context?.height ?? Get.height,

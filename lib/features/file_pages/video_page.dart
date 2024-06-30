@@ -5,9 +5,9 @@ import 'package:video_player/video_player.dart';
 
 class VideoPage extends StatefulWidget {
   const VideoPage({
-    Key? key,
+    super.key,
     required this.videoUrl,
-  }) : super(key: key);
+  });
 
   final String videoUrl;
 
@@ -25,13 +25,13 @@ class _VideoPageState extends State<VideoPage> {
   void initState() {
     _controller = null;
     super.initState();
-    if (_controller == null)
-      _controller = VideoPlayerController.network(widget.videoUrl)
+    if (_controller == null) {
+      _controller = VideoPlayerController.networkUrl(Uri.parse(widget.videoUrl))
         ..initialize().then((_) {
           _controller!.play();
           setState(() {});
         });
-    else {
+    } else {
       _controller = null;
     }
   }

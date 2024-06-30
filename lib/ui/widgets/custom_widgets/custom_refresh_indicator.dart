@@ -3,12 +3,12 @@ import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
 
 class CustomRefreshIndicator extends StatelessWidget {
   const CustomRefreshIndicator({
-    Key? key,
+    super.key,
     required this.onRefresh,
     required this.child,
     this.displacement = 40.0,
     this.edgeOffset = 0.0,
-  }) : super(key: key);
+  });
 
   final Future<void> Function() onRefresh;
   final Widget child;

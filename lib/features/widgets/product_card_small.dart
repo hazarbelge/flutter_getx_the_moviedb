@@ -4,13 +4,13 @@ import 'package:get/get.dart';
 
 class ProductCardSmall extends StatelessWidget {
   const ProductCardSmall({
-    Key? key,
+    super.key,
     this.onTap,
     required this.image,
     required this.title,
     required this.aspectRatio,
     required this.maxWidth,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onTap;
   final String image;

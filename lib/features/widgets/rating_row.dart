@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 
 class RatingRow extends GetView<RatingRowController> {
   const RatingRow({
-    Key? key,
+    super.key,
     required this.id,
     required this.rating,
     required this.isMovie,
-  }) : super(key: key);
+  });
 
   final int id;
   final double rating;

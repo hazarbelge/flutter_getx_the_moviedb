@@ -89,7 +89,7 @@ class SnackbarToastUtil {
     TextStyle? middleTextStyle,
     double radius = 20.0,
     List<Widget>? actions,
-    WillPopCallback? onWillPop,
+    Future<bool> Function()? onWillPop,
     GlobalKey<NavigatorState>? navigatorKey,
   }) {
     Get.defaultDialog(

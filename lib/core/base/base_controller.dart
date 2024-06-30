@@ -46,6 +46,11 @@ class BaseRepositoryController<R extends BaseRepository<P>, P extends BaseProvid
   void onResumed() {
     debugPrint("$runtimeType onResumed called");
   }
+
+  @override
+  void onHidden() {
+    debugPrint("$runtimeType onHidden called");
+  }
 }
 
 class BaseController<T extends Object?> extends SuperController<T> {
@@ -87,5 +92,10 @@ class BaseController<T extends Object?> extends SuperController<T> {
   @override
   void onResumed() {
     debugPrint("$runtimeType onResumed called");
+  }
+
+  @override
+  void onHidden() {
+    debugPrint("$runtimeType onHidden called");
   }
 }

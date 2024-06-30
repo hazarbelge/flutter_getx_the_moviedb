@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class DropDownTextField extends StatefulWidget {
   const DropDownTextField({
-    Key? key,
+    super.key,
     this.singleController,
     this.initialValue,
     required this.dropDownList,
@@ -31,19 +31,17 @@ class DropDownTextField extends StatefulWidget {
     this.listPadding,
     this.listTextStyle,
     this.searchText,
-  })  : assert(!(initialValue != null && singleController != null),
-            "you cannot add both initialValue and singleController,\nset initial value using controller \n\tEg: SingleValueDropDownController(data:initial value) "),
+  })  : assert(!(initialValue != null && singleController != null), "you cannot add both initialValue and singleController,\nset initial value using controller \n\tEg: SingleValueDropDownController(data:initial value) "),
         isMultiSelection = false,
         isForceMultiSelectionClear = false,
         displayCompleteItem = false,
         multiController = null,
         submitButtonColor = null,
         submitButtonText = null,
-        submitButtonTextStyle = null,
-        super(key: key);
+        submitButtonTextStyle = null;
 
   const DropDownTextField.multiSelection({
-    Key? key,
+    super.key,
     this.multiController,
     this.displayCompleteItem = false,
     this.initialValue,
@@ -67,17 +65,14 @@ class DropDownTextField extends StatefulWidget {
     this.listPadding,
     this.listTextStyle,
     this.searchText,
-  })  : assert(initialValue == null || multiController == null,
-            "you cannot add both initialValue and multiController\nset initial value using controller\n\tMultiValueDropDownController(data:initial value)"),
+  })  : assert(initialValue == null || multiController == null, "you cannot add both initialValue and multiController\nset initial value using controller\n\tMultiValueDropDownController(data:initial value)"),
         isMultiSelection = true,
         enableSearch = false,
         readOnly = true,
         searchAutofocus = false,
         searchKeyboardType = null,
         searchShowCursor = null,
-        singleController = null,
-        // keyboardHeight = 0,
-        super(key: key);
+        singleController = null;
 
   ///single dropdown controller,
   final SingleValueDropDownController? singleController;
@@ -714,7 +709,7 @@ class _DropDownTextFieldState extends State<DropDownTextField> with TickerProvid
 
 class SingleSelection extends StatefulWidget {
   const SingleSelection({
-    Key? key,
+    super.key,
     required this.dropDownList,
     required this.onChanged,
     required this.height,
@@ -733,7 +728,7 @@ class SingleSelection extends StatefulWidget {
     this.listTextStyle,
     required this.listPadding,
     this.searchText,
-  }) : super(key: key);
+  });
   final List<DropDownValueModel> dropDownList;
   final ValueSetter onChanged;
   final double height;
@@ -876,19 +871,7 @@ class _SingleSelectionState extends State<SingleSelection> {
 }
 
 class MultiSelection extends StatefulWidget {
-  const MultiSelection(
-      {Key? key,
-      required this.onChanged,
-      required this.dropDownList,
-      required this.list,
-      required this.height,
-      this.buttonColor,
-      this.buttonText,
-      this.buttonTextStyle,
-      required this.listTileHeight,
-      required this.listPadding,
-      this.listTextStyle})
-      : super(key: key);
+  const MultiSelection({super.key, required this.onChanged, required this.dropDownList, required this.list, required this.height, this.buttonColor, this.buttonText, this.buttonTextStyle, required this.listTileHeight, required this.listPadding, this.listTextStyle});
   final List<DropDownValueModel> dropDownList;
   final ValueSetter<List<bool>> onChanged;
   final List<bool> list;
@@ -1071,9 +1054,9 @@ class ListPadding {
 
 class KeyboardVisibilityBuilder extends StatefulWidget {
   const KeyboardVisibilityBuilder({
-    Key? key,
+    super.key,
     required this.builder,
-  }) : super(key: key);
+  });
   final Widget Function(
     BuildContext context,
     bool isKeyboardVisible,
@@ -1100,7 +1083,7 @@ class _KeyboardVisibilityBuilderState extends State<KeyboardVisibilityBuilder> w
 
   @override
   void didChangeMetrics() {
-    final double bottomInset = WidgetsBinding.instance.window.viewInsets.bottom;
+    final double bottomInset = View.of(context).viewInsets.bottom;
     final bool newValue = bottomInset > 0.0;
     if (newValue != _isKeyboardVisible) {
       setState(() {

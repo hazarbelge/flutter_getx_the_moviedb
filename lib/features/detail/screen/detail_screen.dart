@@ -5,9 +5,7 @@ import 'package:get/get.dart';
 import 'package:nil/nil.dart';
 
 class DetailScreen extends GetView<DetailPageController> {
-  const DetailScreen({
-    Key? key,
-  }) : super(key: key);
+  const DetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +71,7 @@ class DetailScreen extends GetView<DetailPageController> {
 }
 
 class DetailTabNavigation extends GetView<DetailPageController> {
-  const DetailTabNavigation({Key? key}) : super(key: key);
+  const DetailTabNavigation({super.key});
 
   @override
   Widget build(BuildContext context) {

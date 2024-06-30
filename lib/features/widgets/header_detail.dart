@@ -4,7 +4,7 @@ import 'index.dart';
 
 class HeaderDetail extends StatelessWidget {
   const HeaderDetail({
-    Key? key,
+    super.key,
     required this.genre,
     required this.title,
     required this.imageBanner,
@@ -12,7 +12,7 @@ class HeaderDetail extends StatelessWidget {
     required this.id,
     required this.rating,
     required this.isMovie,
-  }) : super(key: key);
+  });
 
   final List<Widget> genre;
   final String title;

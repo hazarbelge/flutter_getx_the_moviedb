@@ -7,10 +7,10 @@ import 'package:get/get.dart';
 
 class ProductList extends StatelessWidget {
   const ProductList({
-    Key? key,
+    super.key,
     required this.productList,
     required this.isMovie,
-  }) : super(key: key);
+  });
 
   final List<dynamic>? productList;
   final bool isMovie;
@@ -43,7 +43,7 @@ class ProductList extends StatelessWidget {
       );
     } else {
       return ProductCard(
-        image: tvSeriesList?[index].posterPath != null ? 'https://image.tmdb.org/t/p/w185${tvSeriesList?[index].posterPath}' : Url.appLogoUrl,
+        image: tvSeriesList?[index].posterPath != null && tvSeriesList![index].posterPath!.isNotEmpty ? 'https://image.tmdb.org/t/p/w185${tvSeriesList[index].posterPath}' : Url.appLogoUrl,
         title: tvSeriesList?[index].name ?? "",
         vote: tvSeriesList?[index].voteAverage ?? "",
         releaseDate: tvSeriesList?[index].firstAirDate ?? "",

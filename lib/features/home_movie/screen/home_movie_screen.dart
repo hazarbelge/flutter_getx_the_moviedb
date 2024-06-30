@@ -8,9 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class HomeMovieScreen extends GetView<HomeMovieScreenController> {
-  const HomeMovieScreen({
-    Key? key,
-  }) : super(key: key);
+  const HomeMovieScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class HomeMovieScreen extends GetView<HomeMovieScreenController> {
 }
 
 class HomeMovieDesktopWebScaffold extends GetView<HomeMovieScreenController> {
-  const HomeMovieDesktopWebScaffold({Key? key}) : super(key: key);
+  const HomeMovieDesktopWebScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +67,7 @@ class HomeMovieDesktopWebScaffold extends GetView<HomeMovieScreenController> {
 }
 
 class HomeMovieMobileScaffold extends GetView<HomeMovieScreenController> {
-  const HomeMovieMobileScaffold({Key? key}) : super(key: key);
+  const HomeMovieMobileScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +106,7 @@ class HomeMovieMobileScaffold extends GetView<HomeMovieScreenController> {
 }
 
 class NavigationRow extends GetView<HomeMovieScreenController> {
-  const NavigationRow({Key? key}) : super(key: key);
+  const NavigationRow({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +161,7 @@ class NavigationRow extends GetView<HomeMovieScreenController> {
 }
 
 class NavigationColumn extends GetView<HomeMovieScreenController> {
-  const NavigationColumn({Key? key}) : super(key: key);
+  const NavigationColumn({super.key});
 
   @override
   Widget build(BuildContext context) {

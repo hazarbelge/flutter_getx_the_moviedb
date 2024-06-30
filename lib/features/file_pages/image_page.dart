@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 
 class ImagePage extends StatelessWidget {
   const ImagePage({
-    Key? key,
+    super.key,
     required this.imageUrl,
-  }) : super(key: key);
+  });
 
   final String imageUrl;
 

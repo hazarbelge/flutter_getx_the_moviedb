@@ -4,7 +4,7 @@ import 'package:flutter_getx_the_moviedb/core/utils/index.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
-    Key? key,
+    super.key,
     this.onTap,
     required this.image,
     required this.vote,
@@ -13,7 +13,7 @@ class ProductCard extends StatelessWidget {
     required this.genre,
     required this.overview,
     required this.aspectRatio,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onTap;
   final String image;
@@ -67,14 +67,18 @@ class ProductCard extends StatelessWidget {
 
 class CardListMovieImageSide extends StatelessWidget {
   const CardListMovieImageSide({
-    Key? key,
+    super.key,
     required this.image,
-  }) : super(key: key);
+  });
 
   final String image;
 
   @override
   Widget build(BuildContext context) {
+    if (image.isEmpty) {
+      return const SizedBox();
+    }
+
     return Container(
       padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
       child: Align(
@@ -116,13 +120,13 @@ class CardListMovieImageSide extends StatelessWidget {
 
 class CardListMovieDescSide extends StatelessWidget {
   const CardListMovieDescSide({
-    Key? key,
+    super.key,
     required this.vote,
     required this.title,
     required this.releaseDate,
     required this.genre,
     required this.overview,
-  }) : super(key: key);
+  });
 
   final String vote;
   final String title;
@@ -132,6 +136,10 @@ class CardListMovieDescSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (title.isEmpty && overview.isEmpty) {
+      return const SizedBox();
+    }
+
     return Padding(
       padding: const EdgeInsets.only(right: 15, top: 10, bottom: 10),
       child: LayoutBuilder(
@@ -207,21 +215,22 @@ class CardListMovieDescSide extends StatelessWidget {
                               ),
                             ),
                             const Spacer(),
-                            SizedBox(
-                              height: boxConstraints.maxHeight / 12,
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Text(
-                                  releaseDate,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 11,
+                            if (releaseDate.isNotEmpty)
+                              SizedBox(
+                                height: boxConstraints.maxHeight / 12,
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    releaseDate,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 11,
+                                    ),
+                                    maxLines: 1,
                                   ),
-                                  maxLines: 1,
                                 ),
-                              ),
-                            )
+                              )
                           ],
                         ),
                       )

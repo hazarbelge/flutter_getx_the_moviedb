@@ -12,12 +12,13 @@ extension FormatPrinter on BuildContext {
   String printDateTime(DateTime dateTime) {
     String formatted;
 
-    if (dateTime.year == DateTime.now().year && dateTime.month == DateTime.now().month && dateTime.day == DateTime.now().day)
+    if (dateTime.year == DateTime.now().year && dateTime.month == DateTime.now().month && dateTime.day == DateTime.now().day) {
       formatted = DateFormat("HH:mm", 'tr').format(dateTime);
-    else if (dateTime.year == DateTime.now().year && dateTime.month == DateTime.now().month)
+    } else if (dateTime.year == DateTime.now().year && dateTime.month == DateTime.now().month) {
       formatted = DateFormat("dd MMMM HH:mm", 'tr').format(dateTime);
-    else
+    } else {
       formatted = DateFormat("dd MMMM yyyy HH:mm", 'tr').format(dateTime);
+    }
     return formatted;
   }
 }

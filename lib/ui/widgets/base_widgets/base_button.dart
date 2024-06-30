@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 
 class BaseButton extends StatelessWidget {
   const BaseButton({
-    Key? key,
+    super.key,
     required this.backgroundColor,
     this.foregroundColor = Colors.transparent,
     this.textColor = Colors.white,
@@ -18,7 +18,7 @@ class BaseButton extends StatelessWidget {
     this.elevation = 2,
     this.shape,
     this.paddings = const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-  }) : super(key: key);
+  });
 
   final Color backgroundColor;
   final Color foregroundColor;
@@ -33,7 +33,7 @@ class BaseButton extends StatelessWidget {
   final Color borderColor;
   final double borderWidth;
   final double elevation;
-  final MaterialStateProperty<OutlinedBorder?>? shape;
+  final WidgetStateProperty<OutlinedBorder?>? shape;
   final EdgeInsets paddings;
 
   @override
@@ -50,12 +50,12 @@ class BaseButton extends StatelessWidget {
       focusNode: focusNode,
       clipBehavior: Clip.antiAlias,
       style: ButtonStyle(
-        elevation: MaterialStateProperty.resolveWith((Set<MaterialState> states) => elevation),
-        backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => backgroundColor),
-        foregroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) => foregroundColor),
+        elevation: WidgetStateProperty.resolveWith((Set<WidgetState> states) => elevation),
+        backgroundColor: WidgetStateColor.resolveWith((Set<WidgetState> states) => backgroundColor),
+        foregroundColor: WidgetStateColor.resolveWith((Set<WidgetState> states) => foregroundColor),
         shape: shape ??
-            MaterialStateProperty.resolveWith(
-              (Set<MaterialState> states) => RoundedRectangleBorder(
+            WidgetStateProperty.resolveWith(
+              (Set<WidgetState> states) => RoundedRectangleBorder(
                 side: BorderSide(
                   color: borderColor,
                   width: borderWidth,
@@ -63,7 +63,7 @@ class BaseButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(borderRadius),
               ),
             ),
-        padding: MaterialStateProperty.resolveWith((Set<MaterialState> states) => paddings),
+        padding: WidgetStateProperty.resolveWith((Set<WidgetState> states) => paddings),
       ),
       child: Text(
         text ?? "",

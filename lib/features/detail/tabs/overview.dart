@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 
 class Overview extends GetView<OverviewController> {
   const Overview({
-    Key? key,
+    super.key,
     required this.overview,
     this.subLength = 200,
-  }) : super(key: key);
+  });
 
   final String overview;
   final int subLength;

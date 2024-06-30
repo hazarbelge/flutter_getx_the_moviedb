@@ -9,9 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class HomeTvScreen extends GetView<HomeTvScreenController> {
-  const HomeTvScreen({
-    Key? key,
-  }) : super(key: key);
+  const HomeTvScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,7 @@ class HomeTvScreen extends GetView<HomeTvScreenController> {
 }
 
 class HomeTvDesktopWebScaffold extends GetView<HomeTvScreenController> {
-  const HomeTvDesktopWebScaffold({Key? key}) : super(key: key);
+  const HomeTvDesktopWebScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +63,7 @@ class HomeTvDesktopWebScaffold extends GetView<HomeTvScreenController> {
 }
 
 class HomeTvMobileScaffold extends GetView<HomeTvScreenController> {
-  const HomeTvMobileScaffold({Key? key}) : super(key: key);
+  const HomeTvMobileScaffold({super.key});
 
   Color getMyColor(int bottomBarIndex, int itemIndex) {
     Color color;
@@ -130,7 +128,7 @@ class HomeTvMobileScaffold extends GetView<HomeTvScreenController> {
 }
 
 class NavigationRow extends GetView<HomeTvScreenController> {
-  const NavigationRow({Key? key}) : super(key: key);
+  const NavigationRow({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +183,7 @@ class NavigationRow extends GetView<HomeTvScreenController> {
 }
 
 class NavigationColumn extends GetView<HomeTvScreenController> {
-  const NavigationColumn({Key? key}) : super(key: key);
+  const NavigationColumn({super.key});
 
   @override
   Widget build(BuildContext context) {

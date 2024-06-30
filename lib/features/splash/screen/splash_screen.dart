@@ -9,9 +9,7 @@ import 'package:flutter_getx_the_moviedb/ui/widgets/custom_widgets/index.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends GetView<SplashScreenController> {
-  const SplashScreen({
-    Key? key,
-  }) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +19,11 @@ class SplashScreen extends GetView<SplashScreenController> {
       body: SizedBox(
         height: height,
         width: double.infinity,
-        child: Column(
+        child: const Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             SplashIcon(),
             HomeButtons(),
           ],
@@ -37,8 +35,8 @@ class SplashScreen extends GetView<SplashScreenController> {
 
 class SplashIcon extends GetView<SplashScreenController> {
   const SplashIcon({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -68,8 +66,8 @@ class SplashIcon extends GetView<SplashScreenController> {
 
 class HomeButtons extends GetView<SplashScreenController> {
   const HomeButtons({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

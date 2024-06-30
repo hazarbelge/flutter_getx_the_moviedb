@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomAppBar extends PreferredSize {
   const CustomAppBar({
-    Key? key,
+    super.key,
     this.height = 70,
-  }) : super(key: key, preferredSize: const Size(414, 70), child: const SizedBox());
+  }) : super(preferredSize: const Size(414, 70), child: const SizedBox());
 
   final double height;
 

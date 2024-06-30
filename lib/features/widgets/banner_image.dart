@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class BannerImage extends StatelessWidget {
   const BannerImage({
-    Key? key,
+    super.key,
     required this.imageUrl,
-  }) : super(key: key);
+  });
 
   final String imageUrl;
 

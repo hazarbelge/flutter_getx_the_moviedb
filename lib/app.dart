@@ -10,9 +10,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'ui/widgets/custom_widgets/index.dart';
 
 class MovieApp extends StatelessWidget {
-  const MovieApp({
-    Key? key,
-  }) : super(key: key);
+  const MovieApp({super.key});
 
   static GlobalKey movieAppKey = GlobalKey();
 
@@ -41,8 +39,8 @@ class MovieApp extends StatelessWidget {
           return MediaQuery(
             data: mediaQueryData.copyWith(
               platformBrightness: Brightness.light,
-              textScaleFactor: 1,
               alwaysUse24HourFormat: true,
+              textScaler: TextScaler.noScaling,
               boldText: false,
             ),
             child: ResponsiveWrapper.builder(

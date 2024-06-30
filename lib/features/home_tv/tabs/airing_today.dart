@@ -6,7 +6,7 @@ import 'package:flutter_getx_the_moviedb/ui/widgets/custom_widgets/index.dart';
 import 'package:get/get.dart';
 
 class AiringTodayTvSeriesTab extends GetView<AiringTodayTvSeriesController> {
-  const AiringTodayTvSeriesTab({Key? key}) : super(key: key);
+  const AiringTodayTvSeriesTab({super.key});
 
   @override
   Widget build(BuildContext context) {

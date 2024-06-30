@@ -6,9 +6,9 @@ import 'package:get/get.dart';
 
 class CustomErrorScreen extends StatelessWidget {
   const CustomErrorScreen({
-    Key? key,
+    super.key,
     required this.errorDetails,
-  }) : super(key: key);
+  });
 
   final FlutterErrorDetails errorDetails;
 

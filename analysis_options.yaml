@@ -2,7 +2,6 @@ linter:
   rules:
     - always_declare_return_types
     - always_put_control_body_on_new_line
-    - always_require_non_null_named_parameters
     - always_specify_types
     - avoid_bool_literals_in_conditional_expressions
     - avoid_empty_else
@@ -39,15 +38,16 @@ linter:
     - flutter_style_todos
     - hash_and_equals
     - implementation_imports
-    - iterable_contains_unrelated_type
+    - collection_methods_unrelated_type
     - leading_newlines_in_multiline_strings
+    - library_annotations
     - library_names
     - library_prefixes
-    - list_remove_unrelated_type
     - missing_whitespace_between_adjacent_strings
     - no_adjacent_strings_in_list
     - no_duplicate_case_values
     - no_logic_in_create_state
+    - no_wildcard_variable_uses
     - non_constant_identifier_names
     - null_check_on_nullable_type_parameter
     - null_closures
@@ -63,7 +63,6 @@ linter:
     - prefer_const_declarations
     - prefer_const_literals_to_create_immutables
     - prefer_contains
-    - prefer_equal_for_default_values
     - prefer_final_fields
     - prefer_final_in_for_each
     - prefer_final_locals
@@ -120,3 +119,12 @@ linter:
     - use_rethrow_when_possible
     - valid_regexps
     - void_checks
+    - annotate_overrides
+    - curly_braces_in_flow_control_structures
+    - dangling_library_doc_comments
+    - implicit_call_tearoffs
+    - secure_pubspec_urls
+    - type_literal_in_constant_pattern
+    - unnecessary_to_list_in_spreads
+    - use_string_in_part_of_directives
+    - use_super_parameters

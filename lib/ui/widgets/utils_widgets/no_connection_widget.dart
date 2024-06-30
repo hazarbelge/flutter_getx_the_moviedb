@@ -3,9 +3,9 @@ import "package:get/get.dart";
 
 class NoConnectionWidget extends StatelessWidget {
   const NoConnectionWidget({
-    Key? key,
+    super.key,
     this.restartRequired = false,
-  }) : super(key: key);
+  });
 
   final bool restartRequired;
 

@@ -4,7 +4,7 @@ import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
 
 class BaseInputBox extends StatelessWidget {
   const BaseInputBox({
-    Key? key,
+    super.key,
     this.hintText,
     this.labelText,
     this.textEditingController,
@@ -29,7 +29,7 @@ class BaseInputBox extends StatelessWidget {
     this.maxLength,
     this.maxLengthEnforcement,
     this.cursorColor,
-  }) : super(key: key);
+  });
 
   final String? hintText;
   final String? labelText;

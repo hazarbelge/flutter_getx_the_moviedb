@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class Poster extends StatelessWidget {
   const Poster({
-    Key? key,
+    super.key,
     required this.posterUrl,
     this.height = 100.0,
-  }) : super(key: key);
+  });
 
   static const double POSTER_RATIO = 0.7;
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class BaseDropdownMenu<T> extends StatelessWidget {
   const BaseDropdownMenu({
-    Key? key,
+    super.key,
     this.suffixIconData = Icons.arrow_forward_ios_outlined,
     this.title,
     this.hintText,
@@ -16,7 +16,7 @@ class BaseDropdownMenu<T> extends StatelessWidget {
     this.enableSearch = false,
     this.clearOption = false,
     this.dropDownItemCount = 6,
-  }) : super(key: key);
+  });
 
   final IconData suffixIconData;
   final String? title;

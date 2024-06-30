@@ -3,7 +3,7 @@ import 'package:flutter_getx_the_moviedb/core/theme/index.dart';
 
 class BaseFloatingActionButton extends StatelessWidget {
   const BaseFloatingActionButton({
-    Key? key,
+    super.key,
     this.onPressed,
     this.elevation,
     this.backgroundColor,
@@ -11,7 +11,7 @@ class BaseFloatingActionButton extends StatelessWidget {
     required this.iconData,
     this.iconSize,
     this.iconColor,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onPressed;
   final double? elevation;

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class StatefulWrapper extends StatefulWidget {
   const StatefulWrapper({
-    Key? key,
+    super.key,
     required this.onInit,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Function onInit;
   final Widget child;

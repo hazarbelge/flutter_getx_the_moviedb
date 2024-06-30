@@ -37,12 +37,13 @@ Future<void> main() async {
     }
   };
 
-  WidgetsFlutterBinding.ensureInitialized();
-
   runZonedGuarded<Future<void>>(
     () async {
+      WidgetsFlutterBinding.ensureInitialized();
+
       await initServices();
       setPathUrlStrategy();
+
       runApp(
         const MovieApp(),
       );

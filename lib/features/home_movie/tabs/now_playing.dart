@@ -6,7 +6,7 @@ import 'package:flutter_getx_the_moviedb/ui/widgets/custom_widgets/index.dart';
 import 'package:get/get.dart';
 
 class NowPlayingMoviesTab extends GetView<NowPlayingMoviesController> {
-  const NowPlayingMoviesTab({Key? key}) : super(key: key);
+  const NowPlayingMoviesTab({super.key});
 
   @override
   Widget build(BuildContext context) {
